@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
-* main - print all digits base 0-9 
+* main - print all digits base 0-9
 *
 * Return: 0 as exit status
 */
