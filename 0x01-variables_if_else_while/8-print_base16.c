@@ -10,9 +10,9 @@ int main(void)
 	int count10 = 47;
 	int countc = 96;
 
-	while (++count10 < 57)
+	while (++count10 < 58)
 		putchar(count10);
-	while (++countc < 67)
+	while (++countc < 103)
 		putchar(countc);
 	putchar(10);
 
