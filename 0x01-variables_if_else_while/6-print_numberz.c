@@ -9,7 +9,7 @@ int main(void)
 {
 	int count = 47;
 
-	while (++count < 85)
+	while (++count < 58)
 		putchar(count);
 	putchar(10);
 	return (0);
