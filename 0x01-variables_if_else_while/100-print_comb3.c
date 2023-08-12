@@ -9,18 +9,18 @@ int main(void)
 {
 	int comma = 44;
 	int space = 32;
-	int n = 10, i = 0, j, k;
+	int end = 58, i = 0, j, k;
 
 	while (i < 45)
 	{
-		for (j = i; j < n - 1; j++)
+		for (j = 48; j < end - 1; j++)
 		{
-			for (k = j + 1; k < n; k++)
+			for (k = j + 1; k < end; k++)
 			{
 				i++;
 				putchar(j);
 				putchar(k);
-				if (i == 44)
+				if (i == 45)
 					break;
 				putchar(comma);
 				putchar(space);
