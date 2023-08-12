@@ -15,9 +15,9 @@ int main(void)
 		{
 			for (l = j + 1; l < end - 1; l++)
 			{
-				for (k = l + 1; k < end - 1; k++)
+				for (k = l + 1; k < end; k++)
 				{
-					i++;
+					++i;
 					putchar(j);
 					putchar(l);
 					putchar(k);
