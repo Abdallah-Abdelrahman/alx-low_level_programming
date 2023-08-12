@@ -7,7 +7,6 @@
 */
 int main(void)
 {
-	int count = 47;
 	int comma = 44;
 	int space = 32;
 	int n = 10, i = 0, j, k;
