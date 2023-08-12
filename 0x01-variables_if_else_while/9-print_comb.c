@@ -17,7 +17,7 @@ int main(void)
 		if (count == 57)
 			break;
 		putchar(comma);
-		putchar(space)
+		putchar(space);
 	}
 	putchar(10);
 
