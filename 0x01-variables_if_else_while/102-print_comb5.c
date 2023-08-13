@@ -7,7 +7,7 @@
 */
 int main(void)
 {
-	int i = 0, k = i + 1,
+	int i = 0, j = i + 1,
 	    comma = 44, space = 32, chars[] = {48, 49, 50, 51, 52, 53, 54, 56, 57};
 
 	while (i < 99)
