@@ -1,3 +1,4 @@
+#include "_putchar.c"
 /**
 * main - Print _putchar to stdout using _putchar.
 *
