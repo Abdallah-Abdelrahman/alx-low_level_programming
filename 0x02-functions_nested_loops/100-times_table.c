@@ -50,7 +50,6 @@ void print_table(int n)
 			if (i * j > 99)
 			{
 				_putchar(' ');
-				_putchar(' ');
 				_putchar((((i * j) / 10) / 10) + '0');
 				_putchar((((i * j) / 10) % 10) + '0');
 				_putchar(((i * j) % 10) + '0');
