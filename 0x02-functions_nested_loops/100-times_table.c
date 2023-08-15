@@ -34,6 +34,7 @@ void print_table(int n)
 					_putchar(' ');
 					_putchar(' ');
 					_putchar(' ');
+					_putchar(' ');
 				}
 				_putchar((i * j) + '0');
 			}
