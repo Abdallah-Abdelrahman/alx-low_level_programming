@@ -27,7 +27,7 @@ void print_table(int n)
 	{
 		for (; j < n; j++)
 		{
-			if (i * j =< 9)
+			if (i * j <= 9)
 			{
 				if (j != 0)
 				{
