@@ -29,8 +29,8 @@ void print_to_98(int n)
 		abs_n = abs(n);
 
 	}
-	_putchar((end % 10) + '0');
 	_putchar((end / 10) + '0');
+	_putchar((end % 10) + '0');
 	_putchar('\n');
 }
 
