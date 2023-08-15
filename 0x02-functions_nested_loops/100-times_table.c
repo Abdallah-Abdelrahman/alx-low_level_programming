@@ -37,7 +37,7 @@ void print_table(int n)
 				_putchar((i * j) + 10);
 			}
 
-			if (i * j > 9 && < 100)
+			if (i * j > 9 && i * j < 100)
 			{
 				_putchar(' ');
 				_putchar((i * j / 10) + '0');
