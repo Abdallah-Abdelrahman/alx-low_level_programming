@@ -55,6 +55,9 @@ void print_table(int n)
 				_putchar((i * j) + '0');
 			}
 
+			if (j < n)
+				_putchar(',');
+
 
 		}
 		j = 0;
