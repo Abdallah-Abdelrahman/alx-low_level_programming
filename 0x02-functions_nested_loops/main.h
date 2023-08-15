@@ -13,3 +13,4 @@ void print_to_98(int n);
 void print_precision(int);
 void print_times_table(int n);
 void print_table(int);
+void print_2p(int);

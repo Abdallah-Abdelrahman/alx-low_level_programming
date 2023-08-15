@@ -42,7 +42,7 @@ void print_table(int n)
 			{
 				_putchar(' ');
 				_putchar(' ');
-				print_precision(i * j);
+				print_2p(i * j);
 			}
 
 			if (i * j > 99)
@@ -63,3 +63,13 @@ void print_table(int n)
 	}
 }
 
+/**
+  * print_2p - print 2 precision
+  * @n: integer
+  */
+void print_2p(int n)
+{
+
+	_putchar((n / 10) + '0');
+	_putchar((n % 10) + '0');
+}
