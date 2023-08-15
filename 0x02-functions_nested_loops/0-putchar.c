@@ -1,14 +1,20 @@
-#include <stdio.h>
 #include "_putchar.h"
 
 /**
-* main - write your short description
-* Description: Long desc
+* main - Print _putchar to stdout using _putchar.
 *
 * Return: 0 as exit status(SUCCESS)
 */
 int main(void)
 {
-	_putchar(1, "_putchar\n", 9);
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 	return (0);
 }
