@@ -8,7 +8,7 @@
 void print_to_98(int n)
 {
 	int end = 98;
-	int f, s, t, abs_n = abs(n);
+	int abs_n = abs(n);
 
 	while (n != end)
 	{
@@ -40,6 +40,8 @@ void print_to_98(int n)
   */
 void print_precision(int n)
 {
+	int f, s, t;
+
 	if (n > 99)
 	{
 		f = n % 10;
