@@ -1,5 +1,5 @@
 /**
-* main - adds two integers and returns the result.
+* add - adds two integers and returns the result.
 * @n1: the first interger
 * @n2: the second interger
 *
