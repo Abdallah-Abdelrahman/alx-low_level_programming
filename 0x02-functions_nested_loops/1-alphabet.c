@@ -1,4 +1,6 @@
-/* print_alphabet - Print alphabet in lowercase. */
+/**
+  * print_alphabet - Print alphabet in lowercase.
+ */
 void print_alphabet(void)
 {
 	char c = 'a';

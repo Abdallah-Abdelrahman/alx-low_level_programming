@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
 * main - Print _putchar to stdout using _putchar.
 *
