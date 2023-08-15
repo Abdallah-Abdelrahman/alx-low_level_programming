@@ -14,6 +14,12 @@ int print_last_digit(int n)
 		return (abs(n) % 10);
 	}
 
+	else if (n == INT_MIN)
+	{
+		_putchar(8 + '0');
+		return (8);
+	}
+
 	_putchar((n % 10) + '0');
 	return ((n % 10));
 }
