@@ -7,7 +7,6 @@
 */
 void print_times_table(int n)
 {
-	int i = 0, j = 0;
 
 	if (n > 0 && n < 15)
 	{
@@ -22,6 +21,8 @@ void print_times_table(int n)
   */
 void print_table(int n)
 {
+	int i = 0, j = 0;
+
 	for (; i < n; i++)
 	{
 		for (; j < n; j++)
