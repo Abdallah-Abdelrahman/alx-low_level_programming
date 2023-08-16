@@ -1,3 +1,5 @@
+#ifndef HEADER
+#define HEADER
 int _putchar(char c);
 void print_alphabet(void);
 void print_alphabet_x10(void);
@@ -14,7 +16,6 @@ void print_precision(int);
 void print_times_table(int n);
 void print_table(int);
 void print_2p(int);
-
 /**
   * print_precision - print interger based on precision
   * @n: number to print.
@@ -49,3 +50,4 @@ void print_precision(int n)
 		_putchar(n + '0');
 	}
 }
+#endif
