@@ -18,7 +18,7 @@ int main(void)
 		}
 
 		if (i > 2)
-			printf("%d", i * (i - 1));
+			printf("%d", (i - 1) * (i - 2));
 
 		if (i != 49)
 		{
