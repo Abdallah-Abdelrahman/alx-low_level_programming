@@ -7,6 +7,14 @@ void print_precision(int n)
 {
 	int f, s, t;
 
+	if (n > 999)
+	{
+		f1st = n % 10;
+		s2nd = (n / 10 / 10) % 10;
+		t3rd = (n / 10 / 10 / 10) % 10;
+		f4th = (n / 10 / 10) / 10;
+	}
+
 	if (n > 99)
 	{
 		f = n % 10;
