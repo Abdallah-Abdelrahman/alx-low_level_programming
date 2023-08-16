@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
 * main - write your short description
@@ -8,11 +9,11 @@
 */
 int main(void)
 {
-	int i = 3, sum = 0, f1st, s2nd, t3rd, f4th;
+	int i = 3, sum = 0;
 
 	while (i < 1024)
 	{
-		if (i / 3 == 0 || i / 5 == 0)
+		if (i % 3 == 0 || i % 5 == 0)
 		{
 			sum += i;
 		}
@@ -20,11 +21,6 @@ int main(void)
 		i++;
 
 	}
-	f1st = sum % 10;
-	s2nd = (sum / 10 / 10) % 10;
-	t3rd = (sum / 10 / 10 / 10) % 10;
-	f4th = (sum / 10 / 10) / 10;
-
 	print_precision(sum);
 	_putchar('\n');
 
