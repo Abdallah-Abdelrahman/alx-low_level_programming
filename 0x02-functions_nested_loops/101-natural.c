@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 
 /**
@@ -21,8 +20,7 @@ int main(void)
 		i++;
 
 	}
-	print_precision(sum);
-	_putchar('\n');
+	printf("%d\n",sum);
 
 	return (0);
 }
