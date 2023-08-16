@@ -13,7 +13,7 @@ int main(void)
 
 	while (i < 98)
 	{
-		printf("%.0lf", next);
+		printf("%.0f", next);
 
 		if (i != 97)
 		{
