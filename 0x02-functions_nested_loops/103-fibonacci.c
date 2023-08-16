@@ -9,26 +9,22 @@
 */
 int main(void)
 {
-	int long long sum = fibonacci(4000000);
+	int sum = fibonacci(4000000);
 
-	printf("%lld", sum);
+	printf("%d", sum);
 
 	return (0);
 }
 
 /**
-  * fibonacci - sums up the previous to numbers in a sequence
+  * fibonacci - sums up the previous 2-even values in a sequence
   * @n: the number to start the seuquence from
   *
   * Return: the sum of the sequence.
   */
-long long int fibonacci(long long int n)
+int fibonacci(int n)
 {
-	if ((n % 2 == 0) && n < 4000000)
-	{
-		if (n > 2)
-			return (fibonacci(n - 1) + fibonacci(n - 2));
-		else
-			return (n);
-	}
+	if (n <= 2)
+		return (n);
+	return (fibonacci(n - 2) + fibonacci(n - 4));
 }

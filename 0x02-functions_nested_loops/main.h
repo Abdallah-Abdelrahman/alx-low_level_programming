@@ -16,5 +16,5 @@ void print_precision(int);
 void print_times_table(int n);
 void print_table(int);
 void print_2p(int);
-long long int fibonacci(long long int);
+int fibonacci(int);
 #endif
