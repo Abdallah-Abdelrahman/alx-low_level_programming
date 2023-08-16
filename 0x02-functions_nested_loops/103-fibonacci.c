@@ -9,9 +9,15 @@
 */
 int main(void)
 {
-	int sum = fibonacci(4000000);
+	int sum = 0, i = 2;
 
-	printf("%d", sum);
+	while (i < 4000000)
+	{
+		sum += i;
+		i += 2;
+	}
+
+	printf("%d\n", sum);
 
 	return (0);
 }
