@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include "main.h"
 
 /**
@@ -9,8 +8,7 @@
 */
 int main(void)
 {
-	int r = islower('j');
 
-	_putchar(1 +'0');
+	print_precision(1234);
 	return (0);
 }
