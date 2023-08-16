@@ -9,6 +9,13 @@
 int main(void)
 {
 
-	print_precision(1234);
+	print_precision(1);
+	_putchar('\n');
+	print_precision(10);
+	_putchar('\n');
+	print_precision(100);
+	_putchar('\n');
+	print_precision(12345);
+	_putchar('\n');
 	return (0);
 }

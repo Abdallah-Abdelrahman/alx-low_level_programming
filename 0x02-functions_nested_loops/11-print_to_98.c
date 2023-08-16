@@ -42,9 +42,8 @@ void print_to_98(int n)
 void print_precision(int n)
 {
 	/* mulitple of 10 */
-	if (n % 10 == 10)
+	if (n < 10)
 	{
-		_putchar(n / 10 + '0');
 		_putchar(n % 10 + '0');
 	}
 
