@@ -8,7 +8,7 @@
 */
 int main(void)
 {
-	int i = 3, sum = 0, fst, s2nd, t3rd, f4;
+	int i = 3, sum = 0, f1st, s2nd, t3rd, f4;
 
 	while (i < 1024)
 	{
