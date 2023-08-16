@@ -5,7 +5,12 @@
   */
 void print_precision(int n)
 {
-	if ((n / 10) < 10)
+	if (n < 10)
+	{
+		_putchar(n % 10 + '0');
+	}
+
+	else if ((n / 10) < 10)
 	{
 		_putchar((n / 10) + '0');
 		_putchar((n % 10) + '0');
