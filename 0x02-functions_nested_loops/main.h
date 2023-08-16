@@ -14,6 +14,8 @@ void print_precision(int);
 void print_times_table(int n);
 void print_table(int);
 void print_2p(int);
+
+#ifndef HEADER
 /**
   * print_precision - print interger based on precision
   * @n: number to print to print it precisions.
@@ -31,3 +33,4 @@ void print_precision(int n)
 		_putchar((n % 10) + '0');
 	}
 }
+#endif
