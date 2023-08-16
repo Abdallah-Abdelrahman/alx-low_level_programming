@@ -1,32 +1,33 @@
 #include <stdio.h>
-#include "main.h"
 
 /**
 * main -prints the first 50 Fibonacci numbers
 *
 * Return: 0 as exit status
 */
+
+
 int main(void)
 {
-	int i = 1;
+	unsigned long int i = 0, n1 = 0, n2 = 1;
+	unsigned long int next = n1 + n2;
 
-	while (i < 50)
+	for (; i < 50; i++)
 	{
-		if (i <= 2)
-		{
-			printf("%d", i);
-		}
-
-		if (i > 2)
-			printf("%d", (i - 1) + (i - 2));
+		printf("%ld", next);
 
 		if (i != 49)
 		{
 			printf(", ");
 		}
 
-		i++;
+		n1 = n2;
+		n2 = next;
+		next = n1 + n2;
+
+
 	}
+
 
 	printf("\n");
 
