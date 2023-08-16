@@ -16,6 +16,7 @@ void print_table(int);
 void print_2p(int);
 
 #ifndef HEADER
+#define HEADER
 /**
   * print_precision - print interger based on precision
   * @n: number to print to print it precisions.
