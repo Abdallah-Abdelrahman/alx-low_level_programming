@@ -20,7 +20,7 @@ int main(void)
 		i++;
 
 	}
-	print_pricision(sum);
+	print_precision(sum);
 	_putchar('\n');
 
 	return (0);
