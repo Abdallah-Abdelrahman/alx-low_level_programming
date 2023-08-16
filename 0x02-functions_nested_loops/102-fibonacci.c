@@ -14,21 +14,21 @@ int main(void)
 	{
 		if (i <= 2)
 		{
-			print_precision(i + '0');
+			printf("%d", i);
 		}
 
-		else
-
-			print_precision(i * (i - 1) + '0');
+		if (i > 2)
+			printf("%d", i * (i - 1));
 
 		if (i != 49)
 		{
-			_putchar(',');
-			_putchar(' ');
+			printf(", ");
 		}
+
+		i++;
 	}
 
-	_putchar('\n');
+	printf("\n");
 
 	return (0);
 }

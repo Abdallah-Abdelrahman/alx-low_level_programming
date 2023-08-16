@@ -1,3 +1,4 @@
+#include "main.h"
 /**
   * print_precision - print interger based on precision
   * @n: number to print.
