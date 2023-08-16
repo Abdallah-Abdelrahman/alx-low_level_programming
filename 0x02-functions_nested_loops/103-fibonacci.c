@@ -9,12 +9,13 @@
 */
 int main(void)
 {
-	int sum = 0, i = 2;
+	int n1 = 0, n2 = 2, sum = n1 + n2;
 
-	while (i < 4000000)
+	while (sum <= 4000000)
 	{
-		sum += i;
-		i += 2;
+		n1 = n2;
+		n2 = sum;
+		sum = n1 + n2;
 	}
 
 	printf("%d\n", sum);
