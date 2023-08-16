@@ -8,9 +8,9 @@
 */
 int main(void)
 {
-	int n1 = 1, n2 = 2, next = n1 + n2;
+	int i = 0, n1 = 1, n2 = 2, next = n1 + n2;
 
-	while (i <= 98)
+	while (i < 98)
 	{
 		printf("%d, %d, %d", n1, n2, next);
 
