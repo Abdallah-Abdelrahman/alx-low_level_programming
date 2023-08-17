@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -20,7 +20,7 @@ void more_numbers(void)
 				_putchar((j % 10) + '0');
 			}
 		}
-		putchar('\n');
+		write(1, "\n", 1);
 
 		/* book keeping */
 		j = 0;
