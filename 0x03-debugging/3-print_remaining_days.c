@@ -14,17 +14,17 @@
 void print_remaining_days(int month, int day, int year)
 {
 
-	if (year % 4 != 0)
-		print_simple(month, day, year);
+	if (year % 400 == 0)
+		print_leap(month, day, year);
 
-	else if (year % 100 != 0)
-		print_leap(month, day);
+	else if (year % 100 == 0)
+		print_simple(month, day);
 
-	else if (year % 400 != 0)
-		print_simple(month, day, year);
+	else if (year % 4 == 0)
+		print_leap(month, day, year);
 
 	else
-		print_leap(month, day);
+		print_simple(month, day);
 }
 
 /**
