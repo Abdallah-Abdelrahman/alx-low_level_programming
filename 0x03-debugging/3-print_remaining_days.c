@@ -55,29 +55,32 @@ void print_simple(int m, int d, int y)
 void print_leap(int m, int d)
 {
 	if (m == 2 && d > 60)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 31, y);
 	if (m == 3 && d > 91)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 60, y);
 	if (m == 4 && d > 121)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 91, y);
 	if (m == 5 && d > 152)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 121, y);
 	if (m == 6 && d > 182)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 152, y);
 	if (m == 7 && d > 213)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 182, y);
 	if (m == 8 && d > 244)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 213, y);
 	if (m == 9 && d > 274)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 244, y);
 	if (m == 10 && d > 305)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 274, y);
 	if (m == 11 && d > 335)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 305, y);
 	if (m == 12 && d > 366)
-		d++;
+		printf("Invalid date: %02d/%02d/%04d\n", m, d - 335, y);
 
-	printf("Day of the year: %d\n", d);
-	printf("Remaining days: %d\n", 366 - d);
+	else
+	{
+		printf("Day of the year: %d\n", d);
+		printf("Remaining days: %d\n", 366 - d);
+	}
 
 }
