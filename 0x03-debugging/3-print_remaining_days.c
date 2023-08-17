@@ -17,13 +17,13 @@ void print_remaining_days(int month, int day, int year)
 		print_simple(month, day, year);
 
 	else if (year % 100 != 0)
-		print_leap(month, day);
+		print_leap(month, day, year);
 
 	else if (year % 400 != 0)
 		print_simple(month, day, year);
 
 	else
-		print_leap(month, day);
+		print_leap(month, day, year);
 }
 
 /**
@@ -52,7 +52,7 @@ void print_simple(int m, int d, int y)
   * @d: day
   */
 
-void print_leap(int m, int d)
+void print_leap(int m, int d, int y)
 {
 	if (m == 2 && d > 60)
 		printf("Invalid date: %02d/%02d/%04d\n", m, d - 31, y);
