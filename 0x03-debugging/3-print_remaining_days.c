@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
@@ -45,7 +44,6 @@ void print_simple(int m, int d, int y)
 		printf("Day of the year: %d\n", d);
 		printf("Remaining days: %d\n", 365 - d);
 	}
-
 }
 
 /**
