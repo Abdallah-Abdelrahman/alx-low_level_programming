@@ -15,6 +15,9 @@ void more_numbers(void)
 			print_chars(j);
 		}
 		_putchar('\n');
+
+		/* book keeping */
+		j = 0;
 	}
 }
 
@@ -22,7 +25,7 @@ void more_numbers(void)
   * print_chars - print interger based on charaters
   * @n: number to print one character at a time.
   */
-void print_chars(unsigned long long int n)
+void print_chars(unsigned long int n)
 {
 	if (n < 10)
 	{
