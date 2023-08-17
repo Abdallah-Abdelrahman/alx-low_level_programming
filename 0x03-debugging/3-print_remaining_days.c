@@ -33,6 +33,7 @@ void print_remaining_days(int month, int day, int year)
   * @d: day
   * @y: year
   */
+
 void print_simple(int m, int d, int y)
 {
 	if (m == 2 && d == 60)
@@ -52,6 +53,7 @@ void print_simple(int m, int d, int y)
   * @m: month
   * @d: day
   */
+
 void print_leap(int m, int d)
 {
 	if (m >= 2 && d >= 60)
