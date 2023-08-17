@@ -35,7 +35,7 @@ void print_remaining_days(int month, int day, int year)
 
 void print_simple(int m, int d, int y)
 {
-	if (m == 2 && d >= 60)
+	if (m == 2 && d == 60)
 	{
 		printf("Invalid date: %02d/%02d/%04d\n", m, d - 31, y);
 	}
@@ -54,7 +54,7 @@ void print_simple(int m, int d, int y)
 
 void print_leap(int m, int d)
 {
-	if (m >= 2 && d >= 60)
+	if (m >= 2 && d > 60)
 		d++;
 
 	printf("Day of the year: %d\n", d);
