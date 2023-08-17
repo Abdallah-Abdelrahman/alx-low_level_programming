@@ -54,9 +54,6 @@ void print_simple(int m, int d, int y)
 
 void print_leap(int m, int d)
 {
-	if (m == 2 && d >= 60)
-		d++;
-
 	printf("Day of the year: %d\n", d);
 	printf("Remaining days: %d\n", 366 - d);
 
