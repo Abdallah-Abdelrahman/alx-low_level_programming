@@ -18,13 +18,13 @@ void print_remaining_days(int month, int day, int year)
 		print_simple(month, day, year);
 
 	else if (year % 100 != 0)
-		print_leap(month, day, year);
+		print_leap(month, day);
 
 	else if (year % 400 != 0)
 		print_simple(month, day, year);
 
 	else
-		print_leap(month, day, year);
+		print_leap(month, day);
 }
 
 /**
@@ -51,9 +51,8 @@ void print_simple(int m, int d, int y)
   * print_leap - print simple year
   * @m: month
   * @d: day
-  * @y: year
   */
-void print_leap(int m, int d, int y)
+void print_leap(int m, int d)
 {
 	if (m >= 2 && d >= 60)
 		d++;
