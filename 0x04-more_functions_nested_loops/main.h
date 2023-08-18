@@ -1,5 +1,6 @@
 #ifndef HEADER
 #define HEADER
+#include <stdio.h>
 
 int _putchar(char c);
 int _isupper(int c);
