@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib>
+#include <stdlib.h>
 
 /**
 * print_number - write your short description
@@ -38,7 +38,7 @@ void print_chars(unsigned int n)
 	}
 	else
 	{
-		long_precision(n / 10);
+		print_chars(n / 10);
 		_putchar((n % 10) + '0');
 	}
 }
