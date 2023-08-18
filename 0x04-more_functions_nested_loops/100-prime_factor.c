@@ -20,7 +20,7 @@ int main(void)
 		largest_factor = 2;
 		number /= 2;
 	}
-	
+
 	for (i = 3; i * i <= number; i += 2)
 	{
 		while (number % i == 0)
@@ -29,7 +29,7 @@ int main(void)
 			number /= i;
 		}
 	}
-	
+
 	if (number > 2)
 	{
 		largest_factor = number;
