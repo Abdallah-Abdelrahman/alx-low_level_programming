@@ -1,0 +1,44 @@
+#include "main.h"
+#include <stdlib>
+
+/**
+* print_number - write your short description
+* @n: interger
+*
+*/
+void print_number(int n)
+{
+	if (n < 0)
+	{
+		_putchar('-');
+		print_chars(abs(n));
+	}
+	else
+	{
+		print_chars(n);
+	}
+}
+
+
+/**
+  * print_chars - print interger based on precision
+  * @n: number to print to print it precisions.
+  */
+void print_chars(unsigned int n)
+{
+	if (n < 10)
+	{
+		_putchar(n % 10 + '0');
+	}
+
+	else if ((n / 10) < 10)
+	{
+		_putchar((n / 10) + '0');
+		_putchar((n % 10) + '0');
+	}
+	else
+	{
+		long_precision(n / 10);
+		_putchar((n % 10) + '0');
+	}
+}
