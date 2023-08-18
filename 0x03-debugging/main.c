@@ -14,16 +14,21 @@ int main(void)
 	int day;
 	int year;
 	
-	month = 2;
-	day = 30;
-	year = 2020;
+	month = 04;
+	day = 31;
+	year = 1991;
 	
-	printf("Date: %02d/%02d/%04d\n", month, day, year);
-	
-	day = convert_day(month, day);
-	
-	print_remaining_days(month, day, year);
+	/**
+	* printf("Date: %02d/%02d/%04d\n", month, day, year);
+	* print_remaining_days(month, convert_day(month, day), year);
 
+
+	* printf("Date: %02d/%02d/%04d\n", 2, 29, 2427);
+	* print_remaining_days(month, convert_day(month, 29), 2427);
+	*/
+
+	printf("Date: %02d/%02d/%04d\n", month, day, year);
+	print_remaining_days(month, convert_day(month, day), year);
 	return (0);
 }
 
