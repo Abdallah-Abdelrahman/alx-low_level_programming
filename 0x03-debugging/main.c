@@ -19,13 +19,13 @@ int main(void)
 	year = 1991;
 	
 	/**
-	* printf("Date: %02d/%02d/%04d\n", month, day, year);
-	* print_remaining_days(month, convert_day(month, day), year);
+	 *printf("Date: %02d/%02d/%04d\n", 02, 29, 2000);
+	 *print_remaining_days(month, convert_day(02, 29), 2000);
 
 
-	* printf("Date: %02d/%02d/%04d\n", 2, 29, 2427);
-	* print_remaining_days(month, convert_day(month, 29), 2427);
-	*/
+	 *printf("Date: %02d/%02d/%04d\n", 02, 29, 2427);
+	 *print_remaining_days(month, convert_day(02, 29), 2427);
+	 */
 
 	printf("Date: %02d/%02d/%04d\n", month, day, year);
 	print_remaining_days(month, convert_day(month, day), year);
