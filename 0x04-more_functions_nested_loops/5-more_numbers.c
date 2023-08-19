@@ -6,23 +6,17 @@
  */
 void more_numbers(void)
 {
-	int i = 0, j = 0;
+	int i = 0, j;
 
 	for (; i < 10; i++)
 	{
-		for (; j < 15; j++)
+		for (j = 0; j < 15; j++)
 		{
-			if (j < 10)
-				_putchar(j + '0');
-			else
-			{
+			if (j >= 10)
 				_putchar((j / 10) + '0');
-				_putchar((j % 10) + '0');
-			}
+			_putchar((j % 10) + '0');
 		}
-		write(1, "\n", 1);
+		_putchar('\n');
 
-		/* book keeping */
-		j = 0;
 	}
 }
