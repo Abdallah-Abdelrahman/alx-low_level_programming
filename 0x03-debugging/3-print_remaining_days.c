@@ -99,7 +99,7 @@ void print_leap(int m, int d, int y)
 		printf("Invalid date: %02d/%02d/%04d\n", m, d - 335, y);
 	else
 	{
-		if( m > 2)
+		if (m > 2)
 			d++;
 		printf("Day of the year: %d\n", d);
 		printf("Remaining days: %d\n", 366 - d);
