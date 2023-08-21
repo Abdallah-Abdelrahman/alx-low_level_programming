@@ -10,7 +10,7 @@ void puts2(char *str)
 	while (*str)
 	{
 		_putchar(*str);
-		str += 1;
+		str += 2;
 	}
 	_putchar('\n');
 }
