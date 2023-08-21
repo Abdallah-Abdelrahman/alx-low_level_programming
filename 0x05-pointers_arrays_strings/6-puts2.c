@@ -11,11 +11,10 @@ void puts2(char *str)
 
 	while (*str)
 	{
-		if (*str == '.')
-			i++;
-
 		if (i < 3)
 			_putchar(*str);
+		if (*str == '.')
+			i++;
 		str += 2;
 	}
 	_putchar('\n');
