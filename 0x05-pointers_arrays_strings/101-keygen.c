@@ -14,6 +14,9 @@ int main(int argc, char *argv[])
 	int j, r, nloops;
 	unsigned int seed;
 
+	if (argc != 2)
+		fprintf(stderr, "Usage: %s <seed> <nloops>\n", argv[0]);
+
 	seed = atoi(argv[1]);
 	nloops = atoi(argv[2]);
 
