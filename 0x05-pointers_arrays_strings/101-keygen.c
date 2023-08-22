@@ -1,32 +1,26 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 /**
  * main - generates random valid passwords for the program 101-crackme.
- * @argc: number of arguments
- * @argv: string pointer
  *
  * Return: 0 always
  */
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	int j, r, nloops;
-	unsigned int seed;
 
-	if (argc < 2)
-		fprintf(stderr, "Usage: %s <seed> <nloops>\n", argv[0]);
+	srand(time(NULL));
 
-	seed = atoi(argv[0]);
-	nloops = atoi(argv[1]);
+	int num = 0;
 
-	srand(seed);
-	for (j = 0; j < nloops; j++)
+	while (num != 2772)
 	{
-		r =  rand();
-		printf("%d\n", r);
-		printf("%d: %s", j, argv[j]);
+		num = rand() / 10000;
 	}
+	printf("%d\n", num);
+
 
 	return (0);
 }
