@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	int r, nloops;
+	int j, r, nloops;
 	unsigned int seed;
 
 	if (argc != 3)
@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
 	nloops = atoi(argv[2]);
 
 	srand(seed);
-	for (int j = 0; j < nloops; j++)
+	for (j = 0; j < nloops; j++)
 	{
 		r =  rand();
 		printf("%d\n", r);
 	}
 
-	return (exit(EXIT_SUCCESS));
+	return (0);
 }
