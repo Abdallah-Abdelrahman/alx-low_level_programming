@@ -11,9 +11,9 @@
 int main(void)
 {
 
-	srand(time(NULL));
-
 	int num = 0;
+
+	srand(time(NULL));
 
 	while (num != 2772)
 	{
