@@ -18,7 +18,6 @@ int _atoi(char *s)
 		if (*s >= 48 && *s <= 57)
 		{
 			num = (num * 10) + (*s - 48);
-			printf("num = %d\t *s = %c\n", num, *s);
 		}
 		s++;
 
