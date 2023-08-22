@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	int j, r, nloops;
 	unsigned int seed;
 
-	if (argc != 3)
+	if (argc != 2)
 	{
 		fprintf(stderr, "Usage: %s <seed> <nloops>\n", argv[0]);
 	}
