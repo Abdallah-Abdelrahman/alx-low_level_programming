@@ -9,16 +9,16 @@
  */
 int _atoi(char *s)
 {
-	int num = 0, n_count = 0;
+	unsigned int num = 0, n_count = 0;
 
 	while (*s)
 	{
+		if (*s == ';')
+			break;
 		if (*s == '-')
 			n_count++;
 		if (*s >= 48 && *s <= 57)
-		{
 			num = (num * 10) + (*s - 48);
-		}
 		s++;
 
 	}
