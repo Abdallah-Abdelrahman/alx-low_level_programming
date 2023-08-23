@@ -12,6 +12,7 @@ int main(void)
 {
 
 	int num = 0;
+	char str[20];
 
 	srand(time(NULL));
 
@@ -20,7 +21,7 @@ int main(void)
 		num = rand() / 10000;
 	}
 
-	printf("%s", "2772");
+	sprintf(str, "%d", num);
 
 	return (0);
 }
