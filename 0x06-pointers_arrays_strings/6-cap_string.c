@@ -24,10 +24,6 @@ char *cap_string(char *str)
 				if (*str >= 'a' && *str <= 'z')
 					*str -= 32;
 		}
-		/**
-		 *if (*(str - 1) == '\t')
-		 *	*(str - 1) = ' ';
-		 */
 		str++;
 	}
 	if (*ptr >= 'a' && *ptr <= 'z')
