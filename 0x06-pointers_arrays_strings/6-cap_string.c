@@ -14,10 +14,13 @@ char *cap_string(char *str)
 	{
 		switch (*(str - 1))
 		{
-			case ' ':
-			case '.':
-			case '\n':
-			case '\t':
+			case ' ': case '.':
+			case '(': case ')':
+			case '{': case '}':
+			case ',': case ';':
+			case '?': case '!':
+			case '\n': case '\t':
+			case '"':
 				if (*str >= 'a' && *str <= 'z')
 					*str -= 32;
 		}
