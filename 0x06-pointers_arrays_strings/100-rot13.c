@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * rot13 - encodes a string using rot13.
@@ -9,19 +8,16 @@
  */
 char *rot13(char *str)
 {
-	char *alphabet = "ABCDEFGHIjKLMNOPQRSTUVWXYZ";
-	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *alpha = "ABCDEFGHIjKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *ptr = str;
 	int i;
-
-	strcpy(alphabet, "abcdefghijklmnopqrstuvwxyz");
-	strcpy(encode, "nopqrstuvwxyzabcdefghijklm");
 
 	for (; *str; str++)
 	{
 		for (i = 0; i < 51; i++)
 		{
-			if (*str == alphabet[i])
+			if (*str == alpha[i])
 				*str = encode[i];
 		}
 
