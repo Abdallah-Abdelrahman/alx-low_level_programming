@@ -12,8 +12,14 @@ char *cap_string(char *str)
 
 	while (*str)
 	{
-		if ((*str - 1 == 32) && (*str >= 'a' && *str <= 'z'))
-			*str -= 32;
+		switch (*(str - 1))
+		{
+			case ' ':
+			case '\t':
+			case '.':
+				if (*str >= 'a' && *str <= 'z')
+					*str -= 32;
+		}
 		str++;
 	}
 	if (*ptr >= 'a' && *ptr <= 'z')
