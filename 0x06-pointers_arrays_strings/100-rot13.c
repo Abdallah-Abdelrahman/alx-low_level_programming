@@ -1,4 +1,6 @@
 #include "main.h"
+#include <string.h>
+
 /**
  * rot13 - encodes a string using rot13.
  * @str: string pointer
@@ -7,10 +9,13 @@
  */
 char *rot13(char *str)
 {
-	char *alphabet = "ABCDEFGHIjKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *alphabet = "ABCDEFGHIjKLMNOPQRSTUVWXYZ";
+	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLM";
 	char *ptr = str;
 	int i;
+
+	strcpy(alphabet, "abcdefghijklmnopqrstuvwxyz")
+	strcpy(encode, "nopqrstuvwxyzabcdefghijklm")
 
 	for (; *str; str++)
 	{
