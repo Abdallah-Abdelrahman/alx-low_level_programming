@@ -14,8 +14,8 @@ char *rot13(char *str)
 	char *ptr = str;
 	int i;
 
-	strcpy(alphabet, "abcdefghijklmnopqrstuvwxyz")
-	strcpy(encode, "nopqrstuvwxyzabcdefghijklm")
+	strcpy(alphabet, "abcdefghijklmnopqrstuvwxyz");
+	strcpy(encode, "nopqrstuvwxyzabcdefghijklm");
 
 	for (; *str; str++)
 	{
