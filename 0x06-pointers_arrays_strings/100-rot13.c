@@ -8,20 +8,20 @@
  */
 char *rot13(char *str)
 {
+	int i, j;
 	char *alpha = "ABCDEFGHIjKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-	char *ptr = str;
-	int i, j;
 
-	for (j = 0; *(str + j); j++)
+	for (i = 0; str[i]; i++)
 	{
-		for (i = 0; i < 52; i++)
+		for (j = 0; j < 52; j++)
 		{
-			if (str[j] == alpha[i])
-				str[j] = encode[i];
+			if (str[i] == alpha[j])
+				str[i] = encode[j];
 		}
 
 	}
 
-	return (ptr);
+	printf("%p\n", str);
+	return (str);
 }
