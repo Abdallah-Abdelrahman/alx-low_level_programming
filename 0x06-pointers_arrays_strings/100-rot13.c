@@ -15,7 +15,7 @@ char *rot13(char *str)
 
 	for (; *str; str++)
 	{
-		for (i = 0; i < 51; i++)
+		for (i = 0; i < 52; i++)
 		{
 			if (*str == alpha[i])
 				*str = encode[i];
