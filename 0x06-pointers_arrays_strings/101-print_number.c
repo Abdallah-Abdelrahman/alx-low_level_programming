@@ -24,7 +24,7 @@ void print_number(int n)
  * print_chars - print interger based on precision
  * @n: number to print to print it precisions.
  */
-void print_chars(int n)
+void print_chars(unsigned int n)
 {
 	if (n < 10)
 	{
