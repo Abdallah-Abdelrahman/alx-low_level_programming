@@ -10,14 +10,14 @@ char *leet(char *str)
 {
 	char *ptr = str;
 	char *letters = "AEOTL";
-	int i, codes[] = {4, 2, 0, 7, 1};
+	int i, codes[5] = {4, 3, 0, 7, 1};
 
 	for (; *str; str++)
 	{
 		for (i = 0; i < 5; i++)
 		{
-			if (*str == letters[i] || *str == letters[i] + 32)
-				*str = codes[i];
+			if (*str == letters[i] || *str == (letters[i] + 32))
+				*str = codes[i] + '0';
 		}
 	}
 
