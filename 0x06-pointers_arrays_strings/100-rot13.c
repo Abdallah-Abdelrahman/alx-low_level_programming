@@ -22,6 +22,5 @@ char *rot13(char *str)
 
 	}
 
-	printf("%p\n", str);
 	return (str);
 }
