@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * print_buffer - write your short description
- * @b: pointer to string
+ * print_buffer - prints buffer
+ * @b: pointer
  * @size: size
- *
  */
 void print_buffer(char *b, int size)
 {
