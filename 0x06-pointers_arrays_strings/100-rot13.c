@@ -8,19 +8,23 @@
  */
 char *rot13(char *str)
 {
-	int i, j;
-	char *alpha = "ABCDEFGHIjKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	int j;
+	char *alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char *encode = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char *ptr = str;
 
-	for (i = 0; str[i]; i++)
+	for (; *str; str++)
 	{
 		for (j = 0; j < 52; j++)
 		{
-			if (str[i] == alpha[j])
-				str[i] = encode[j];
+			if (*str == alpha[j])
+			{
+				*str = encode[j];
+				break;
+			}
 		}
-
 	}
 
-	return (str);
+	return (ptr);
 }
+
