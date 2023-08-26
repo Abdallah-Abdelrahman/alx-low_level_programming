@@ -19,7 +19,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	for (; n2[len_n2]; len_n2++)
 		;
 	/* length of either is greater than buffer size */
-	if (len_n1 + 1 >= size_r || len_n2 + 1 >= size_r)
+	if (len_n1 + 2 > size_r || len_n2 + 2 > size_r)
 		return (0);
 
 	/* calculate the sum */
