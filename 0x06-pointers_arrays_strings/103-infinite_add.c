@@ -11,31 +11,32 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int carry = 0, len_n1 = 0, len_n2 = 0, len = 0, sum = 0;
+	int carry = 0, len_n1 = 0, len_n2 = 0, idx = 0, sum = 0, largest = 0;
 
-	for (; n1[len_n1]; len_n1++)
+	for (; n1[len_n1]; len_n1++, largest++)
 		;
 	for (; n2[len_n2]; len_n2++)
 		;
-
-	if (len_n1 + 2 > size_r || len_n2 + 2 > size_r)
+	if (len_n2 > len_n1)
+		largest = len_n2;
+	if (largest == size_r)
 		return (0);
-
-	for (; len < size_r; len_n1--, len_n2--, len++)
+	for (; idx < largest; len_n1--, len_n2--, idx++)
 	{
-		int valid_n1 = len_n1 - 1 >= 0 ? n1[len_n1 - 1] : '0';
-		int valid_n2 = len_n2 - 1 >= 0 ? n2[len_n2 - 1] : '0';
+		char valid_n1 = len_n1 - 1 >= 0 ? n1[len_n1 - 1] : '0';
+		char valid_n2 = len_n2 - 1 >= 0 ? n2[len_n2 - 1] : '0';
 
-		if (len_n1 <= 0 && len_n2 <= 0 && carry <= 0)
+		if (len_n1 - 1 < 0 && len_n2 - 1 < 0)
 			break;
 		sum = (valid_n1 - '0') + (valid_n2 - '0') + carry;
-		r[len] = (sum % 10) + '0';
+		r[idx] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
-	/* sum of 2 str is greater than buffer */
-	if (len >= size_r)
+	if (carry > 0 && largest + 1 >= size_r)
 		return (0);
-	rev_string(r, len);
+	if (carry > 0)
+		r[largest] = carry + '0';
+	rev_string(r, carry > 0 ? idx + 1 : idx);
 	return (r);
 }
 
