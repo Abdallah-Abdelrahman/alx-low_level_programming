@@ -20,13 +20,18 @@ void print_buffer(char *b, int size)
 		{
 			char h_00 = b[(j + k) * 2];
 			char h_01 = b[((j + k) * 2) + 1];
+
 			if ((j + k) * 2 < size)
 				printf("%02x%02x ", h_00, h_01);
+			else
+				printf("     ");
 		}
 
 		/* print 10 bytes of buffer */
 		for (l = 0; l < 10; l++)
 		{
+			if (l + i + 1 > size)
+				break;
 			switch (b[l + i])
 			{
 				case '\0': case '\1': case '\2': case '\3':
