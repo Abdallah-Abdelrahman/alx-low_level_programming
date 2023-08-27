@@ -18,7 +18,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	for (; n2[len_n2]; len_n2++)
 		;
 
-	if (len_n1 >= size_r || len_n2 >= size_r)
+	if (len_n1 + 2 > size_r || len_n2 + 2 > size_r)
 		return (0);
 
 	for (; len < size_r; len_n1--, len_n2--, len++)
@@ -32,6 +32,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[len] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
+	/* sum of 2 str is greater than buffer */
 	if (len >= size_r)
 		return (0);
 	rev_string(r, len);
