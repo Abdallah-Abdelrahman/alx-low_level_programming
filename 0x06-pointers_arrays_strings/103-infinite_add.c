@@ -17,9 +17,11 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		;
 	for (; n2[len_n2]; len_n2++)
 		;
-	if (len_n1 + 1 >= size_r || len_n2 + 1 >= size_r)
+
+	if (len_n1 >= size_r || len_n2 >= size_r)
 		return (0);
-	for (; len < size_r - 1; len_n1--, len_n2--, len++)
+
+	for (; len < size_r; len_n1--, len_n2--, len++)
 	{
 		int valid_n1 = len_n1 - 1 >= 0 ? n1[len_n1 - 1] : '0';
 		int valid_n2 = len_n2 - 1 >= 0 ? n2[len_n2 - 1] : '0';
@@ -30,6 +32,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[len] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
+	if (len >= size_r)
+		return (0);
 	rev_string(r, len);
 	return (r);
 }
