@@ -7,7 +7,7 @@
  */
 void print_buffer(char *b, int size)
 {
-	int i = 0, k = 0, j, l;
+	int i = 0, k = 0, j;
 
 	if (size <= 0)
 		printf("\n");
@@ -26,24 +26,37 @@ void print_buffer(char *b, int size)
 			else
 				printf("     ");
 		}
-
 		/* print 10 bytes of buffer */
-		for (l = 0; l < 10; l++)
-		{
-			if (l + i + 1 > size)
-				break;
-			switch (b[l + i])
-			{
-				case '\0': case '\1': case '\2': case '\3':
-				case '\4': case '\5': case '\6': case '\7':
-				case '\n':
-					printf(".");
-					break;
-				default:
-					printf("%c", b[l + i]);
-			}
-		}
-
+		printable_10b(i, b, size);
 		printf("\n");
 	}
+}
+
+/**
+ * printable_10b - print 10 lines of buffer
+ * @index: current index of buffer
+ * @buff: buffer
+ * @size: size of buffer
+ */
+void printable_10b(int index, char *buff, int size)
+{
+	int i;
+
+	for (i = 0; i < 10; i++)
+	{
+		if (i + index + 1 > size)
+			break;
+		switch (buff[i + index])
+		{
+			case '\0': case '\1': case '\2': case '\3':
+			case '\4': case '\5': case '\6': case '\7':
+			case '\n':
+				printf(".");
+				break;
+			default:
+				printf("%c", buff[i + index]);
+		}
+	}
+
+
 }
