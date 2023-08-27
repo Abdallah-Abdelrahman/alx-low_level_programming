@@ -24,16 +24,15 @@ void print_buffer(char *b, int size)
 			if ((j + k) * 2 < size)
 				printf("%02x%02x ", h_00, h_01);
 			else
-				printf("     ");
+				printf("%2c%2c ", 32, 32);
 		}
-		/* print 10 bytes of buffer */
 		printable_10b(i, b, size);
 		printf("\n");
 	}
 }
 
 /**
- * printable_10b - print 10 lines of buffer
+ * printable_10b - print 10 bytes of buffer for each line
  * @index: current index of buffer
  * @buff: buffer
  * @size: size of buffer
@@ -57,6 +56,4 @@ void printable_10b(int index, char *buff, int size)
 				printf("%c", buff[i + index]);
 		}
 	}
-
-
 }
