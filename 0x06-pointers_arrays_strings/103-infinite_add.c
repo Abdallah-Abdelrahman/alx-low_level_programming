@@ -26,7 +26,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		int valid_n1 = len_n1 - 1 >= 0 ? n1[len_n1 - 1] : '0';
 		int valid_n2 = len_n2 - 1 >= 0 ? n2[len_n2 - 1] : '0';
 
-		if (len_n1 < 0 && len_n2 < 0)
+		if (len_n1 <= 0 && len_n2 <= 0 && carry <= 0)
 			break;
 		sum = (valid_n1 - '0') + (valid_n2 - '0') + carry;
 		r[len] = (sum % 10) + '0';
