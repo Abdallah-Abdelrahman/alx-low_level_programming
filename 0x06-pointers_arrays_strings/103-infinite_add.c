@@ -18,7 +18,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
 	if (len_n2 > len_n1)
 		largest = len_n2;
-	if (largest == size_r)
+	if (largest + 1 > size_r)
 		return (0);
 	for (; idx < largest; len_n1--, len_n2--, idx++)
 	{
@@ -31,7 +31,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[idx] = (sum % 10) + '0';
 		carry = sum / 10;
 	}
-	if (carry > 0 && largest + 1 >= size_r)
+	if (carry > 0 && largest + 2 > size_r)
 		return (0);
 	if (carry > 0)
 		r[largest] = carry + '0';
