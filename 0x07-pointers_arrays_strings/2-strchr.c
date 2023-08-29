@@ -22,7 +22,7 @@ char *_strchr(char *s, char c)
 	}
 
 	/* `c` is null-terminating character */
-	if (c == NULL)
+	if (c == '\0')
 		ptr = s;
 
 	/* there's no match */
