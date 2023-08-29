@@ -10,5 +10,17 @@
  */
 char *_strchr(char *s, char c)
 {
-	return (strchr(s, c));
+	char *ptr = NULL;
+
+	for (; *s; s++)
+	{
+		if (*s == c)
+		{
+			ptr = s;
+			break;
+		}
+	}
+	if (!ptr)
+		ptr = s;
+	return (ptr);
 }
