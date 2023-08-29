@@ -20,7 +20,9 @@ char *_strchr(char *s, char c)
 			break;
 		}
 	}
-	if (!ptr)
-		ptr = s;
+
+	/* there's no match */
+	if (!*ptr)
+		return (NULL);
 	return (ptr);
 }
