@@ -21,8 +21,14 @@ char *_strchr(char *s, char c)
 		}
 	}
 
+	/* `c` is null-terminating character */
+	if (c == NULL)
+		ptr = s;
+
 	/* there's no match */
-	if (!*ptr)
+	if (ptr == NULL)
 		return (NULL);
+
+	/* match found */
 	return (ptr);
 }
