@@ -10,8 +10,6 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	if (n <= 1)
-		return (n);
 	return (diffing(n, 0, n));
 }
 
@@ -20,7 +18,7 @@ int _sqrt_recursion(int n)
  * @n: integer number
  * @f: first
  * @l: last
- * 
+ *
  * Return: square root
  */
 int diffing(int n, int f, int l)
@@ -30,7 +28,7 @@ int diffing(int n, int f, int l)
 	if (f > l)
 		return (l);
 
-	m = f + (l - f) / 2;
+	m = f + ((l - f) / 2);
 	sqrt_m = m * m;
 	if (sqrt_m == n)
 		return (m);
