@@ -33,7 +33,7 @@ int diffing(int n, int f, int l)
 	m = f + (l - f) / 2;
 	sqrt_m = m * m;
 	if (sqrt_m == n)
-		return (sqrt_m);
+		return (m);
 	if (sqrt_m < n)
 		return (diffing(n, m + 1, n));
 	else
