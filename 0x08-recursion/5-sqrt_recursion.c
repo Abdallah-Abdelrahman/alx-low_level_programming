@@ -10,30 +10,23 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	return (diffing(n, 0, n));
+	return (diffing(n, 0));
 }
 
 /**
  * diffing - get the square root by diffing last from first
  * @n: integer number
- * @f: first
- * @l: last
+ * @guess: guess number
  *
  * Return: square root
  */
-int diffing(int n, int f, int l)
+int diffing(int n, int guess)
 {
-	int m, sqrt_m;
+	int sqrt_guess = guess * guess;
 
-	if (f > l)
-		return (l);
-
-	m = f + ((l - f) / 2);
-	sqrt_m = m * m;
-	if (sqrt_m == n)
-		return (m);
-	if (sqrt_m < n)
-		return (diffing(n, m + 1, n));
-	else
-		return (diffing(n, f, m - 1));
+	if (sqrt_guess == n)
+		return (guess);
+	if (sqrt_guess > n)
+		return (-1);
+	return (diffing(n, guess + 1));
 }
