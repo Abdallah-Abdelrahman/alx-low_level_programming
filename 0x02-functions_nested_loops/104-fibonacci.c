@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -11,22 +12,49 @@ int main(void)
 {
 	unsigned long i = 0, n1 = 0, n2 = 1, next = n1 + n2;
 
+
 	while (i < 98)
 	{
-
-		printf("%lu", next);
-		if (i != 97)
+		if (i != 0)
 		{
-			printf(", ");
+			_putchar(',');
+			_putchar(' ');
 		}
-
+		print_chars(next);
 		n1 = n2;
 		n2 = next;
 		next = n1 + n2;
 		i++;
 	}
 
-	printf("\n");
+	_putchar('\n');
 
 	return (0);
+}
+
+/**
+ * print_chars - prints long integer number recursively
+ * @n: number
+ */
+void print_chars(unsigned long int n)
+{
+	if (n > 9)
+	{
+		print_chars(n / 10);
+		_putchar((n % 10) + '0');
+	}
+	else
+		_putchar(n + '0');
+}
+
+/**
+* _putchar - write the character c to stdout
+* @c: The character to print
+*
+* Return: On success 1.
+* On error, -1 is returned, and errno is set appropriately.
+*/
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }

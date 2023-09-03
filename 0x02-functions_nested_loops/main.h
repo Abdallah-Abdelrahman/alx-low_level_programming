@@ -17,4 +17,5 @@ void print_times_table(int n);
 void print_table(int);
 void print_2p(int);
 int fibonacci(int);
+void print_chars(unsigned long int n);
 #endif
