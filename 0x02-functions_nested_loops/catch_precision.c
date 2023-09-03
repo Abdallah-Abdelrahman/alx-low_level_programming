@@ -3,7 +3,7 @@
   * print_precision - print interger based on precision
   * @n: number to print to print it precisions.
   */
-void print_precision(int n)
+void long_precision(unsigned long long int n)
 {
 	if (n < 10)
 	{
@@ -17,7 +17,7 @@ void print_precision(int n)
 	}
 	else
 	{
-		print_precision(n / 10);
+		long_precision(n / 10);
 		_putchar((n % 10) + '0');
 	}
 }
