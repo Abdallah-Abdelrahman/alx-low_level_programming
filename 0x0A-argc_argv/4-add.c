@@ -9,11 +9,30 @@
  */
 int main(int argc, char **argv)
 {
-	int sum = 0;
+	int i = 1, sum = 0, err;
+
+	if (argc < 2)
+	{
+		printf("%d\n", sum);
+		return (0);
+	}
+	while (argv[i])
+	{
+		err = has_ndigit(argv[i], 0);
+		if (err)
+			break;
+		i++;
+	}
+	if (err)
+	{
+		printf("Error\n");
+		return (1);
+	}
 
 	/* best-case scenario - all the arguments contian digits - */
 	if (argc > 1)
-		sum += add_recursive(argv, 1, argc - 1);
+		sum = add_recursive(argv, 1, argc - 1);
+
 	printf("%d\n", sum);
 
 	return (0);
@@ -23,19 +42,18 @@ int main(int argc, char **argv)
  * add_recursive - add numbers recursively
  * @ptr: array of pointers to string
  * @idx: pointer position (index) in ptr
- * @size: number of arguments
+ * @size: length of the array
  *
- * Return: the sum of arguments
+ * Return: the sum of arguments,
+ * -1 if some arguments contain non-digits
  */
 int add_recursive(char **ptr, int idx, int size)
 {
 	int len = 0;
 
-	printf("ptr = %s\n", ptr[idx]);
-
-	/* TODO: handle the case where the string contains non-digits */
 	for (; ptr[idx][len]; len++)
 		;
+
 	if (size - 1 == 0)
 		return (stoi(ptr[idx], len));
 
@@ -88,12 +106,22 @@ int _pow_recursion(int x, int y)
 }
 
 /**
- * _isdigit - check if character is a digit
- * @c: character
+ * has_ndigit - check if string contains non-digit character
+ * @ptr: string pointer
+ * @idx: character position
  *
- * Return: 1 if it's digit, 0 otherwise
+ * Return: 1 if it falls into the tested class, 0 otherwise
  */
-int _isdigit(char c)
+int has_ndigit(char *ptr, int idx)
 {
-	return (c >= '0' && c <= '9' ? 1 : 0);
+
+	if (ptr[idx])
+	{
+		if (ptr[idx] >= '0' && ptr[idx] <= '9')
+			return (has_ndigit(ptr, idx + 1));
+		else
+			return (1);
+	}
+
+	return (0);
 }
