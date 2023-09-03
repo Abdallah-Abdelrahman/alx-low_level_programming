@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * change - prints the minimum number of coins to make change
+ * main - prints the minimum number of coins to make change
  * @argc: number of arguments
  * @argv: array of pointers
  *
@@ -9,7 +9,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int len = 0, sum = 0, count = 0, amount;
+	int len = 0, count = 0, amount;
 
 	if (argc != 2)
 	{
@@ -25,11 +25,7 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 	else
 	{
-		while (sum != amount)
-		{
-			sum += next_change(4, amount - sum);
-			count++;
-		}
+		count = count_changes(amount, 0);
 		printf("%d\n", count);
 
 	}
@@ -41,13 +37,14 @@ int main(int argc, char *argv[])
  * @amount: amount of money
  * @sum: sum of changes
  *
- * Return: count of changes 
+ * Return: count of changes
  */
 int count_changes(int amount, int sum)
 {
 	if (sum == amount)
 		return (0);
-	return (1 + (count_changes(amount, next_change(4, amount - sum))));
+	sum += next_change(4, amount - sum);
+	return (1 + (count_changes(amount, sum)));
 }
 
 /**
