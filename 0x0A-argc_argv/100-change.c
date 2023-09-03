@@ -9,7 +9,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int len = 0, count = 0, amount;
+	int len = 0, count = 0, sum = 0, amount;
 
 	if (argc != 2)
 	{
@@ -25,7 +25,11 @@ int main(int argc, char *argv[])
 		printf("%d\n", 0);
 	else
 	{
-		count = count_changes(amount, 0);
+		while (sum != amount)
+		{
+			sum += next_change(4, amount - sum);
+			count++;
+		}
 		printf("%d\n", count);
 
 	}
