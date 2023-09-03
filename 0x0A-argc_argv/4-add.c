@@ -30,8 +30,7 @@ int main(int argc, char **argv)
 	}
 
 	/* best-case scenario - all the arguments contian digits - */
-	if (argc > 1)
-		sum = add_recursive(argv, 1, argc - 1);
+	sum = add_recursive(argv, 1, argc - 1);
 
 	printf("%d\n", sum);
 
@@ -44,8 +43,8 @@ int main(int argc, char **argv)
  * @idx: pointer position (index) in ptr
  * @size: length of the array
  *
- * Return: the sum of arguments,
- * -1 if some arguments contain non-digits
+ * Return: the sum of arguments
+ * 
  */
 int add_recursive(char **ptr, int idx, int size)
 {
@@ -54,6 +53,7 @@ int add_recursive(char **ptr, int idx, int size)
 	for (; ptr[idx][len]; len++)
 		;
 
+	/* it's the last character in the string */
 	if (size - 1 == 0)
 		return (stoi(ptr[idx], len));
 
