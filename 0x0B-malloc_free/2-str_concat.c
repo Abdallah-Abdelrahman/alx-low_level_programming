@@ -16,9 +16,9 @@ char *str_concat(char *s1, char *s2)
 
 	for (; s1[len1] || s2[len2]; )
 	{
-		if (s1[len1])
+		if (s1 && s1[len1])
 			len1++;
-		if (s2[len2])
+		if (s2 && s2[len2])
 			len2++;
 	}
 	size = len1 + len2 + 1;
