@@ -9,7 +9,7 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int *grid[], i = 0, j;
+	int **grid, j, i = 0;
 
 	if ((width || height) <= 0)
 		return (0);
