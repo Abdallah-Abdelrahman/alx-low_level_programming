@@ -8,7 +8,7 @@
  */
 char **strtow(char *str)
 {
-	int len = 0, count = 0, size = 0;
+	int i = 0, len = 0, count = 0, size = 0;
 	char *failed = "Failed\n";
 	char **ptr;
 
