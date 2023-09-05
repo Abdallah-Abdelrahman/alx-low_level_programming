@@ -8,14 +8,14 @@
  */
 char **strtow(char *str)
 {
-	int i, len = 0, count = 0, size = 0;
+	int len = 0, count = 0, size = 0;
 	char **ptr;
 
 	if (!str)
 		return (0);
 	for (; str[len]; len++)
 	{
-		if (str[i] != 32)
+		if (str[len] != 32)
 			size++;
 		if (str[len] == 32)
 			continue;
