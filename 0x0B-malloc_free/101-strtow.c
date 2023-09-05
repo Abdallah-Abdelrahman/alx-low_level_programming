@@ -24,6 +24,11 @@ char **strtow(char *str)
 	}
 	if (!len)
 		return (0);
+	if (len == 1 && str[0] == 10)
+	{
+		printf("Failed\n");
+		return (0);
+	}
 
 	if (str[len - 1] != 32)
 		count++;
