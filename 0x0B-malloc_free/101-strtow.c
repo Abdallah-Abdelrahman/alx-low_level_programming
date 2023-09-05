@@ -31,37 +31,20 @@ char **strtow(char *str)
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
 		return (0);
-	for (i = 0; i < len; i++)
-	{
-		if ((i == 0 && str[i] != 32) ||
-				(str[i] != 32 && str[i - 1] == 32))
-		{
-			wlen = word_len(str, i);
-			m = i;
-			ptr[j] = malloc((sizeof(**ptr) * wlen) + 1);
-			if (ptr[j])
-			{
-				for (l = 0; l < wlen; l++, m++)
-					ptr[j][l] = str[m];
-				ptr[j][l] = '\0';
-
-			}
-			j++;
-		}
-	}
-	ptr[j] = NULL;
+	split(ptr, str, len);
 	return (ptr);
 }
 
 /**
  * split - split string into array of words
  * @src: array of pointers to string
- * @t: string pointer
+ * @target: string pointer
  * @len: size of target
  */
-void split(char **src, char *t, int len)
+void split(char **src, char *target, int len)
 {
 	int i, l, wlen, m, j = 0;
+
 	for (i = 0; i < len; i++)
 	{
 		if ((i == 0 && target[i] != 32) ||
