@@ -14,4 +14,5 @@ char *argstostr(int ac, char **av)
 		return (0);
 	if (!*av)
 		return (0);
+	return (av);
 }
