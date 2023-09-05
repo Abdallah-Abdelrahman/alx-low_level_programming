@@ -10,7 +10,7 @@
  */
 char *argstostr(int ac, char **av)
 {
-	if (arg < 2)
+	if (ac < 2)
 		return (0);
 	if (!*av)
 		return (0);
