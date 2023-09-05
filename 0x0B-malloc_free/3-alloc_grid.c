@@ -18,6 +18,7 @@ int **alloc_grid(int width, int height)
 
 	if (!grid)
 	{
+		free(grid);
 		return (0);
 	}
 
