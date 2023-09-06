@@ -29,7 +29,7 @@ char **strtow(char *str)
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
 		return (0);
-	if (str[0] == 32 str[len - 1] == 32)
+	if (str[0] == 32 && str[len - 1] == 32)
 		return (0);
 	return (split(ptr, str, len));
 }
