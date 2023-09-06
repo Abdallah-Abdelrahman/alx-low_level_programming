@@ -8,15 +8,13 @@
  */
 char **strtow(char *str)
 {
-	int len = 0, count = 0, size = 0;
+	int len = 0, count = 0;
 	char **ptr;
 
 	if (!str)
 		return (0);
 	for (; str[len]; len++)
 	{
-		if (str[len] != 32)
-			size++;
 		if (str[len] == 32)
 			continue;
 		if (str[len + 1] == 32)
@@ -29,7 +27,7 @@ char **strtow(char *str)
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
 		return (0);
-	if (str[0] == 32 && str[len - 1] == 32 && len <= 3)
+	if (count == 0)
 		return (0);
 	return (split(ptr, str, len));
 }
