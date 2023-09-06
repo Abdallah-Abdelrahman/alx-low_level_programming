@@ -8,8 +8,7 @@
  */
 char **strtow(char *str)
 {
-	int i = 0, len = 0, count = 0, size = 0;
-	char *failed = "Failed\n";
+	int len = 0, count = 0, size = 0;
 	char **ptr;
 
 	if (!str)
@@ -23,24 +22,13 @@ char **strtow(char *str)
 		if (str[len + 1] == 32)
 			count++;
 	}
-	if (!len)
+	if (!len || len == 1 && str[len - 1] == 10)
 		return (0);
 	if (str[len - 1] != 32)
 		count++;
-	if (len > 1)
-		ptr = malloc((sizeof(*ptr) * count) + count + 1);
-	else
-		ptr = malloc(sizeof(*ptr) + 2);
+	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
 		return (0);
-	if (len == 1 && str[0] == 10)
-	{
-		for (i = 0; i < 7; i++)
-			ptr[0][i] = failed[i];
-		ptr[0][i] = '\0';
-		ptr[1] = NULL;
-		return (ptr);
-	}
 	split(ptr, str, len);
 	return (ptr);
 }
