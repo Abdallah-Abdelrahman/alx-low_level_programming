@@ -24,7 +24,7 @@ char **strtow(char *str)
 	}
 	if (!len)
 		return (0);
-	if (str[len - 1] == '\t')
+	if (len == 2)
 		return (0);
 	if (str[len - 1] != 32)
 		count++;
