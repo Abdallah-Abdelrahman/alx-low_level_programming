@@ -24,16 +24,12 @@ char **strtow(char *str)
 	}
 	if (!len)
 		return (0);
-	/* weird edge-case */
-	if (*str == 32 && len == 5)
-		return (0);
 	if (str[len - 1] != 32)
 		count++;
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
 		return (0);
-	split(ptr, str, len);
-	return (ptr);
+	return (split(ptr, str, len));
 }
 
 /**
@@ -41,8 +37,11 @@ char **strtow(char *str)
  * @src: array of pointers to string
  * @target: string pointer
  * @len: size of target
+ *
+ * Return: array of pointers to string,
+ * NULL on failure
  */
-void split(char **src, char *target, int len)
+char **split(char **src, char *target, int len)
 {
 	int i, l, wlen, m, j = 0;
 
@@ -60,10 +59,13 @@ void split(char **src, char *target, int len)
 					src[j][l] = target[m];
 				src[j][l] = '\0';
 			}
+			else
+				return (0);
 			j++;
 		}
 	}
 	src[j] = NULL;
+	return (src);
 }
 
 /**
