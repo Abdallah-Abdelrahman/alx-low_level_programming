@@ -25,8 +25,8 @@ char **strtow(char *str)
 	if (!len)
 		return (0);
 	/* edge-case */
-	if (len == 1 && str[0] == 32)
-		return (NULL);
+	if (len <= 3 && str[0] == 32)
+		return (0);
 	if (str[len - 1] != 32)
 		count++;
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
