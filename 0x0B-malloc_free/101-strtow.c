@@ -24,8 +24,9 @@ char **strtow(char *str)
 	}
 	if (!len)
 		return (0);
-	if (len == 2)
-		return (0);
+	/* edge-case */
+	if (len <= 2)
+		return (NULL);
 	if (str[len - 1] != 32)
 		count++;
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
@@ -58,7 +59,6 @@ void split(char **src, char *target, int len)
 				for (l = 0; l < wlen; l++, m++)
 					src[j][l] = target[m];
 				src[j][l] = '\0';
-
 			}
 			j++;
 		}
