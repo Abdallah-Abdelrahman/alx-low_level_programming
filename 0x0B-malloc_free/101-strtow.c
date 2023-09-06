@@ -24,10 +24,10 @@ char **strtow(char *str)
 		return (0);
 	if (str[len - 1] != 32)
 		count++;
+	if (count == 0)
+		return (0);
 	ptr = malloc((sizeof(*ptr) * count) + count + 1);
 	if (!ptr)
-		return (0);
-	if (count == 0)
 		return (0);
 	return (split(ptr, str, len));
 }
