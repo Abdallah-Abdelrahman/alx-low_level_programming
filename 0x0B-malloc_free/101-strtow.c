@@ -25,7 +25,7 @@ char **strtow(char *str)
 	if (!len)
 		return (0);
 	/* edge-case */
-	if (*str == 32)
+	if (*str == 32 && len == 1)
 		return (0);
 	if (str[len - 1] != 32)
 		count++;
