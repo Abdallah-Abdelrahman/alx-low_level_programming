@@ -22,7 +22,9 @@ char **strtow(char *str)
 		if (str[len + 1] == 32)
 			count++;
 	}
-	if (!len || (len == 1 && str[len - 1] == 32))
+	if (!len)
+		return (0);
+	if (len == 1)
 		return (0);
 	if (str[len - 1] != 32)
 		count++;
