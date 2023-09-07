@@ -20,14 +20,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		if (s2 && s2[len2])
 			len2++;
 	}
-	size = len1 + (n >= len2 ? len2 : n);
-	ptr = malloc((sizeof(*ptr) * size) + 1);
+	size = len1 + (n >= len2 ? len2 : n) + 1;
+	ptr = malloc((sizeof(*ptr) * size));
 
 	if (!ptr)
 	{
 		return (0);
 	}
-	for (len1 = 0, len2 = 0; i < size + 1; i++)
+	for (len1 = 0, len2 = 0; i < size; i++)
 	{
 		ptr[i] = s1 && s1[len1]
 			? s1[len1++]
