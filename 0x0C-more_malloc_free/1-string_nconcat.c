@@ -27,7 +27,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		return (0);
 	}
-	for (len1 = 0, len2 = 0; i < size; i++)
+	for (len1 = 0, len2 = 0; i < size + 1; i++)
 	{
 		ptr[i] = s1 && s1[len1]
 			? s1[len1++]
