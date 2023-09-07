@@ -20,18 +20,20 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		if (s2 && s2[len2])
 			len2++;
 	}
-	size = n >= len2 ? len2 : n;
-	ptr = malloc(sizeof(*ptr) * (len1 + n + 1));
+	size = len1 + (n >= len2 ? len2 : n) + 1;
+	ptr = malloc(sizeof(*ptr) * size);
 
 	if (!ptr)
 	{
 		return (0);
 	}
-	for (len1 = 0; s1 && s1[len1]; len1++, i++)
-		ptr[i] = s1[len1];
-	for (len2 = 0; len2 < size; len2++, i++)
-		ptr[i] = s2[len2];
-	ptr[i] = '\0';
+	for (len1 = 0, len2 = 0; i < size; i++)
+	{
+		ptr[i] = s1 && s1[len1]
+			? s1[len1++]
+			: s2 && s2[len2] && len2 < size
+			? s2[len2++] : '\0';
+	}
 
 	return (ptr);
 }
