@@ -24,7 +24,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	ptr = malloc(sizeof(*ptr) * size);
 
 	if (!ptr)
+	{
+		exit(EXIT_FAILURE);
 		return (0);
+	}
 
 	for (len1 = 0, len2 = 0; i < size; i++)
 	{
