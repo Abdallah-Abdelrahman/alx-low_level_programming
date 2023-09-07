@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * string_nconcat - concatenates two strings.
@@ -10,7 +11,8 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i = 0, len1 = 0, len2 = 0, size = 0;
+	unsigned int i = 0, len1 = 0, len2 = 0, size = 0,
+		     count1 = 0, count2 = 0;
 	char *ptr;
 
 	for (; (s1 && s1[len1]) || (s2 && s2[len2]); )
@@ -20,20 +22,48 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		if (s2 && s2[len2])
 			len2++;
 	}
-
-	size = len1 + (n >= len2 ? len2 : n);
-	if (size == 0)
+	count1 = white_space(s1);
+	count2 = white_space(s2);
+	if (count1 + count2 == 0)
 		return (0);
+	size = len1 + (n >= len2 ? len2 : n);
 	ptr = malloc(sizeof(*ptr) * size + 1);
 
 	if (!ptr)
 		return (0);
 
 	for (len1 = 0, len2 = 0; i < size; i++)
+	{
 		ptr[i] = s1 && s1[len1]
 			? s1[len1++]
 			: s2 && s2[len2]
 			? s2[len2++] : '\0';
-
+	}
 	return (ptr);
+}
+
+/**
+ * white_space - check if string only contians whitespaces
+ * @ptr: string pointer
+ *
+ * Return: non-zero if @ptr has non-whitespaces characters,
+ * 0 otherwise
+ */
+int white_space(char *ptr)
+{
+	int i = 0, count = 0, space = 32;
+
+	if (!ptr)
+		return (0);
+	for (; ptr[i]; i++)
+	{
+		if (ptr[i] == space)
+			continue;
+		if (ptr[i + 1] == space)
+			count++;
+	}
+	if (ptr[i - 1] != space)
+		count++;
+
+	return (count);
 }
