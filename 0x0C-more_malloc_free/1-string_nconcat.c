@@ -31,7 +31,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		ptr[i] = s1 && s1[len1]
 			? s1[len1++]
-			: s2 && s2[len2] && len2 < size
+			: s2 && s2[len2] && len2 < n
 			? s2[len2++] : '\0';
 	}
 
