@@ -9,9 +9,10 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int long int_max = 9223372036854775807;
+	unsigned int long int_max = 9223372036854775807;
 	unsigned int i;
-	char *ptr;
+	void *ptr;
+	char *cpy;
 
 	if (nmemb == 0 || size == 0)
 		return (0);
@@ -21,9 +22,10 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	ptr = malloc(nmemb * size);
 	if (!ptr)
 		return (0);
+	cpy = (char *)ptr;
 
 	for (i = 0; i < nmemb; i++)
-		ptr[i] = 0;
+		cpy[i] = 0;
 
 	return (ptr);
 }
