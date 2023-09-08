@@ -9,11 +9,15 @@
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	unsigned int long int_max = 9223372036854775807;
+	/**
+	 * size_t:
+	 * According to the 1999 ISO C standard (C99),
+	 * size_t is an unsigned integer type of at least 16 bit
+	 */
+	size_t int_max = 9223372036854775807;
 	size_t len = nmemb * size;
 	size_t i;
-	void *ptr;
-	char *cpy;
+	char *ptr;
 
 	if (nmemb == 0 || size == 0)
 		return (0);
@@ -23,10 +27,9 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	ptr = malloc(nmemb * size);
 	if (!ptr)
 		return (0);
-	cpy = (char *)ptr;
 
 	for (i = 0; i < len; i++)
-		cpy[i] = 0;
+		ptr[i] = 0;
 
 	return (ptr);
 }
