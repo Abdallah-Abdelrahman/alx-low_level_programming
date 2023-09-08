@@ -50,6 +50,7 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 
 	for (i = 0; i < min; i++)
 		new_ptr[i] = ptr[i];
+	new_ptr[i] = '\0';
 
 	free(ptr);
 
