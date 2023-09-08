@@ -10,14 +10,15 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	unsigned int long int_max = 9223372036854775807;
-	unsigned int i;
+	size_t len = nmemb * size;
+	size_t i;
 	void *ptr;
 	char *cpy;
 
 	if (nmemb == 0 || size == 0)
 		return (0);
 
-	if (nmemb * size > int_max)
+	if (len > int_max)
 		return (0);
 	ptr = malloc(nmemb * size);
 	if (!ptr)
