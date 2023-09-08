@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _realloc - reallocates a memory block using malloc and free
@@ -12,11 +13,10 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	if (new_size == 0 && ptr)
+	{
+		free(ptr);
 		return (0);
-	/*
-	 * if (new_size == 0 && old_size == 0)
-	 *	return (0);
-	 */
+	}
 	if (new_size == old_size)
 		return (ptr);
 	if (!ptr)
@@ -35,6 +35,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 {
+	/* wt would happen when old_size is zero?? */
 	size_t i, min = old_size, max = new_size;
 	char *new_ptr;
 
@@ -50,7 +51,6 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 
 	for (i = 0; i < min; i++)
 		new_ptr[i] = ptr[i];
-	new_ptr[i] = '\0';
 
 	free(ptr);
 
