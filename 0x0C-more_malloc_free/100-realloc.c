@@ -13,10 +13,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	if (new_size == 0 && ptr)
 		return (0);
-	if (new_size == old_size)
-		return (ptr);
 	if (new_size == 0 && old_size == 0)
 		return (0);
+	if (new_size == old_size)
+		return (ptr);
 	if (!ptr)
 		return (_malloc(new_size));
 
@@ -33,7 +33,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 {
-	size_t min, max, i;
+	size_t i, min = old_size, max = new_size;
 	char *new_ptr;
 
 	if (new_size < old_size)
@@ -41,12 +41,8 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 		min = new_size;
 		max = old_size;
 	}
-	else
-	{
-		min = old_size;
-		max = new_size;
-	}
 	new_ptr = malloc(max);
+
 	if (!new_ptr)
 		return (0);
 
