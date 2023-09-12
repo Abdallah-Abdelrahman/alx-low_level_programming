@@ -25,9 +25,9 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 
 	for (len1 = 0, len2 = 0; name[len1] || owner[len2]; )
 	{
-		if (name[len1])
+		if (name[len1++])
 			d->name[len1] = name[len1];
-		if (owner[len2])
+		if (owner[len2++])
 			d->owner[len2] = owner[len2];
 	}
 
