@@ -2,17 +2,35 @@
 
 /**
  * init_dog - write your short description
- * @dog: struct
+ * @d: struct
  * @name: member of dog
  * @age: member of dog
  * @owner: member of dog
  *
- * Return: nothing
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	d->name = name;
-	d->age = age;
-	d->owner = owner;
+	int len1, len2;
 
+	for (len1 = 0, len2 = 0; name[len1] || owner[len2]; )
+	{
+		if (name[len1])
+			len1++;
+		if (owner[len2])
+			len2++;
+	}
+	d->age = age;
+	d->name = malloc(len1 + 1);
+	d->owner = malloc(len2 + 1);
+
+	for (len1 = 0, len2 = 0; name[len1] || owner[len2]; )
+	{
+		if (name[len1])
+			d->name[len1] = name[len1];
+		if (owner[len2])
+			d->owner[len2] = owner[len2];
+	}
+
+	d->name[len1] = 0;
+	d->owner[len2] = 0;
 }
