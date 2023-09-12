@@ -1,6 +1,6 @@
 #ifndef HEADER
 #define HEADER
 #include <stdlib.h>
-#define ABS(x) ((x) < 0 ? abs((x)) : (x))
+#define ABS(x) abs((x)
 #endif /* HEADER */
 
