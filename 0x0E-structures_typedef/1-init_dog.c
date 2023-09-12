@@ -25,7 +25,10 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 		exit(98);
 	(*d).owner = malloc(len2 + 1);
 	if ((*d).owner == NULL)
+	{
+		free((*d).name);
 		exit(98);
+	}
 
 	for (len1 = 0; name[len1]; len1++)
 	{
