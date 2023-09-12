@@ -1,6 +1,7 @@
 #ifndef HEADER
 #define HEADER
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * struct dog - define type dog
  * @name: name of the dog
