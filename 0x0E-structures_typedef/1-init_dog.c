@@ -33,9 +33,9 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 	}
 
 	(*d).name[len1] = 0;
-	for (len2 = 0; name[len2]; len2++)
+	for (len2 = 0; owner[len2]; len2++)
 	{
-		(*d).name[len2] = name[len2];
+		(*d).owner[len2] = owner[len2];
 	}
 	(*d).owner[len2] = 0;
 }
