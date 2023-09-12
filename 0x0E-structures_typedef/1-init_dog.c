@@ -19,25 +19,26 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 		if (owner[len2])
 			len2++;
 	}
-	d->age = age;
-	d->name = malloc(len1 + 1);
-	d->owner = malloc(len2 + 1);
+	(*d).age = age;
+	(*d).name = malloc(len1 + 1);
+	(*d).owner = malloc(len2 + 1);
 
 	if (!d->name || !d->owner)
 	{
 		free(d->name);
 		free(d->owner);
+		exit(98);
 	}
 
 	for (len1 = 0, len2 = 0; name[len1] || owner[len2]; )
 	{
 		if (name[len1])
-			d->name[len1] = name[len1];
+			(*d).name[len1] = name[len1];
 		if (owner[len2])
-			d->owner[len2] = owner[len2];
+			(*d).owner[len2] = owner[len2];
 		len1++, len2++;
 	}
 
-	d->name[len1] = 0;
-	d->owner[len2] = 0;
+	(*d).name[len1] = 0;
+	(*d).owner[len2] = 0;
 }
