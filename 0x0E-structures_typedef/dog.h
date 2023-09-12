@@ -1,5 +1,11 @@
 #ifndef HEADER
 #define HEADER
+/**
+ * struct dog - define type dog
+ * @name: name of the dog
+ * @age: the age
+ * @owner: owned by whom
+ */
 struct dog
 {
 	char *name;
