@@ -47,7 +47,7 @@ int main(int ac, char **av)
 	{
 		if (i > 0)
 		{
-			ptr = _malloc(sizeof(char) * i);
+			ptr = malloc(sizeof(char) * i);
 			if (!ptr)
 				return (1);
 			for (idx = 0; idx < i; idx++)
@@ -88,7 +88,7 @@ int main(int ac, char **av)
 		}
 		else
 		{
-			acc = _malloc(carry ? new_s : old_s);
+			acc = malloc(carry ? new_s : old_s);
 			for (k = 0; ptr[k]; k++)
 				acc[k] = ptr[k];
 			acc[k] = 0;
@@ -125,7 +125,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (new_size == old_size)
 		return (ptr);
 	if (!ptr)
-		return (_malloc(new_size));
+		return (malloc(new_size));
 
 	return (adjust_book((char *)ptr, old_size, new_size));
 }
@@ -140,7 +140,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 {
-	size_t i, min = old_size, max = new_size;
+	unsigned int i, min = old_size, max = new_size;
 	char *new_ptr;
 
 	if (new_size < old_size)
@@ -159,22 +159,6 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr);
 
 	return (new_ptr);
-}
-
-/**
- * _malloc - allocates memory using malloc.
- * @b: bytes to allocates
- *
- * Return: a pointer of void
- */
-void *_malloc(unsigned int b)
-{
-	void *ptr;
-
-	ptr = malloc(b);
-	if (!ptr)
-		return (0);
-	return (ptr);
 }
 
 /**
