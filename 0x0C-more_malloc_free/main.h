@@ -13,4 +13,6 @@ void *adjust_book(char *ptr, unsigned old_size, unsigned new_size);
 int infinite_add(char *, char *, int, int);
 void rev_string(char *str, int size);
 int *len2str(char *p1, char *p2, int arr[]);
+int _isdigit(char n);
+
 #endif

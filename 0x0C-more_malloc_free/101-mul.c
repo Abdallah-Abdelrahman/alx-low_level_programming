@@ -23,9 +23,23 @@ int main(int ac, char **av)
 	for (; av[1][ac1] || av[2][ac2]; )
 	{
 		if (av[1][ac1])
+		{
+			if (!_isdigit(av[1][ac1]))
+			{
+				printf("Error\n");
+				exit(98);
+			}
 			ac1++;
+		}
 		if (av[2][ac2])
+		{
+			if (!_isdigit(av[2][ac2]))
+			{
+				printf("Error\n");
+				exit(98);
+			}
 			ac2++;
+		}
 	}
 
 	/* multiplicaiton happens here */
@@ -92,6 +106,15 @@ int main(int ac, char **av)
 	return (0);
 }
 
+/**
+ * _realloc - reallocates a memory block using malloc and free
+ * @ptr: pointer to the memory previously allocated with a call to malloc
+ * @old_size: size in bytes of the allocated space for `ptr`
+ * @new_size: new size, in bytes of the new memory block
+ *
+ * Return: pointer to the newly allocated memory,
+ * or `NULL`
+ */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	if (new_size == 0 && ptr)
@@ -179,7 +202,6 @@ int infinite_add(char *acc, char *num, int acc_s, int num_s)
 	{
 		char acc_digit = acc_s - 1 >= 0 ? acc[acc_s - 1] : zero;
 		char num_digit = num_s - 1 >= 0 ? num[num_s - 1] : zero;
-		printf("acc_digit = %c, num_digit = %c\n", acc_digit, num_digit);
 
 		if (acc_s - 1 < 0 && num_s - 1 < 0)
 			break;
@@ -191,7 +213,6 @@ int infinite_add(char *acc, char *num, int acc_s, int num_s)
 	if (carry)
 	{
 		rev_string(acc, idx);
-		printf("Oops, carry = %d\n", carry);
 		/*acc = _realloc(acc, largest + 1, largest + 2);*/
 		acc[idx] = carry + zero;
 		acc[idx + 1] = 0;
@@ -216,6 +237,7 @@ void rev_string(char *str, int len)
 	while (len > i)
 	{
 		char tmp = str[i];
+
 		str[i] = str[len - 1];
 		str[len - 1] = tmp;
 
@@ -224,3 +246,13 @@ void rev_string(char *str, int len)
 	}
 }
 
+/**
+ * _isdigit - check if a parameter is number
+ * @n: number to check
+ *
+ * Return: 1 on success, 0 on failure
+ */
+int _isdigit(char n)
+{
+	return (n >= '0' && n <= '9');
+}
