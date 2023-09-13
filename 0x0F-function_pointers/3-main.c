@@ -13,26 +13,26 @@ int main(int ac, char **av)
 
 	if (ac != 4)
 	{
-		print_error("Error\n");
+		printf("Error\n");
 		exit(98);
 	}
 	if (av[2][1] || !get_op_func(av[2]))
 	{
-		print_error("Error\n");
+		printf("Error\n");
 		exit(99);
 
 	}
 	if (atoi(av[3]) == 0 && (av[2][0] == '/' || av[2][0] == '%'))
 	{
-		print_error("Error\n");
+		printf("Error\n");
 		exit(100);
 	}
-	print_chars(get_op_func(av[2])(atoi(av[1]), atoi(av[3])));
-	_putchar('\n');
+	printf("%d\n", get_op_func(av[2])(atoi(av[1]), atoi(av[3])));
 
 	return (0);
 }
 
+#if 0
 /**
  * print_chars - prints long integer number recursively
  * @n: number
@@ -55,14 +55,4 @@ void print_error(char *str)
 	for (; str[i]; i++)
 		_putchar(str[i]);
 }
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
+#endif
