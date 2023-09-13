@@ -190,7 +190,6 @@ int infinite_add(char *acc, char *num, int acc_s, int num_s)
 {
 	int carry = 0, idx = 0, sum = 0, zero = 48, largest = acc_s;
 
-	printf("Before sum:\nacc = %s, num = %s\n", acc, num);
 
 	if (num_s > acc_s)
 	{
