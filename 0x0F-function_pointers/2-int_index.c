@@ -6,7 +6,7 @@
  * @size: size of @array
  * @cmp: pointer to a func
  *
- * Return: 1 if there's a match,
+ * Return: index of the first match,
  * -1 otherwise
  */
 int int_index(int *array, int size, int (*cmp)(int))
@@ -14,13 +14,17 @@ int int_index(int *array, int size, int (*cmp)(int))
 	int idx, res = -1;
 
 	if (size <= 0)
-		return (-1);
+		return (res);
 	for (idx = 0; idx < size; idx++)
 	{
 		if (array && cmp)
-			res = cmp(array[idx]);
-		if (res)
-			break;
+		{
+			if (cmp(array[idx]))
+			{
+				res = idx;
+				break;
+			}
+		}
 	}
 
 	return (res);
