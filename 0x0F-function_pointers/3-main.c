@@ -10,27 +10,24 @@
  */
 int main(int ac, char **av)
 {
-	char *op = av[2];
-	int n1 = atoi(av[1]);
-	int n2 = atoi(av[3]);
 
 	if (ac != 4)
 	{
 		printf("Error\n");
 		exit(98);
 	}
-	if (op[1] || !get_op_func(op))
+	if (av[2][1] || !get_op_func(av[2]))
 	{
 		printf("Error\n");
 		exit(99);
 
 	}
-	if (n2 == 0 && (op[0] == '/' || op[0] == '%'))
+	if (atoi(av[3]) == 0 && (av[2][0] == '/' || av[2][0] == '%'))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	printf("%d\n", get_op_func(op)(n1, n2));
+	printf("%d\n", get_op_func(av[2])(atoi(av[1]), atoi(av[3])));
 
 	return (0);
 }
