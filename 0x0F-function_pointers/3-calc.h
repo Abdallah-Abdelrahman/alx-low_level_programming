@@ -9,6 +9,9 @@ int op_mul(int a, int b);
 int op_div(int a, int b);
 int op_mod(int a, int b);
 int (*get_op_func(char *s))(int, int);
+int _putchar(char);
+void print_chars(int n);
+void print_error(char *str);
 
 /**
  * struct op - Struct op
