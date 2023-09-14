@@ -34,10 +34,7 @@ void print_all(const char * const format, ...)
 				break;
 			case 's':
 				str = va_arg(ap, char *);
-				if (str)
-					printf("%s", str);
-				if (!str)
-					printf("%s", "(nil)");
+				printf("%s", str);
 				break;
 			case 'c':
 				printf("%c", va_arg(ap, int));
