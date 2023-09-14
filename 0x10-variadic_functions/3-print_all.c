@@ -3,7 +3,12 @@
 
 /**
  * print_all - prints anything(literally).
- * Description: Long desc
+ * @format: string contains formating characters
+ * Description: the function has 3 formaters
+ * i => integer
+ * f => float
+ * c => character
+ * s => string
  *
  * Return: 0 as exit status
  */
@@ -44,37 +49,4 @@ void print_all(const char * const format, ...)
 
 	printf("\n");
 	va_end(ap);
-}
-
-/**
- * print_char - print character
- * @c: character
- */
-void print_char(char c)
-{
-	printf("%c", c);
-}
-/**
- * print_int - print integer
- * @n: integer
- */
-void print_int(int n)
-{
-	printf("%i", n);
-}
-/**
- * print_float - print float
- * @n: float
- */
-void print_float(float n)
-{
-	printf("%f", n);
-}
-/**
- * print_str - print string
- * @str: string pointer
- */
-void print_str(char *str)
-{
-	printf("%s", str);
 }
