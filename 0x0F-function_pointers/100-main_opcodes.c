@@ -27,7 +27,7 @@ int main(int ac, char **av)
 	{
 		if (i)
 			printf(" ");
-		printf("%02x", *(((unsigned char *)func) + i));
+		printf("%02x", *(((unsigned char *)func) + i + 1));
 	}
 	printf("\n");
 
