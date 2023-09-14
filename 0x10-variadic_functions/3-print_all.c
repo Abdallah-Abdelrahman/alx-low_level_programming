@@ -37,7 +37,6 @@ void print_all(const char * const format, ...)
  */
 void print_var(char c, va_list ap)
 {
-
 	char *str;
 
 	switch (c)
@@ -50,18 +49,22 @@ void print_var(char c, va_list ap)
 			break;
 		case 's':
 			str = va_arg(ap, char *);
+#if 0
 			if (!str)
 			{
 				printf("%s", "(nil)");
 				break;
 			}
+#endif
 			printf("%s", str);
 			break;
 		case 'c':
 			printf("%c", va_arg(ap, int));
 			break;
+#if 0
 		default:
 			break;
+#endif
 	}
 }
 /**
