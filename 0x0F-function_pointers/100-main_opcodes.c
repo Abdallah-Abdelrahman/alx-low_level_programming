@@ -9,7 +9,7 @@
  */
 int main(int ac, char **av)
 {
-	int num = atoi(av[1]);
+	int num;
 	int i;
 	int (*func)(int, char **) = main;
 
@@ -29,6 +29,7 @@ int main(int ac, char **av)
 			printf("Error\n");
 			exit(2);
 		}
+	num = atoi(av[1]);
 	for (i = 0; i < num; i++)
 	{
 		if (i)
