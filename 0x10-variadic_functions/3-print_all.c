@@ -1,10 +1,9 @@
 #include "variadic_functions.h"
-#include <stdarg.h>
 
 /**
  * print_all - prints anything(literally).
  * @format: string contains formating characters
- * Description: the function has 3 formaters
+ * Description: the function has 4 formaters
  * i => integer
  * f => float
  * c => character
