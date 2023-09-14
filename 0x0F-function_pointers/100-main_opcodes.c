@@ -10,6 +10,7 @@
 int main(int ac, char **av)
 {
 	int num = atoi(av[1]);
+	int i;
 	int (*func)(int, char **) = main;
 
 	if (ac != 2)
@@ -22,5 +23,13 @@ int main(int ac, char **av)
 		printf("Error\n");
 		exit(2);
 	}
+	for (i = 0; i < num; i++)
+	{
+		if (i)
+			printf(" ");
+		printf("%02x", ((unsigned char *)func)[i]);
+	}
+	printf("\n");
+
 	return (0);
 }
