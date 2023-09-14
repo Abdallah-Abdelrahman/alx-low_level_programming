@@ -14,7 +14,6 @@
 void print_all(const char * const format, ...)
 {
 	int i = 0;
-	char *str;
 	va_list ap;
 
 	va_start(ap, format);
@@ -22,29 +21,7 @@ void print_all(const char * const format, ...)
 	while (format[i])
 	{
 		delimitate(i, format[i]);
-		switch (format[i])
-		{
-			case 'i':
-				printf("%d", va_arg(ap, int));
-				break;
-			case 'f':
-				printf("%f", va_arg(ap, double));
-				break;
-			case 's':
-				str = va_arg(ap, char *);
-				if (!str)
-				{
-					printf("%s", "(nil)");
-					break;
-				}
-				printf("%s", str);
-				break;
-			case 'c':
-				printf("%c", va_arg(ap, int));
-				break;
-			default:
-				break;
-		}
+		print_var(format[i], ap);
 
 		i++;
 	}
@@ -53,6 +30,40 @@ void print_all(const char * const format, ...)
 	va_end(ap);
 }
 
+/**
+ * print_var - print variable accorging to specifier
+ * @c: specifier
+ * @ap: argument pointer
+ */
+void print_var(char c, va_list ap)
+{
+
+	char *str;
+
+	switch (c)
+	{
+		case 'i':
+			printf("%d", va_arg(ap, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(ap, double));
+			break;
+		case 's':
+			str = va_arg(ap, char *);
+			if (!str)
+			{
+				printf("%s", "(nil)");
+				break;
+			}
+			printf("%s", str);
+			break;
+		case 'c':
+			printf("%c", va_arg(ap, int));
+			break;
+		default:
+			break;
+	}
+}
 /**
  * delimitate - delimitate by comma followed by space
  * @idx: index
