@@ -9,6 +9,7 @@
 void print_strings(const char *separator, const unsigned int n, ...)
 {
 	unsigned int i;
+	char *str;
 	va_list ap;
 
 	if (separator)
@@ -18,7 +19,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		{
 			if (i)
 				printf("%s", separator);
-			char *str = va_arg(ap, char *);
+			str = va_arg(ap, char *);
 
 			printf("%s", str ? str : "(nil)");
 		}
