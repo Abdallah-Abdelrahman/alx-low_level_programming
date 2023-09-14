@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		printf("Error\n");
 		exit(1);
 	}
-	if (num < 0)
+	if (num <= 0)
 	{
 		printf("Error\n");
 		exit(2);
@@ -27,7 +27,7 @@ int main(int ac, char **av)
 	{
 		if (i)
 			printf(" ");
-		printf("%02x", ((unsigned char *)func)[i]);
+		printf("%02x", *(((unsigned char *)func) + i));
 	}
 	printf("\n");
 
