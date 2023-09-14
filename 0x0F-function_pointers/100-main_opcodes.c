@@ -10,7 +10,7 @@
 int main(int ac, char **av)
 {
 	int num = atoi(av[1]);
-	unsigned int i;
+	int i;
 	int (*func)(int, char **) = main;
 
 	if (ac != 2)
@@ -18,11 +18,17 @@ int main(int ac, char **av)
 		printf("Error\n");
 		exit(1);
 	}
-	if (num <= 0)
+	if (num < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
+	for (i = 0; av[1][i]; i++)
+		if (av[1][i] < '0' || av[1][i] > '9')
+		{
+			printf("Error\n");
+			exit(2);
+		}
 	for (i = 0; i < num; i++)
 	{
 		if (i)
