@@ -10,7 +10,7 @@
 int main(int ac, char **av)
 {
 	int num = atoi(av[1]);
-	int i;
+	unsigned int i;
 	int (*func)(int, char **) = main;
 
 	if (ac != 2)
