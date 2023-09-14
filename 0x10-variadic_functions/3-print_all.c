@@ -22,8 +22,7 @@ void print_all(const char * const format, ...)
 
 	while (format[i])
 	{
-		if (i && is_format(format[i]))
-			printf(", ");
+		delimitate(i, format[i]);
 		switch (format[i])
 		{
 			case 'i':
@@ -56,15 +55,13 @@ void print_all(const char * const format, ...)
 }
 
 /**
- * is_format - check if character is formatting character
+ * delimitate - delimitate by comma followed by space
+ * @idx: index
  * @c: character
  *
- * Return: 1 on success,
- * 0 on failure
  */
-int is_format(char c)
+void delimitate(int idx, char c)
 {
-	if (c == 'i' || c == 'f' || c == 's' || c == 'c')
-		return (1);
-	return (0);
+	if (idx && (c == 'i' || c == 'f' || c == 's' || c == 'c'))
+		printf(", ");
 }
