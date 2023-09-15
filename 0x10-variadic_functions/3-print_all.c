@@ -18,7 +18,7 @@ void print_all(const char * const format, ...)
 
 	va_start(ap, format);
 
-	while (format[i])
+	while (format && format[i])
 	{
 		delimitate(i, format[i]);
 		print_var(format[i], ap);
@@ -31,7 +31,7 @@ void print_all(const char * const format, ...)
 }
 
 /**
- * print_var - print variable accorging to specifier
+ * print_var - print variable according to specifier
  * @c: specifier
  * @ap: argument pointer
  */
@@ -49,22 +49,16 @@ void print_var(char c, va_list ap)
 			break;
 		case 's':
 			str = va_arg(ap, char *);
-#if 0
 			if (!str)
 			{
 				printf("%s", "(nil)");
 				break;
 			}
-#endif
 			printf("%s", str);
 			break;
 		case 'c':
 			printf("%c", va_arg(ap, int));
 			break;
-#if 0
-		default:
-			break;
-#endif
 	}
 }
 /**
