@@ -13,16 +13,14 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i = 0;
+	int i = 0, flag = 0;
 	va_list ap;
 
 	va_start(ap, format);
 
 	while (format && format[i])
 	{
-		delimitate(i, format[i]);
-		print_var(format[i], ap);
-
+		print_var(format[i], ap, &flag);
 		i++;
 	}
 
@@ -34,21 +32,27 @@ void print_all(const char * const format, ...)
  * print_var - print variable according to specifier
  * @c: specifier
  * @ap: argument pointer
+ * @flag: based on flag delimite printed arguments
  */
-void print_var(char c, va_list ap)
+void print_var(char c, va_list ap, int *flag)
 {
 	char *str;
 
+	if (*flag)
+		printf(", ");
 	switch (c)
 	{
 		case 'i':
 			printf("%d", va_arg(ap, int));
+			*flag = 1;
 			break;
 		case 'f':
 			printf("%f", va_arg(ap, double));
+			*flag = 1;
 			break;
 		case 's':
 			str = va_arg(ap, char *);
+			*flag = 1;
 			if (!str)
 			{
 				printf("%s", "(nil)");
@@ -58,17 +62,9 @@ void print_var(char c, va_list ap)
 			break;
 		case 'c':
 			printf("%c", va_arg(ap, int));
+			*flag = 1;
 			break;
+		default:
+			*flag = 0;
 	}
-}
-/**
- * delimitate - delimitate by comma followed by space
- * @idx: index
- * @c: character
- *
- */
-void delimitate(int idx, char c)
-{
-	if (idx && (c == 'i' || c == 'f' || c == 's' || c == 'c'))
-		printf(", ");
 }
