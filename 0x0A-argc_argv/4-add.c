@@ -44,7 +44,7 @@ int main(int argc, char **argv)
  * @size: length of the array
  *
  * Return: the sum of arguments
- * 
+ *
  */
 int add_recursive(char **ptr, int idx, int size)
 {
