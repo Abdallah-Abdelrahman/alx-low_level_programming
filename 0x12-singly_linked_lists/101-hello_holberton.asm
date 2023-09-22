@@ -1,18 +1,25 @@
-mov si, message;	The message location *you can change this*
-call print;		CALL tells the pc to jump back here when done
+; Declare external function
+        extern	printf		; the C function, to be called
 
-print:
-mov ah, 0Eh		;Set function
+        SECTION .data		; Data section, initialized variables
 
-.run:
-lodsb               ;Get the char
-; cmp al, 0x00        ;I would use this but ya know u dont so use:
-cmp al, 0           ;0 has a HEX code of 0x48 so its not 0x00
-je .done            ;Jump to done if ending code is found
-int 10h             ;Else print
-jmp .run            ; and jump back to .run
+fmt:    db 	"%s", 10, 0	; The printf format, "\n",'0'
+str:	db"Hello, Holberton",0	; C string needs 0
+len:	equ	$-str		; length has value, not an address
 
-.done:
-ret                 ;Return
 
-message           db  'Hello, Holberton', 0 ;IF you use 0x00
+        SECTION .text           ; Code section.
+
+        global main		; the standard gcc entry point
+main:				; the program label for the entry point
+        push    rbp		; set up stack frame
+
+	mov	rdi, fmt	; first argument to printf, format
+	mov	rsi, str	; second argument, string
+	mov	rdx, len        ; third argument, int
+        call    printf		; Call C function
+
+	pop	rbp		; restore stack
+
+	mov	rax,0		; normal, no error, return value
+	ret			; return
