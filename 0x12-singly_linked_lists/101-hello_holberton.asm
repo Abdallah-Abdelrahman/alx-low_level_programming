@@ -16,4 +16,3 @@ jmp .run            ; and jump back to .run
 ret                 ;Return
 
 message           db  'Hello, Holberton', 0 ;IF you use 0x00
-;message          db  'Hello, Holberton', 0x00
