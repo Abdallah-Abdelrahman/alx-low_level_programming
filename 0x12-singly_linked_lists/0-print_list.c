@@ -1,4 +1,5 @@
 #include "lists.h"
+#include <stddef.h>
 
 /**
  * print_list - write your short description
@@ -22,5 +23,23 @@ size_t print_list(const list_t *h)
 		}
 	}
 
+	return (len);
+}
+
+/**
+ * _strlen - get the length of string
+ * @str: string pointer
+ *
+ * Return: the lenght of @str
+ */
+size_t _strlen(char *str)
+{
+	size_t len = 0;
+
+	if (!str)
+		return (len);
+
+	for (; str[len]; len++)
+		;
 	return (len);
 }

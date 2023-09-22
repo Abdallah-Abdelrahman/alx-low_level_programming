@@ -19,24 +19,8 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
-/**
- * _strlen - get the length of string
- * @str: string pointer
- *
- * Return: the lenght of @str
- */
-inline int _strlen(char *str)
-{
-	int len = 0;
 
-	if (!str)
-		return (len);
-
-	for (; str[len]; len++)
-		;
-	return (len);
-}
-
+size_t _strlen(char *str);
 size_t print_list(const list_t *h);
 size_t list_len(const list_t *h);
 list_t *add_node(list_t **head, const char *str);
