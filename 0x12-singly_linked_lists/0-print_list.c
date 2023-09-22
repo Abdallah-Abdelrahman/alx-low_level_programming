@@ -17,8 +17,7 @@ size_t print_list(const list_t *h)
 			printf("%s\n", nil);
 		else
 		{
-			for (i = 0; h->str[i]; i++)
-				;
+			i = _strlen(h->str);
 			printf("[%lu] %s\n", i, h->str);
 		}
 	}
