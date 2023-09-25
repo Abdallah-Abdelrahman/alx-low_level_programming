@@ -14,18 +14,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	if (!*head)
 		return (add_nodeint(head, n));
 
-	if ((*head)->next)
-		return (add_nodeint_end(&(*head)->next, n));
-
-	tail = malloc(sizeof(*tail));
-	if (!tail)
-		return (0);
-
-	tail->n = n;
-	tail->next = 0;
-	(*head)->next = tail;
-
-	return (tail);
+	return (add_nodeint_end(&(*head)->next, n));
 }
 
 /**
