@@ -13,6 +13,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	listint_t *node;
 
+	if (idx > _list_len(*head))
+		return (0);
 	if (!*head)
 	{
 		return (add_nodeint_end(head, n));
@@ -30,4 +32,17 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 
 	return (insert_nodeint_at_index(&(*head)->next, idx - 1, n));
+}
+
+/**
+ * _list_len - calculate the length of list
+ * @head: head pointer
+ *
+ * Return: the length of the list
+ */
+unsigned int _list_len(listint_t *head)
+{
+	if (!head)
+		return (0);
+	return (0 + _list_len(head->next));
 }
