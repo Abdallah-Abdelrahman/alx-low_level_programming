@@ -13,10 +13,8 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	listint_t *node;
 
-#if 0
-	if (idx > _list_len(*head))
+	if (idx > _list_len(*head) && head)
 		return (0);
-#endif
 	if (!*head)
 	{
 		return (add_nodeint_end(head, n));
