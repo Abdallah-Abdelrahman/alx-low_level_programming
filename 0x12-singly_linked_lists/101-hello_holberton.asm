@@ -3,7 +3,7 @@
 
         SECTION .data		; Data section, initialized variables
 
-fmt:    db 	"%s", 10, 0	; The printf format, "\n",'0'
+fmt:    db 	"%s",10,0	; The printf format, '\0', '\n'
 str:	db"Hello, Holberton",0	; C string needs 0
 len:	equ	$-str		; length has value, not an address
 

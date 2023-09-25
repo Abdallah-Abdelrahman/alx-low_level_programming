@@ -1,8 +1,5 @@
 #include "lists.h"
 
-/**
- * before_main - function executes before main
- */
 void before_main(void)
 {
 	char *str = "You're beat! and yet, you must allow,";
