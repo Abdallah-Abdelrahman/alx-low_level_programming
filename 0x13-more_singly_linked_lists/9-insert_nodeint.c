@@ -11,25 +11,37 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *node;
-
+	if (idx > _list_len(*head))
+		return (0);
 	if (!*head)
-	{
 		return (add_nodeint_end(head, n));
-	}
+	return (insert(*head, idx, n));
+}
 
-	node = malloc(sizeof(*node));
-	if (!node || idx > _list_len(*head))
+/**
+ * insert - add a node at given cursor
+ * @head: head pointer
+ * @idx: indext at which to add the new node
+ * @n: integer member in the node
+ *
+ * Return: pointer to the newly inserted node,
+ * `NULL` on failure
+ */
+listint_t *insert(listint_t *head, unsigned int idx, int n)
+{
+	listint_t *node = malloc(sizeof(*node));
+
+	if (!node)
 		return (0);
 	if (idx == 0)
 	{
-		node->next = *head;
-		*head = node;
+		node->next = head;
+		head = node;
 		node->n = n;
 		return (node);
 	}
 
-	return (insert_nodeint_at_index(&(*head)->next, idx - 1, n));
+	return (insert(head->next, idx - 1, n));
 }
 
 /**

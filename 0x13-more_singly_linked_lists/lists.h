@@ -29,5 +29,6 @@ int sum_listint(listint_t *head);
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
 unsigned int _list_len(listint_t *head);
+listint_t *insert(listint_t *head, unsigned int idx, int n);
 
 #endif /* HEADER */
