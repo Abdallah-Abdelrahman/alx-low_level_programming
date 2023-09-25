@@ -9,8 +9,6 @@
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *tail;
-
 	if (!*head)
 		return (add_nodeint(head, n));
 
