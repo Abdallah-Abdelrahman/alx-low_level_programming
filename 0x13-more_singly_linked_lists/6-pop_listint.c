@@ -12,6 +12,7 @@ int pop_listint(listint_t **head)
 {
 	int n = 0;
 	listint_t *tmp = 0;
+	(void)tmp;
 
 	if (!*head)
 		return (n);
