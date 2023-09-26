@@ -11,7 +11,7 @@ listint_t *reverse_listint(listint_t **head)
 	unsigned int len = list_len(*head);
 
 	if (!head)
-		return (*head);
+		return (0);
 	return (reverse(head, len, 0));
 }
 
@@ -35,6 +35,24 @@ listint_t *reverse(listint_t **head, unsigned int len, unsigned int idx)
 	}
 
 	return (reverse(&(*head)->next, len - 1, idx + 1));
+}
+
+/**
+ * get_nodeint_at_index - returns the nth node of a listint_t linked list.
+ * @head: head pointer
+ * @index: index of targeted node started at `0`
+ *
+ * Return: returns the nth node,
+ * `NULL` if it does not exist
+ */
+listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
+{
+	if (!head)
+		return (0);
+	if (index == 0)
+		return (head);
+
+	return (get_nodeint_at_index(head->next, index - 1));
 }
 
 /**
