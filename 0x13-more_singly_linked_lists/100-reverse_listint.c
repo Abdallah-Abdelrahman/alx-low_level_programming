@@ -11,7 +11,7 @@ listint_t *reverse_listint(listint_t **head)
 	unsigned int len = list_len(*head);
 
 	if (!head)
-		return (0);
+		return (*head);
 	return (reverse(head, len, 0));
 }
 
