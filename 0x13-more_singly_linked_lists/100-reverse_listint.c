@@ -8,65 +8,36 @@
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	unsigned int len = list_len(*head);
+	listint_t *new_head;
 
-#if 0
-	if (!head)
-		return (0);
-#endif
-	return (reverse(head, len, 0));
-}
-
-/**
- * reverse - reverse singly linked list
- * @head: address of the head pointer
- * @len: size of the list
- * @idx: current index of the list start at `0`
- *
- * Return: pointer to the 1st node of the reversed list
- */
-listint_t *reverse(listint_t **head, unsigned int len, unsigned int idx)
-{
-	if (len == 1 || len - 1 == idx)
+	if (!*head || !(*head)->next)
 		return (*head);
-	if (idx < len)
-	{
-		(*head)->n ^= get_nodeint_at_index(*head, len - idx - 1)->n;
-		get_nodeint_at_index(*head, len - idx - 1)->n ^= (*head)->n;
-		(*head)->n ^= get_nodeint_at_index(*head, len - idx - 1)->n;
-	}
 
-	return (reverse(&(*head)->next, len - 1, idx + 1));
+	new_head = reverse((*head)->next);
+	(*head)->next->next = *head;
+	(*head)->next = 0;
+	*head = new_head;
+
+	return (new_head);
 }
 
 /**
- * get_nodeint_at_index - returns the nth node of a listint_t linked list.
+ * reverse - reverse list recursively
  * @head: head pointer
- * @index: index of targeted node started at `0`
  *
- * Return: returns the nth node,
- * `NULL` if it does not exist
+ * Return: pointer to the last node
  */
-listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
+listint_t *reverse(listint_t *head)
 {
-	if (!head)
-		return (0);
-	if (index == 0)
+	listint_t *new_head;
+
+	if (!head || !head->next)
 		return (head);
 
-	return (get_nodeint_at_index(head->next, index - 1));
-}
+	new_head = reverse(head->next);
+	head->next->next = head;
+	head->next = 0;
 
-/**
- * list_len - calculate the length of list
- * @head: head pointer
- *
- * Return: the length of the list
- */
-unsigned int list_len(listint_t *head)
-{
-	if (!head)
-		return (0);
-	return (1 + list_len(head->next));
+	return (new_head);
 }
 
