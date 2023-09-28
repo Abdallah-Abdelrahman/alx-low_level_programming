@@ -37,7 +37,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 size_t print_safe(const listint_t *head, listint_t ***addr, int idx);
 int is_circular(listint_t **addr, int len);
 size_t free_listint_safe(listint_t **h);
-int compare(listint_t **addr, int len, int idx);
-
+int is_circular2(listint_t **addr, int len);
 
 #endif /* HEADER */
