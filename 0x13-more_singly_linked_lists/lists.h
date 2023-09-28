@@ -32,5 +32,9 @@ unsigned int list_len(listint_t *head);
 listint_t *insert(listint_t **head, unsigned int idx, int n);
 listint_t *reverse_listint(listint_t **head);
 listint_t *reverse(listint_t *head);
+size_t print_listint_safe(const listint_t *head);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+size_t print_safe(const listint_t *head, listint_t ***addr, int idx);
+int is_circular(listint_t **addr, int len);
 
 #endif /* HEADER */
