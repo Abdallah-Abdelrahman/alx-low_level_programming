@@ -29,7 +29,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		addr[len] = (listint_t *)head;
 		if (is_circular(addr, len + 1))
-			return (len);
+			return (len + 1);
 		printf("[%p] %i\n", (void *)&head->n, head->n);
 	}
 
