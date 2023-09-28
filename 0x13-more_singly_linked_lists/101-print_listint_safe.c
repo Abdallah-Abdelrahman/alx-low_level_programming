@@ -29,7 +29,10 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		addr[len] = (listint_t *)head;
 		if (is_circular(addr, len + 1))
-			return (len + 1);
+		{
+			free(addr);
+			return (len);
+		}
 		printf("[%p] %i\n", (void *)&head->n, head->n);
 	}
 
@@ -38,29 +41,6 @@ size_t print_listint_safe(const listint_t *head)
 	return (len);
 }
 
-/**
- * print_safe - print loop list recursively
- * @head: head pointer
- * @addr: array of pointers to the list
- * @idx: current index
- *
- * Return: the size of the list
- */
-size_t print_safe(const listint_t *head, listint_t ***addr, int idx)
-{
-	if (!head)
-		return (0);
-	*addr = _realloc(*addr, idx, idx + 1);
-	if (!addr)
-		exit(98);
-	printf("idx = %d\n", idx);
-	(*addr)[idx] = (listint_t *)head;
-	if (is_circular(*addr, idx + 1))
-		return (idx);
-
-	printf("[%lu] %i\n", (unsigned long int)head, head->n);
-	return (1 + print_safe(head->next, addr, idx + 1));
-}
 
 /**
  * is_circular - check if a list is circular
