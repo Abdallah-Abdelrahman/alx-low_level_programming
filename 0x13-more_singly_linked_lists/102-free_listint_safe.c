@@ -32,6 +32,8 @@ size_t free_listint_safe(listint_t **h)
 		addr[len] = *h;
 		if (is_circular2(addr, len + 1))
 		{
+			free(*h);
+			*h = 0;
 			free(addr);
 			return (len);
 		}
