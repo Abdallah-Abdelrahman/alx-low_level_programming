@@ -21,17 +21,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
  */
 unsigned int count_set(unsigned int n)
 {
-#if 0
 	if (!n)
 		return (0);
 	return ((n & 1) + count_set(n >> 1));
-#endif
-	unsigned int count = 0;
-
-	while (n)
-	{
-		count += 1;
-		n >>= 1;
-	}
-	return (count);
 }
