@@ -19,7 +19,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
  *
  * Return: count of sets
  */
-unsigned int count_set(unsigned int n)
+unsigned int count_set(unsigned long int n)
 {
 	if (!n)
 		return (0);
