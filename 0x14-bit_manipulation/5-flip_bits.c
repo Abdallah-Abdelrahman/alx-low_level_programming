@@ -10,7 +10,7 @@
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
 	if (n == m)
-		return (equalbit_handler(n));
+		return (count_set(n));
 	n ^= m;
 
 	return (count_set(n));
