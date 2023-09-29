@@ -9,6 +9,8 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
+	if (n == m)
+		return (equalbit_handler(n));
 	n ^= m;
 
 	return (count_set(n));
@@ -25,4 +27,17 @@ unsigned int count_set(unsigned int n)
 	if (!n)
 		return (0);
 	return ((n & 1) + count_set(n >> 1));
+}
+
+/**
+ * equalbit_handler - return the number of bits in a number
+ * @n:number
+ *
+ * Return: the count of bits
+ */
+unsigned int equalbit_handler(unsigned long int n)
+{
+	if (!n)
+		return (0);
+	return (1 + equalbit_handler(n >> 1));
 }
