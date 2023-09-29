@@ -30,7 +30,7 @@ unsigned int count_set(unsigned int n)
 
 	while (n)
 	{
-		count += n & 1;
+		count += 1;
 		n >>= 1;
 	}
 	return (count);
