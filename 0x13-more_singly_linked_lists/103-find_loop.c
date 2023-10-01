@@ -11,10 +11,12 @@ listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *loop;
 	listint_t *next_loop;
+	(void)next_loop;
+	(void)loop;
 
 	if (!head || !head->next)
 		return (0);
-	if (head == head->next)
+	if (head->next == head || head->next->next == head)
 		return (head);
 
 	loop = catch_loop(head->next->next, head->next);
