@@ -9,10 +9,9 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-
 	if (!head || !head->next)
 		return (0);
-	if (head == head->next->next)
+	if (head == head->next)
 		return (head);
 
 	return (catch_loop(head->next->next, head->next));
@@ -32,5 +31,5 @@ listint_t *catch_loop(listint_t *h, listint_t *nnext)
 		return (0);
 	if (h == nnext)
 		return (h);
-	return (catch_loop(h->next, nnext->next->next));
+	return (catch_loop(h->next->next, nnext->next));
 }
