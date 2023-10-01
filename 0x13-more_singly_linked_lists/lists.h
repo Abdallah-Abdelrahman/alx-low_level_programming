@@ -38,5 +38,7 @@ size_t print_safe(const listint_t *head, listint_t ***addr, int idx);
 int is_circular(listint_t **addr, int len);
 size_t free_listint_safe(listint_t **h);
 int is_circular2(listint_t **addr, int len);
+listint_t *find_listint_loop(listint_t *head);
+listint_t *catch_loop(listint_t *h, listint_t *nnext);
 
 #endif /* HEADER */
