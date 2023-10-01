@@ -9,12 +9,21 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
+	listint_t *loop;
+	listint_t *next_loop;
+
 	if (!head || !head->next)
 		return (0);
 	if (head == head->next)
 		return (head);
 
-	return (catch_loop(head->next->next, head->next));
+	loop = catch_loop(head->next->next, head->next);
+	if (!loop)
+		return (0);
+	next_loop = catch_loop(loop->next, loop->next->next);
+	if (next_loop->next->next != loop->next->next)
+		return (catch_loop(loop->next, loop->next->next));
+	return (loop);
 }
 
 /**
