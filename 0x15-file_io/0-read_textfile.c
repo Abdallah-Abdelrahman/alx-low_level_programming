@@ -1,5 +1,4 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
  * read_textfile - reads a text file.
@@ -12,8 +11,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	int fd, bytes;
-	size_t count;
+	int fd, bytes, count;
 	char *buf = 0;
 
 	if (!*filename)
@@ -31,5 +29,5 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	count = write(STDOUT_FILENO, buf, letters);
 	close(fd);
 
-	return (count != letters ? 0 : count);
+	return (count != letters || count < 0 ? 0 : count);
 }
