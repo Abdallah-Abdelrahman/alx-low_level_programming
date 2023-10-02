@@ -16,10 +16,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	if (!*filename)
 		return (0);
-	fd = open(filename, O_RDONLY);
+	fd = open(filename, O_RDONLY | O_CLOEXEC);
 	if (fd < 0)
 		return (0);
-	buf = malloc(sizeof(*buf) * letters);
+	buf = malloc(sizeof(char) * letters);
 	if (!buf)
 		return (0);
 	bytes = read(fd, buf, letters);
@@ -30,7 +30,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 	count = write(STDOUT_FILENO, buf, letters);
 	free(buf);
-	close(fd);
 
 	return (count != (int)letters || count < 0 ? 0 : bytes);
 }
