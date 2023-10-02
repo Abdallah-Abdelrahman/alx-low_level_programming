@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  * main - cp 2 files
@@ -65,11 +64,13 @@ int create_file(const char *filename, char *text_content)
 	if (!filename)
 		return (-1);
 	fd = open(filename, O_RDONLY);
+#if 0
 	if (fd < 0)
 	{
 		mode = 00664;
 		close(fd);
 	}
+#endif
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
 	if (fd < 0)
 		return (-1);
