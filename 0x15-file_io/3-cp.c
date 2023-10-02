@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * main - cp 2 files
@@ -41,11 +42,9 @@ int main(int ac, char **av)
 			exit(1);
 	}
 	flag = create_file(to, buf);
+	free(buf);
 	if (flag < 0)
-	{
-		dprintf(2, "Error: Can't write to %s\n", to);
-		exit(99);
-	}
+		dprintf(2, "Error: Can't write to %s\n", to), exit(99);
 	if (close(fd) < 0)
 		dprintf(2, "Error: Can't close fd %d\n", fd), exit(100);
 	return (0);
