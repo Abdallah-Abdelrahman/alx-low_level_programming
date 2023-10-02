@@ -1,5 +1,4 @@
 #include "main.h"
-#include <unistd.h>
 
 /**
  * append_text_to_file - appends text at the end of a file.
@@ -10,15 +9,14 @@
  */
 int append_text_to_file(const char *filename, char *text_content)
 {
-	int i, fd, count, mode = 00600;
-	(void)mode;
+	int i, fd, count;
 
-	if (!*filename)
+	if (!filename)
 		return (-1);
 	fd = open(filename, O_APPEND | O_WRONLY);
 	if (fd < 0)
 		return (-1);
-	if (!*text_content)
+	if (!text_content)
 	{
 		close(fd);
 		return (1);
