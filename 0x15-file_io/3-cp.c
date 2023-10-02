@@ -36,7 +36,7 @@ int main(int ac, char **av)
 	}
 	if (count < BUFFER)
 	{
-		buf = _realloc(buf, BUFFER, count);
+		buf = _realloc(buf, BUFFER, count + 1);
 		if (!buf)
 			exit(1);
 	}
