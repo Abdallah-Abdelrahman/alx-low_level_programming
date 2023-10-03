@@ -35,13 +35,14 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 {
 	size_t i, min = old_size, max = new_size;
 	char *new_ptr;
+	(void)max;
 
 	if (new_size < old_size)
 	{
 		min = new_size;
 		max = old_size;
 	}
-	new_ptr = malloc(max);
+	new_ptr = malloc(new_size);
 
 	if (!new_ptr)
 		return (0);
