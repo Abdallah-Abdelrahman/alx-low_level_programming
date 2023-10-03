@@ -11,6 +11,8 @@ int main(int ac, char **av)
 {
 	char *from, *to, buf[BUFFER];
 	int fd_f, fd_to, count;
+	(void)count;
+	(void)buf;
 
 	if (ac != 3)
 		dprintf(2, "Usage: cp file_from file_to\n"), exit(97);
@@ -22,19 +24,20 @@ int main(int ac, char **av)
 	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
 	if (fd_to < 0)
 		dprintf(2, "Error: Can't write to %s\n", to), exit(99);
+#if 0
 	while ((count = read(fd_f, buf, BUFFER)) > 0)
-	{
 		if (write(fd_to, buf, count) != count)
 		{
 			dprintf(2, "Error: Can't write to %s\n", to);
 			exit(99);
 		}
-	}
 	if (count < 0)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
+#endif
+	read_write(from, to, fd_f, fd_to);
 	if (close(fd_f) < 0)
 	{
 		dprintf(2, "Error: Can't close fd %i\n", fd_f);
@@ -48,15 +51,31 @@ int main(int ac, char **av)
 	return (0);
 }
 /**
- * print_error - print error
- * @str: error msg
- * @file: pointer string
- * @stat: exit status
+ * read_write - read from file and write to anohter
+ * @from: 1st file
+ * @to: 2nd file
+ * @fd_from: file from dispcriptor
+ * @fd_to: file to dispcriptor
  */
-void print_error(char *str, char *file, int stat)
+void read_write(char *from, char *to, int fd_from, int fd_to)
 {
-	dprintf(2, "%s %s\n", str, file);
-	exit(stat);
+	char buf[BUFFER];
+	int count = read(fd_from, buf, BUFFER);
+
+	if (count > 0)
+	{
+		read_write(from, to, fd_from, fd_to);
+		if (write(fd_to, buf, count) < 0)
+		{
+			dprintf(2, "Error: Can't write to %s\n", to);
+			exit(99);
+		}
+	}
+	if (count < 0)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", from);
+		exit(98);
+	}
 }
 
 /**
