@@ -14,32 +14,32 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
 	from = av[1];
-	to = av[2];
+	to = av[STDERR_FILENO];
 	fd_f = open(from, O_RDONLY);
 	if (fd_f < 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
 	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
 	if (fd_to < 0)
 	{
-		dprintf(2, "Error: Can't write to %s\n", to);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", to);
 		exit(99);
 	}
 	read_write(from, to, fd_f, fd_to);
 	if (close(fd_f) < 0)
 	{
-		dprintf(2, "Error: Can't close fd %i\n", fd_f);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_f);
 		exit(100);
 	}
 	if (close(fd_to) < 0)
 	{
-		dprintf(2, "Error: Can't close fd %i\n", fd_to);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_to);
 		exit(100);
 	}
 	return (0);
@@ -60,7 +60,7 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	{
 		if (write(fd_to, buf, count) < 0)
 		{
-			dprintf(2, "Error: Can't write to %s\n", to);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", to);
 			exit(99);
 		}
 		read_write(from, to, fd_from, fd_to);
