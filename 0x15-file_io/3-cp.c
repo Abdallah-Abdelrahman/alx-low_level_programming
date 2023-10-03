@@ -1,5 +1,5 @@
 #include "main.h"
-#include <unistd.h>
+#include <stdlib.h>
 
 /**
  * main - cp one file to another
@@ -34,14 +34,10 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	read_write(from, to, fd_f, fd_to);
-	close_f = close(fd_f);
-	close_to = close(fd_to);
-	if (close_f < 0 || close_to < 0)
-	{
-		dprintf(2, "Error: Can't close fd %d\n",
-				close_f < 0 ? fd_f : fd_to);
+	close_fd(fd_f);
+	close_fd(fd_to);
+	if (fd_f < 0 || fd_to < 0)
 		exit(100);
-	}
 	return (0);
 }
 /**
@@ -61,21 +57,31 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 		if (write(fd_to, buf, count) < 0)
 		{
 			dprintf(2, "Error: Can't write to %s\n", to);
-			close(fd_from);
-			close(fd_to);
+			close_fd(fd_from);
+			close_fd(fd_to);
 			exit(99);
 		}
 		read_write(from, to, fd_from, fd_to);
 	}
 	if (count < 0)
 	{
-		close(fd_from);
-		close(fd_to);
+		close_fd(fd_from);
+		close_fd(fd_to);
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
 }
+/**
+ * close_fd - close file descriptor
+ * @fd: file descriptor
+ */
+void close_fd(int fd)
+{
+	int close_fd = close(fd);
 
+	if (close_fd < 0)
+		dprintf(2, "Error: Can't close fd %d\n", fd);
+}
 /**
  * _realloc - reallocates a memory block using malloc and free
  * @ptr: pointer to the memory previously allocated with a call to malloc
