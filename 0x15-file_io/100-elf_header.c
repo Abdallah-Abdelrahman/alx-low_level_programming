@@ -127,21 +127,21 @@ char *get_osabi(Elf64_Ehdr elf)
 	switch (elf.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE || ELFOSABI_SYSV:
-			return ("UNIX System V");
+			return ("UNIX - System V");
 		case ELFOSABI_HPUX:
 			return ("HP-UX ABI");
 		case ELFOSABI_NETBSD:
-			return ("NetBSD ABI");
+			return ("UNIX - NetBSD");
 		case ELFOSABI_LINUX:
-			return ("Linux ABI");
+			return ("UNIX - System V");
 		case ELFOSABI_SOLARIS:
-			return ("Solaris ABI");
+			return ("UNIX - Solaris");
 		case ELFOSABI_FREEBSD:
-			return ("FreeBSD ABI");
+			return ("UNIX - FreeBSD");
 		case ELFOSABI_TRU64:
-			return ("TRU64 UNIX ABI");
+			return ("UNIX - TRU64");
 		case ELFOSABI_ARM:
-			return ("ARM architecture ABI");
+			return ("UNIX - ARM architecture");
 		case ELFOSABI_STANDALONE:
 			return ("Stand-alone (embedded)");
 		default:
