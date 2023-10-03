@@ -65,7 +65,7 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	if (count > 0)
 	{
 		read_write(from, to, fd_from, fd_to);
-		if (write(fd_to, buf, count) < 0)
+		if (write(fd_to, buf, count) != count)
 		{
 			dprintf(2, "Error: Can't write to %s\n", to);
 			exit(99);
