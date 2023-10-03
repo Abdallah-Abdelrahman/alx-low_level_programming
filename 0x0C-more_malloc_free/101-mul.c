@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * mul - multiplies two positive numbers.
@@ -9,9 +10,9 @@
  */
 int main(int ac, char **av)
 {
-	int i = 0, ac1 = 0, ac2 = 0, zero = 48, old_s = 0, new_s = 1,
-	idx, j, k, product, carry;
-	char *ptr = NULL, *acc = NULL;
+	int i = 0, ac1 = 0, ac2 = 0, zero = 48, old_s = 1, new_s = 2,
+	idx, j, product, carry;
+	char *ptr = 0, *acc = 0;
 
 	if (ac != 3)
 	{
@@ -19,7 +20,6 @@ int main(int ac, char **av)
 		exit(98);
 	}
 
-	/* TODO: check for any non-digit character */
 	for (; av[1][ac1] || av[2][ac2]; )
 	{
 		if (av[1][ac1])
@@ -47,7 +47,7 @@ int main(int ac, char **av)
 	{
 		if (i > 0)
 		{
-			ptr = malloc(sizeof(char) * i);
+			ptr = malloc(i);
 			if (!ptr)
 				return (1);
 			for (idx = 0; idx < i; idx++)
@@ -57,10 +57,9 @@ int main(int ac, char **av)
 		}
 
 		for (j = ac2 - 1; av[2][j]; idx++, j--)
-
 		{
 			product = ((av[1][ac1 - 1] - zero) *
-				(av[2][j] - zero)) + carry;
+					(av[2][j] - zero)) + carry;
 			ptr = _realloc(ptr, old_s++, new_s++);
 			if (!ptr)
 				return (1);
@@ -77,33 +76,77 @@ int main(int ac, char **av)
 			ptr[idx] = carry + zero;
 			ptr[idx + 1] = 0;
 		}
-
-
+		rev_string(ptr, carry ? idx + 1 : idx);
 		if (i > 0)
-		{
-
-			rev_string(ptr, carry ? idx + 1 : idx);
-			k = infinite_add(acc, ptr, k, carry ? idx + 1 : idx);
-			/*rev_string(acc, k);*/
-		}
+			acc = infinite_add(acc, ptr);
 		else
-		{
-			acc = malloc(carry ? new_s : old_s);
-			for (k = 0; ptr[k]; k++)
-				acc[k] = ptr[k];
-			acc[k] = 0;
-			rev_string(acc, k);
-
-		}
-		old_s = 0, new_s = 1, ptr = NULL;
+			acc = ptr;
+		old_s = 1, new_s = 2, ptr = NULL;
 	}
+
 	printf("%s\n", acc);
-
-
-	/* clean-up ur shit */
-	free(acc);
+	if (acc)
+		free(acc);
 
 	return (0);
+}
+
+/**
+ * infinite_add - adds 2 numbers
+ * @acc: number to accumulate
+ * @num: number to add to @acc
+ * @acc_s: @acc size
+ * @num_s: @num size
+ *
+ * Return: pointer to the result
+ */
+char *infinite_add(char *acc, char *num)
+{
+	int carry = 0, idx = 0, sum = 0, zero = 48,
+	acc_len = 0, num_len = 0, largest;
+	char *new_acc = 0, *tmp = 0;
+
+	for (; acc[acc_len] || num[num_len];)
+	{
+		if (acc[acc_len])
+			acc_len++;
+		if (num[num_len])
+			num_len++;
+	}
+	largest = acc_len > num_len ? acc_len : num_len;
+
+	new_acc = malloc(largest + 1);
+
+	for (; idx < largest; acc_len--, num_len--, idx++)
+	{
+		char acc_digit = acc_len - 1 >= 0 ? acc[acc_len - 1] : zero;
+		char num_digit = num_len - 1 >= 0 ? num[num_len - 1] : zero;
+
+		if (acc_len - 1 < 0 && num_len - 1 < 0)
+			break;
+		sum = (acc_digit - zero) + (num_digit - zero) + carry;
+		new_acc[idx] = (sum % 10) + zero;
+		carry = sum / 10;
+	}
+	new_acc[idx] = 0;
+	if (carry)
+	{
+		acc[idx] = carry + zero;
+		acc[idx + 1] = 0;
+		tmp = _realloc(acc, largest + 1, largest + 2);
+		if (!tmp)
+		{
+			free(new_acc);
+			return (0);
+		}
+		tmp[idx + 1] = 0;
+		new_acc = tmp;
+	}
+
+	rev_string(new_acc, carry ? idx + 1 : idx);
+	free(acc);
+	free(num);
+	return (new_acc);
 }
 
 /**
@@ -140,15 +183,14 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
  */
 void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i, min = old_size, max = new_size;
+	unsigned int i, min = old_size;
 	char *new_ptr;
 
 	if (new_size < old_size)
 	{
 		min = new_size;
-		max = old_size;
 	}
-	new_ptr = malloc(max);
+	new_ptr = malloc(new_size);
 
 	if (!new_ptr)
 		return (0);
@@ -161,51 +203,6 @@ void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
 	return (new_ptr);
 }
 
-/**
- * infinite_add - adds 2 numbers
- * @acc: number to accumulate
- * @num: number to add to @acc
- * @acc_s: @acc size
- * @num_s: @num size
- *
- * Return: pointer to the result
- */
-int infinite_add(char *acc, char *num, int acc_s, int num_s)
-{
-	int carry = 0, idx = 0, sum = 0, zero = 48, largest = acc_s;
-
-
-	if (num_s > acc_s)
-	{
-		largest = num_s;
-		/*acc = _realloc(acc, acc_s, largest + 1); why it works w/out allocation ??? -_0 */
-	}
-
-	for (; idx < largest; acc_s--, num_s--, idx++)
-	{
-		char acc_digit = acc_s - 1 >= 0 ? acc[acc_s - 1] : zero;
-		char num_digit = num_s - 1 >= 0 ? num[num_s - 1] : zero;
-
-		if (acc_s - 1 < 0 && num_s - 1 < 0)
-			break;
-		sum = (acc_digit - zero) + (num_digit - zero) + carry;
-		acc[largest - (idx + 1)] = (sum % 10) + zero;
-		carry = sum / 10;
-	}
-	acc[idx] = 0;
-	if (carry)
-	{
-		rev_string(acc, idx);
-		/*acc = _realloc(acc, largest + 1, largest + 2);*/
-		acc[idx] = carry + zero;
-		acc[idx + 1] = 0;
-		rev_string(acc, idx + 1);
-
-	}
-
-
-	return (carry ? idx + 1 : idx);
-}
 
 /**
  * rev_string - reverse a string
