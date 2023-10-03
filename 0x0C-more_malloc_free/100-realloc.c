@@ -11,9 +11,6 @@
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	size_t i, min = old_size, max = new_size;
-	char *new_ptr;
-
 	if (new_size == 0 && ptr)
 	{
 		free(ptr);
@@ -23,19 +20,36 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (ptr);
 	if (!ptr)
 		return (malloc(new_size * sizeof(ptr)));
+
+	return (adjust_book(ptr, old_size, new_size));
+}
+/**
+ * adjust_book - adjust the book-keeping
+ * @ptr: pointer to the memory previously allocated with a call to malloc
+ * @old_size: size in bytes of the allocated space for `ptr`
+ * @new_size: new size, in bytes of the new memory block
+ *
+ * Return: pointer
+ */
+void *adjust_book(char *ptr, unsigned int old_size, unsigned int new_size)
+{
+	size_t i, min = old_size, max = new_size;
+	char *new_ptr;
+
 	if (new_size < old_size)
 	{
 		min = new_size;
 		max = old_size;
 	}
-	new_ptr = malloc(max * sizeof(ptr));
+	new_ptr = malloc(max);
+
 	if (!new_ptr)
 		return (0);
+
 	for (i = 0; i < min; i++)
-		new_ptr[i] = ((char *)ptr)[i];
+		new_ptr[i] = ptr[i];
 
 	free(ptr);
 
 	return (new_ptr);
 }
-
