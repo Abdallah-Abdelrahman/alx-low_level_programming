@@ -1,4 +1,5 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
  * main - cp one file to another
@@ -33,10 +34,17 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	read_write(from, to, fd_f, fd_to);
-	close_fd(fd_f);
-	close_fd(fd_to);
-	if (fd_f < 0 || fd_to < 0)
+	if (close(fd_f) < 0)
+	{
+		dprintf(2, "Error: Can't close fd %i\n", fd_f);
 		exit(100);
+	}
+	if (close(fd_to) < 0)
+	{
+		close(fd_f);
+		dprintf(2, "Error: Can't close fd %i\n", fd_to);
+		exit(100);
+	}
 	return (0);
 }
 /**
