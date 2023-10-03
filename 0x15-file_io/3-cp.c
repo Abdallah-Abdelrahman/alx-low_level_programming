@@ -48,6 +48,17 @@ int main(int ac, char **av)
 		dprintf(2, "Error: Can't close fd %d\n", fd), exit(100);
 	return (0);
 }
+/**
+ * print_error - print error
+ * @str: error msg
+ * @file: pointer string
+ * @stat: exit status
+ */
+void print_error(char *str, char *file, int stat)
+{
+	dprintf(2, "%s %s\n", str, file);
+	exit(stat);
+}
 
 /**
  * create_file - creates a file.
@@ -59,12 +70,12 @@ int main(int ac, char **av)
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, count, i, mode = 0;
+	int fd, count, i, mode = 00664;
 
 	if (!filename)
 		return (-1);
-	fd = open(filename, O_RDONLY);
 #if 0
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
 		mode = 00664;
