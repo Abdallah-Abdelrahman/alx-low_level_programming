@@ -29,6 +29,7 @@ int main(int ac, char **av)
 	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
 	if (fd_to < 0)
 	{
+		close(fd_f);
 		dprintf(2, "Error: Can't write to %s\n", to);
 		exit(99);
 	}
@@ -68,6 +69,8 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	}
 	if (count < 0)
 	{
+		close(fd_from);
+		close(fd_to);
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
