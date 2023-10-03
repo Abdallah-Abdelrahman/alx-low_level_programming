@@ -65,8 +65,6 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 		{
 			dprintf(2,
 					"error: can't write to %s\n", to);
-			close_fd(fd_from);
-			close_fd(fd_to);
 			exit(99);
 		}
 		read_write(from, to, fd_from, fd_to);
@@ -75,8 +73,6 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	{
 		dprintf(2,
 				"error: can't read from file %s\n", from);
-		close_fd(fd_from);
-		close_fd(fd_to);
 		exit(98);
 	}
 }
