@@ -11,5 +11,5 @@ int append_text_to_file(const char *filename, char *text_content);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void print_error(char *str, char *file, int stat);
 void read_write(char *from, char *to, int fd_from, int fd_to);
-void close_fd(int fd);
+int close_fd(int fd);
 #endif /* HEADER */

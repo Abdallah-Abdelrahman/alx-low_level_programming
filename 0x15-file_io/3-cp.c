@@ -32,16 +32,8 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	read_write(from, to, fd_f, fd_to);
-	if (close(fd_f) < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_f);
+	if (!close_fd(fd_f) || !close_fd(fd_to))
 		exit(100);
-	}
-	if (close(fd_to) < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_to);
-		exit(100);
-	}
 	return (0);
 }
 /**
@@ -67,58 +59,30 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	}
 	if (count < 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", from);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", from);
+		close(fd_from);
+		close(fd_to);
+
 		exit(98);
 	}
 }
 /**
  * close_fd - close file descriptor
  * @fd: file descriptor
+ *
+ * Return: 1 if close is success,
+ * 0 otherwise.
  */
-void close_fd(int fd)
+int close_fd(int fd)
 {
+	int flag = 1;
 	int close_fd = close(fd);
 
 	if (close_fd < 0)
-		dprintf(2, "Error: Can't close fd %d\n", fd);
-}
-/**
- * _realloc - reallocates a memory block using malloc and free
- * @ptr: pointer to the memory previously allocated with a call to malloc
- * @old_size: size in bytes of the allocated space for `ptr`
- * @new_size: new size, in bytes of the new memory block
- *
- * Return: pointer to the newly allocated memory,
- * or `NULL`
- */
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
-{
-	size_t i, min = old_size;
-	char *new_ptr;
-
-	if (new_size == 0 && ptr)
 	{
-		free(ptr);
-		return (0);
+		flag = 0;
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	}
-	if (new_size == old_size)
-		return (ptr);
-	if (!ptr)
-		return (malloc(sizeof(ptr) * new_size));
-	if (new_size < old_size)
-	{
-		min = new_size;
-	}
-	new_ptr = malloc(sizeof(ptr) * new_size);
-
-	if (!new_ptr)
-		return (0);
-
-	for (i = 0; i < min; i++)
-		new_ptr[i] = ((char *)ptr)[i];
-
-	free(ptr);
-
-	return (new_ptr);
+	return (flag);
 }
 
