@@ -54,8 +54,8 @@ int main(int ac, char **av)
  * read_write - read from file and write to anohter
  * @from: 1st file
  * @to: 2nd file
- * @fd_from: file from dispcriptor
- * @fd_to: file to dispcriptor
+ * @fd_from: file from discriptor
+ * @fd_to: file to discriptor
  */
 void read_write(char *from, char *to, int fd_from, int fd_to)
 {
@@ -64,12 +64,12 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 
 	if (count > 0)
 	{
-		read_write(from, to, fd_from, fd_to);
-		if (write(fd_to, buf, count) != count)
+		if (write(fd_to, buf, count) < 0)
 		{
 			dprintf(2, "Error: Can't write to %s\n", to);
 			exit(99);
 		}
+		read_write(from, to, fd_from, fd_to);
 	}
 	if (count < 0)
 	{
@@ -92,14 +92,6 @@ int create_file(const char *filename, char *text_content)
 
 	if (!filename)
 		return (-1);
-#if 0
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		mode = 00664;
-		close(fd);
-	}
-#endif
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
 	if (fd < 0)
 		return (-1);
