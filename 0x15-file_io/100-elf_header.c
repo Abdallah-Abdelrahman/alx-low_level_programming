@@ -9,8 +9,10 @@
  */
 int main(int ac, char **av)
 {
-	int fd, bytes;
+	int fd, bytes, offset;
 	char *elf, buf[BUFFER], *magic = "\x7F\x45\x4c\x46";
+	Elf64_Ehdr elf_header;
+
 
 	if (ac != 2)
 	{
@@ -20,31 +22,132 @@ int main(int ac, char **av)
 	elf = av[1];
 	fd = open(elf, O_RDONLY);
 	if (fd < 0)
-	{
-		dprintf(STDERR_FILENO, "Error: faied to read %s\n", elf);
-		exit(98);
-	}
+		error_handler(fd, 0);
 	bytes = read(fd, buf, 4);
 	if (bytes < 0)
-	{
-		close(fd);
-		dprintf(STDERR_FILENO, "Error: faied to read %s\n", elf);
-		exit(98);
-	}
+		error_handler(fd, 1);
 	buf[bytes] = 0;
 	if (_strcmp(magic, buf) != 0)
 	{
 		close(fd);
 		dprintf(STDERR_FILENO,
-		"Error: Not an ELF file - it has the wrong magic %s\n", elf);
+				"Error: Not an ELF file - it has the wrong magic %s\n", elf);
 		exit(98);
 	}
+	offset = lseek(fd, 0, SEEK_SET);
+	if (offset < 0)
+		error_handler(fd, 1);
+	bytes = read(fd, &elf_header, sizeof(elf_header));
+	if (bytes < 0)
+		error_handler(fd, 1);
+	print_Ehdr(elf_header);
 	close(fd);
-	printf("It's an ELF\n");
 
 	return (0);
 }
+/**
+ * error_handler - handle errors
+ * @fd: file descriptor
+ * @flag: if == 1 close the file,
+ * 0 don't close
+ */
+void error_handler(int fd, int flag)
+{
+	close(fd);
+	dprintf(STDERR_FILENO, "Error: faied to read elf\n");
+	if (flag)
+		exit(98);
+}
 
+/**
+ * print_Ehdr - print ELF header
+ * @elf_header: the elf header
+ */
+void print_Ehdr(Elf64_Ehdr elf_header)
+{
+	int i;
+
+	printf("ELF Header:\n");
+	printf("  Magic:   ");
+	for (i = 0; i < EI_NIDENT; i++)
+	{
+		if (i)
+			printf(" ");
+		printf("%02x", elf_header.e_ident[i]);
+	}
+	printf("\n");
+	printf("  Class:                             %s\n",
+	elf_header.e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
+	printf("  Data:                              %s\n",
+	elf_header.e_ident[EI_DATA] == ELFDATA2LSB ?
+	"2's complement, little endian" : "Unknown data format");
+	printf("  Version:                           %d (current)\n",
+	(int)elf_header.e_ident[EI_VERSION]);
+	printf("  OS/ABI:                            %s\n",
+	get_osabi(elf_header));
+	printf("  ABI Version:                       %d\n",
+	(int)elf_header.e_ident[EI_ABIVERSION]);
+	printf("  Type:                              %s\n",
+	get_type(elf_header));
+	printf("  Entry point address:               0x%x\n",
+	(unsigned int)elf_header.e_entry);
+}
+
+/**
+ * get_type - get the elf type
+ * @elf: elf header
+ *
+ * Return: string corresponding to the type
+ */
+char *get_type(Elf64_Ehdr elf)
+{
+	switch (elf.e_type)
+	{
+		case ET_REL:
+			return ("REL (Relocatable file)");
+		case ET_EXEC:
+			return ("EXEC (Executable file)");
+		case ET_DYN:
+			return ("DYN (Shared object file)");
+		case ET_CORE:
+			return ("CORE (Core file)");
+		default:
+			return ("An unknown type");
+	}
+}
+
+/**
+ * get_osabi - get the elf OS/ABI
+ * @elf: elf header
+ *
+ * Return: string corresponding to the OS/ABI
+ */
+char *get_osabi(Elf64_Ehdr elf)
+{
+	switch (elf.e_ident[EI_OSABI])
+	{
+		case ELFOSABI_NONE || ELFOSABI_SYSV:
+			return ("UNIX System V");
+		case ELFOSABI_HPUX:
+			return ("HP-UX ABI");
+		case ELFOSABI_NETBSD:
+			return ("NetBSD ABI");
+		case ELFOSABI_LINUX:
+			return ("Linux ABI");
+		case ELFOSABI_SOLARIS:
+			return ("Solaris ABI");
+		case ELFOSABI_FREEBSD:
+			return ("FreeBSD ABI");
+		case ELFOSABI_TRU64:
+			return ("TRU64 UNIX ABI");
+		case ELFOSABI_ARM:
+			return ("ARM architecture ABI");
+		case ELFOSABI_STANDALONE:
+			return ("Stand-alone (embedded)");
+		default:
+			return ("<unknown: 53>");
+	}
+}
 /**
  * _strcmp - compares 2 strings
  * @s1: 1st string
