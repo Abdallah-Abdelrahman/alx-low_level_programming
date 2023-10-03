@@ -22,12 +22,14 @@ int main(int ac, char **av)
 	fd_f = open(from, O_RDONLY);
 	if (fd_f < 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", from);
+		dprintf(2,
+				"Error: Can't read from file %s\n", from);
 		exit(98);
 	}
 	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
 	if (fd_to < 0)
 	{
+		close(fd_f);
 		dprintf(2, "Error: Can't write to %s\n", to);
 		exit(99);
 	}
@@ -60,14 +62,16 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	{
 		if (write(fd_to, buf, count) < 0)
 		{
-			dprintf(2, "Error: Can't write to %s\n", to);
+			dprintf(2,
+					"error: can't write to %s\n", to);
 			exit(99);
 		}
 		read_write(from, to, fd_from, fd_to);
 	}
 	if (count < 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", from);
+		dprintf(2,
+				"error: can't read from file %s\n", from);
 		exit(98);
 	}
 }
