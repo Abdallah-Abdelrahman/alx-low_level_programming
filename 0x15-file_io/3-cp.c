@@ -1,7 +1,8 @@
 #include "main.h"
+#include <unistd.h>
 
 /**
- * main - cp 2 files
+ * main - cp one file to another
  * @ac: arguments count
  * @av: array of pointers to string
  *
@@ -32,16 +33,18 @@ int main(int ac, char **av)
 		exit(99);
 	}
 	read_write(from, to, fd_f, fd_to);
+#if 0
 	if (close(fd_f) < 0)
 	{
-		dprintf(2, "Error: Can't close fd %i\n", fd_f);
+		dprintf(2, "Error: Can't close fd %d\n", fd_f);
 		exit(100);
 	}
 	if (close(fd_to) < 0)
 	{
-		dprintf(2, "Error: Can't close fd %i\n", fd_to);
+		dprintf(2, "Error: Can't close fd %d\n", fd_to);
 		exit(100);
 	}
+#endif
 	return (0);
 }
 /**
@@ -69,6 +72,18 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
+	}
+	else
+	{
+		int close_from = close(fd_from);
+		int close_to = close(fd_to);
+
+		if (close_from < 0 || close_to < 0)
+		{
+			dprintf(2, "Error: Can't close fd %d\n",
+					close_from < 0 ? fd_from : fd_from);
+			exit(100);
+		}
 	}
 }
 
