@@ -10,16 +10,10 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fd, count, i, mode = 0;
+	int fd, count, i, mode = 00600;
 
 	if (!filename)
 		return (-1);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		mode = 00600;
-		close(fd);
-	}
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
 	if (fd < 0)
 		return (-1);

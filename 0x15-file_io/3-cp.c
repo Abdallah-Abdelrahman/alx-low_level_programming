@@ -9,34 +9,28 @@
  */
 int main(int ac, char **av)
 {
-	char *from, *to, buf[BUFFER];
-	int fd_f, fd_to, count;
-	(void)count;
-	(void)buf;
+	char *from, *to;
+	int fd_f, fd_to;
 
 	if (ac != 3)
-		dprintf(2, "Usage: cp file_from file_to\n"), exit(97);
+	{
+		dprintf(2, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 	from = av[1];
 	to = av[2];
 	fd_f = open(from, O_RDONLY);
 	if (fd_f < 0)
-		dprintf(2, "Error: Can't read from file %s\n", from), exit(98);
-	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
-	if (fd_to < 0)
-		dprintf(2, "Error: Can't write to %s\n", to), exit(99);
-#if 0
-	while ((count = read(fd_f, buf, BUFFER)) > 0)
-		if (write(fd_to, buf, count) != count)
-		{
-			dprintf(2, "Error: Can't write to %s\n", to);
-			exit(99);
-		}
-	if (count < 0)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
-#endif
+	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
+	if (fd_to < 0)
+	{
+		dprintf(2, "Error: Can't write to %s\n", to);
+		exit(99);
+	}
 	read_write(from, to, fd_f, fd_to);
 	if (close(fd_f) < 0)
 	{
@@ -76,35 +70,6 @@ void read_write(char *from, char *to, int fd_from, int fd_to)
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
-}
-
-/**
- * create_file - creates a file.
- * @filename: string pointer to file
- * @text_content: string to write to file
- *
- * Return: 1 on success,
- * -1 on failure
- */
-int create_file(const char *filename, char *text_content)
-{
-	int fd, count, i, mode = 00664;
-
-	if (!filename)
-		return (-1);
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, mode);
-	if (fd < 0)
-		return (-1);
-	for (i = 0; text_content && text_content[i]; i++)
-		;
-	count = write(fd, text_content, i);
-	if (close(fd) < 0)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-
-	return (count < 0 ? -1 : 1);
 }
 
 /**
