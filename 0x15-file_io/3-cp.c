@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  * main - cp one file to another
@@ -11,7 +10,7 @@
 int main(int ac, char **av)
 {
 	char *from, *to;
-	int fd_f, fd_to, close_to, close_f;
+	int fd_f, fd_to;
 
 	if (ac != 3)
 	{
