@@ -9,43 +9,42 @@
  */
 int main(int ac, char **av)
 {
-	char *from, *to, *buf;
-	int fd, count, flag;
+	char *from, *to, buf[BUFFER];
+	int fd_f, fd_to, count;
 
 	if (ac != 3)
-	{
-		dprintf(2, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+		dprintf(2, "Usage: cp file_from file_to\n"), exit(97);
 	from = av[1];
 	to = av[2];
-	fd = open(from, O_RDONLY);
-	if (fd < 0)
+	fd_f = open(from, O_RDONLY);
+	if (fd_f < 0)
+		dprintf(2, "Error: Can't read from file %s\n", from), exit(98);
+	fd_to = open(to, O_WRONLY | O_CREAT | O_TRUNC, 00664);
+	if (fd_to < 0)
+		dprintf(2, "Error: Can't write to %s\n", to), exit(99);
+	while ((count = read(fd_f, buf, BUFFER)) > 0)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", from);
-		exit(98);
+		if (write(fd_to, buf, count) != count)
+		{
+			dprintf(2, "Error: Can't write to %s\n", to);
+			exit(99);
+		}
 	}
-	buf = malloc(BUFFER);
-	if (!buf)
-		exit(1);
-	count = read(fd, buf, BUFFER);
 	if (count < 0)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", from);
 		exit(98);
 	}
-	if (count < BUFFER)
+	if (close(fd_f) < 0)
 	{
-		buf = _realloc(buf, BUFFER, count + 1);
-		if (!buf)
-			exit(1);
+		dprintf(2, "Error: Can't close fd %i\n", fd_f);
+		exit(100);
 	}
-	flag = create_file(to, buf);
-	free(buf);
-	if (flag < 0)
-		dprintf(2, "Error: Can't write to %s\n", to), exit(99);
-	if (close(fd) < 0)
-		dprintf(2, "Error: Can't close fd %d\n", fd), exit(100);
+	if (close(fd_to) < 0)
+	{
+		dprintf(2, "Error: Can't close fd %i\n", fd_to);
+		exit(100);
+	}
 	return (0);
 }
 /**
