@@ -18,5 +18,6 @@ char *get_type(Elf64_Ehdr elf);
 char *get_osabi(Elf64_Ehdr elf);
 void error_handler(int fd, int flag);
 char *get_class(Elf64_Ehdr elf);
+char *get_data(Elf64_Ehdr elf);
 
 #endif /* HEADER */

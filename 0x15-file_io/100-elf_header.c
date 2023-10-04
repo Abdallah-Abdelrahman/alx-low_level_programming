@@ -1,5 +1,4 @@
 #include "main.h"
-#include <elf.h>
 
 /**
  * main - displays the information contained in the ELF header.
@@ -80,8 +79,7 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	printf("  Class:                             %s\n",
 	get_class(elf_header));
 	printf("  Data:                              %s\n",
-	elf_header.e_ident[EI_DATA] == ELFDATA2LSB ?
-	"2's complement, little endian" : "Unknown data format");
+	get_data(elf_header));
 	printf("  Version:                           %d (current)\n",
 	(int)elf_header.e_ident[EI_VERSION]);
 	printf("  OS/ABI:                            %s\n",
@@ -92,6 +90,25 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	get_type(elf_header));
 	printf("  Entry point address:               0x%x\n",
 	(unsigned int)elf_header.e_entry);
+}
+
+/**
+ * get_data - get the elf data
+ * @elf: elf header
+ *
+ * Return: string corresponding to the data
+ */
+char *get_data(Elf64_Ehdr elf)
+{
+	switch (elf.e_ident[EI_DATA])
+	{
+		case ELFDATA2LSB:
+			return ("2's complement, little endian");
+		case ELFDATA2MSB:
+			return ("2's complement, little endian");
+		default:
+			return ("<unknown: 53>");
+	}
 }
 
 /**
