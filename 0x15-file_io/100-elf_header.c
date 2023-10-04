@@ -81,7 +81,7 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	get_data(elf_header));
 	printf("  Version:                           %s \n",
 	elf_header.e_ident[EI_VERSION] == EV_CURRENT ?
-	EV_CURRENT > 1 ? "1" : "1 (current)" : "0");
+	EV_CURRENT != 1 ? "1" : "1 (current)" : "1");
 	printf("  OS/ABI:                            %s\n",
 	get_osabi(elf_header));
 	printf("  ABI Version:                       %d\n",
