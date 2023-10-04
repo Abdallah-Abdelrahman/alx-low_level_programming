@@ -66,7 +66,7 @@ void error_handler(int fd, int flag)
 void print_Ehdr(Elf64_Ehdr elf_header)
 {
 	int i;
-	
+
 	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
 	{
@@ -162,7 +162,7 @@ char *get_osabi(Elf64_Ehdr elf)
 {
 	switch (elf.e_ident[EI_OSABI])
 	{
-		case ELFOSABI_SYSV:
+		case ELFOSABI_SYSV || ELFOSABI_NONE:
 			return ("UNIX - System V");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
@@ -171,9 +171,11 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_LINUX:
 			return ("UNIX - GNU");
 		case ELFOSABI_HPUX:
-			return ("HP-UX");
+			return ("UNIX - HP-UX");
+		case ELFOSABI_IRIX:
+			return ("UNIX - IRIX");
 		case ELFOSABI_FREEBSD:
-			return ("FreeBSD");
+			return ("UNIX - FreeBSD");
 		case ELFOSABI_TRU64:
 			return ("UNIX - TRU64");
 		case ELFOSABI_ARM:
@@ -181,7 +183,7 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_STANDALONE:
 			return ("Stand-alone (embedded)");
 		default:
-			return ("");
+			return (0);
 	}
 }
 /**
