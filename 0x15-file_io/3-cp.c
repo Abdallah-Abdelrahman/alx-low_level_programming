@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		exit(97);
 	}
 	from = av[1];
-	to = av[STDERR_FILENO];
+	to = av[2];
 	fd_f = open(from, O_RDONLY);
 	if (fd_f < 0)
 	{
