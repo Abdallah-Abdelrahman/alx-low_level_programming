@@ -31,7 +31,7 @@ int main(int ac, char **av)
 	{
 		close(fd);
 		dprintf(STDERR_FILENO,
-				"Error: Not an ELF file - it has the wrong magic %s\n", elf);
+		"Error: Not an ELF file - it has the wrong magic %s\n", elf);
 		exit(98);
 	}
 	offset = lseek(fd, 0, SEEK_SET);
@@ -79,8 +79,9 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	get_class(elf_header));
 	printf("  Data:                              %s\n",
 	get_data(elf_header));
-	printf("  Version:                           %d (current)\n",
-	elf_header.e_ident[EI_VERSION]);
+	printf("  Version:                           %s \n",
+	elf_header.e_ident[EI_VERSION] == EV_CURRENT ?
+	EV_CURRENT > 1 ? "1" : "1 (current)" : "0");
 	printf("  OS/ABI:                            %s\n",
 	get_osabi(elf_header));
 	printf("  ABI Version:                       %d\n",
