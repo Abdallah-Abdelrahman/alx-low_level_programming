@@ -183,7 +183,7 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_STANDALONE:
 			return ("Stand-alone (embedded)");
 		default:
-			return (0);
+			return ("<unknown: 53>");
 	}
 }
 /**
