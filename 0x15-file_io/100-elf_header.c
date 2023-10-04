@@ -164,13 +164,13 @@ char *get_osabi(Elf64_Ehdr elf)
 	{
 		case ELFOSABI_NONE || ELFOSABI_SYSV:
 			return ("UNIX - System V");
-		case ELFOSABI_LINUX:
-			return ("UNIX - GNU");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
 		case ELFOSABI_NETBSD:
 			return ("UNIX - NetBSD");
 #if 0
+		case ELFOSABI_LINUX:
+			return ("UNIX - GNU");
 		case ELFOSABI_HPUX:
 			return ("UNIX - HP-UX");
 		case ELFOSABI_FREEBSD:
