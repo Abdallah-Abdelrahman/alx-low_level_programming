@@ -1,4 +1,5 @@
 #include "main.h"
+#include <elf.h>
 
 /**
  * main - displays the information contained in the ELF header.
@@ -77,7 +78,7 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	}
 	printf("\n");
 	printf("  Class:                             %s\n",
-	elf_header.e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
+	get_class(elf_header));
 	printf("  Data:                              %s\n",
 	elf_header.e_ident[EI_DATA] == ELFDATA2LSB ?
 	"2's complement, little endian" : "Unknown data format");
@@ -93,6 +94,24 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	(unsigned int)elf_header.e_entry);
 }
 
+/**
+ * get_class - get the elf class
+ * @elf: elf header
+ *
+ * Return: string corresponding to the class
+ */
+char *get_class(Elf64_Ehdr elf)
+{
+	switch (elf.e_ident[EI_CLASS])
+	{
+		case ELFCLASS64:
+			return ("ELF64");
+		case ELFCLASS32:
+			return ("ELF32");
+		default:
+			return ("<unknown: 53>");
+	}
+}
 /**
  * get_type - get the elf type
  * @elf: elf header
@@ -112,7 +131,7 @@ char *get_type(Elf64_Ehdr elf)
 		case ET_CORE:
 			return ("CORE (Core file)");
 		default:
-			return ("An unknown type");
+			return ("<unknown: 53>");
 	}
 }
 
