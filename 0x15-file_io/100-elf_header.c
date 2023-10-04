@@ -165,13 +165,14 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_NONE || ELFOSABI_SYSV:
 			return ("UNIX - System V");
 		case ELFOSABI_HPUX:
-			return ("HP-UX ABI");
+			return ("UNIX - HP-UX");
 		case ELFOSABI_NETBSD:
 			return ("UNIX - NetBSD");
 		case ELFOSABI_LINUX:
 			return ("UNIX - GNU");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
+#if 0
 		case ELFOSABI_FREEBSD:
 			return ("UNIX - FreeBSD");
 		case ELFOSABI_TRU64:
@@ -179,7 +180,8 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_ARM:
 			return ("UNIX - ARM architecture");
 		case ELFOSABI_STANDALONE:
-			return ("Stand-alone (embedded)");
+			return ("UNIX - Stand-alone (embedded)");
+#endif
 		default:
 			return ("<unknown: 53>");
 	}
