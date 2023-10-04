@@ -67,8 +67,7 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 {
 	int i;
 
-	printf("ELF Header:\n");
-	printf("  Magic:   ");
+	printf("ELF Header:\n  Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
 	{
 		if (i)
@@ -88,22 +87,10 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	(int)elf_header.e_ident[EI_ABIVERSION]);
 	printf("  Type:                              %s\n",
 	get_type(elf_header));
-	printf("  Entry point address:               0x%lx\n",
-	(unsigned long int)elf_header.e_entry);
+	printf("  Entry point address:               0x%x\n",
+	(unsigned int)elf_header.e_entry);
 }
 
-/**
- * get_version - get the elf version
- * @elf: elf header
- *
- * Return: string corresponding to the version
- */
-char *get_version(Elf64_Ehdr elf)
-{
-	return (elf.e_ident[EI_VERSION] == EV_CURRENT
-			? "1 (current)"
-			: "0 (invalid)");
-}
 /**
  * get_data - get the elf data
  * @elf: elf header
@@ -182,18 +169,16 @@ char *get_osabi(Elf64_Ehdr elf)
 			return ("UNIX - NetBSD");
 		case ELFOSABI_LINUX:
 			return ("UNIX - GNU");
-#if 0
 		case ELFOSABI_HPUX:
-			return ("UNIX - HP-UX");
+			return ("HP-UX");
 		case ELFOSABI_FREEBSD:
-			return ("UNIX - FreeBSD");
+			return ("FreeBSD");
 		case ELFOSABI_TRU64:
 			return ("UNIX - TRU64");
 		case ELFOSABI_ARM:
-			return ("UNIX - ARM architecture");
+			return ("ARM architecture");
 		case ELFOSABI_STANDALONE:
-			return ("UNIX - Stand-alone (embedded)");
-#endif
+			return ("Stand-alone (embedded)");
 		default:
 			return ("<unknown: 53>");
 	}
