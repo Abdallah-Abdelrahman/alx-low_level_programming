@@ -105,7 +105,7 @@ char *get_data(Elf64_Ehdr elf)
 		case ELFDATA2LSB:
 			return ("2's complement, little endian");
 		case ELFDATA2MSB:
-			return ("2's complement, little endian");
+			return ("2's complement, big endian");
 		default:
 			return ("<unknown: 53>");
 	}
