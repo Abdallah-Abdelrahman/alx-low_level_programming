@@ -80,8 +80,8 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	get_class(elf_header));
 	printf("  Data:                              %s\n",
 	get_data(elf_header));
-	printf("  Version:                           %d (current)\n",
-	(int)elf_header.e_ident[EI_VERSION]);
+	printf("  Version:                           %s \n",
+	get_version(elf_header));
 	printf("  OS/ABI:                            %s\n",
 	get_osabi(elf_header));
 	printf("  ABI Version:                       %d\n",
@@ -92,6 +92,18 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	(unsigned int)elf_header.e_entry);
 }
 
+/**
+ * get_version - get the elf version
+ * @elf: elf header
+ *
+ * Return: string corresponding to the version
+ */
+char *get_version(Elf64_Ehdr elf)
+{
+	return (elf.e_ident[EI_VERSION] == EV_CURRENT
+			? "1 (current)"
+			: "0 (invalid)");
+}
 /**
  * get_data - get the elf data
  * @elf: elf header
@@ -162,15 +174,15 @@ char *get_osabi(Elf64_Ehdr elf)
 {
 	switch (elf.e_ident[EI_OSABI])
 	{
-		case ELFOSABI_SYSV: case ELFOSABI_LINUX:
+		case ELFOSABI_SYSV:
 			return ("UNIX - System V");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
 		case ELFOSABI_NETBSD:
 			return ("UNIX - NetBSD");
-#if 0
 		case ELFOSABI_LINUX:
 			return ("UNIX - GNU");
+#if 0
 		case ELFOSABI_HPUX:
 			return ("UNIX - HP-UX");
 		case ELFOSABI_FREEBSD:
