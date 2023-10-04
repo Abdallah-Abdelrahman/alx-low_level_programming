@@ -168,11 +168,11 @@ char *get_osabi(Elf64_Ehdr elf)
 			return ("UNIX - GNU");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
+		case ELFOSABI_NETBSD:
+			return ("UNIX - NetBSD");
 #if 0
 		case ELFOSABI_HPUX:
 			return ("UNIX - HP-UX");
-		case ELFOSABI_NETBSD:
-			return ("UNIX - NetBSD");
 		case ELFOSABI_FREEBSD:
 			return ("UNIX - FreeBSD");
 		case ELFOSABI_TRU64:
