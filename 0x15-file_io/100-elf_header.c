@@ -162,7 +162,7 @@ char *get_osabi(Elf64_Ehdr elf)
 {
 	switch (elf.e_ident[EI_OSABI])
 	{
-		case ELFOSABI_SYSV:
+		case ELFOSABI_SYSV: case ELFOSABI_LINUX:
 			return ("UNIX - System V");
 		case ELFOSABI_SOLARIS:
 			return ("UNIX - Solaris");
