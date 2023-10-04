@@ -80,8 +80,8 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	get_class(elf_header));
 	printf("  Data:                              %s\n",
 	get_data(elf_header));
-	printf("  Version:                           %s \n",
-	get_version(elf_header));
+	printf("  Version:                           %d (current)\n",
+	elf_header.e_ident[EI_VERSION]);
 	printf("  OS/ABI:                            %s\n",
 	get_osabi(elf_header));
 	printf("  ABI Version:                       %d\n",
