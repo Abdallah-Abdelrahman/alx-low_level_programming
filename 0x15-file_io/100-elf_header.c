@@ -88,8 +88,8 @@ void print_Ehdr(Elf64_Ehdr elf_header)
 	(int)elf_header.e_ident[EI_ABIVERSION]);
 	printf("  Type:                              %s\n",
 	get_type(elf_header));
-	printf("  Entry point address:               0x%x\n",
-	(unsigned int)elf_header.e_entry);
+	printf("  Entry point address:               0x%lx\n",
+	(unsigned long int)elf_header.e_entry);
 }
 
 /**
