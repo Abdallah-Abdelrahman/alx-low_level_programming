@@ -13,7 +13,6 @@ int main(int ac, char **av)
 	char *elf, buf[BUFFER], *magic = "\x7F\x45\x4c\x46";
 	Elf64_Ehdr elf_header;
 
-
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "Error: no file supplied\n");
@@ -53,10 +52,10 @@ int main(int ac, char **av)
  */
 void error_handler(int fd, int flag)
 {
-	close(fd);
 	dprintf(STDERR_FILENO, "Error: faied to read elf\n");
 	if (flag)
-		exit(98);
+		close(fd);
+	exit(98);
 }
 
 /**
@@ -183,7 +182,7 @@ char *get_osabi(Elf64_Ehdr elf)
 		case ELFOSABI_STANDALONE:
 			return ("Stand-alone (embedded)");
 		default:
-			return ("");
+			return ("<unknown: 53>");
 	}
 }
 /**
