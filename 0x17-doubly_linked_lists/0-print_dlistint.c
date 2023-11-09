@@ -10,7 +10,7 @@ size_t print_dlistint(const dlistint_t *h)
 {
 	int len = 0;
 
-	for (; h; h = h->next)
+	for (; h; h = h->next, len++)
 		printf("%d\n", h->n);
 	printf("-> %d elemnents\n", len);
 
