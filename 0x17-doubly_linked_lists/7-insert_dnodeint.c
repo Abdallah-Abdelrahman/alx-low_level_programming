@@ -9,12 +9,26 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
+	dlistint_t *node;
 	unsigned int len = dlistint_len(*h);
-	(void)len;
 
+	if (idx > len)
+		return (0);
+	if (idx == 0)
+	{
+		node = malloc(sizeof(dlistint_t));
+		if (!node)
+			return (0);
+		node->n = n;
+		node->next = *h;
+		node->prev = (*h)->prev;
+		*h = node;
+		return (node);
+	}
 
-	return (insert(h, idx, n));
+	return (insert_dnodeint_at_index(&(*h)->next, idx - 1, n));
 }
+
 
 /**
  * dlistint_len - returns the number of elements in a linked dlistint_t list.
@@ -31,21 +45,3 @@ size_t dlistint_len(const dlistint_t *h)
 	return (len);
 }
 
-/**
- * insert - add a node at given position
- * @head: head pointer
- * @idx: indext at which to add the new node
- * @n: integer member in the node
- *
- * Return: pointer to the newly inserted node,
- * `NULL` on failure
- */
-dlistint_t *insert(dlistint_t **head, unsigned int idx, int n)
-{
-	if (idx == 0)
-	{
-		return (add_dnodeint(head, n));
-	}
-
-	return (insert(&(*head)->next, idx - 1, n));
-}
