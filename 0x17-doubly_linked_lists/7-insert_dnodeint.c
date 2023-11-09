@@ -11,6 +11,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *node;
 	unsigned int len = dlistint_len(*h);
+	(void)len;
 
 	if (idx == 0)
 	{
@@ -26,8 +27,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		*h = node;
 		return (node);
 	}
-	if (idx >= len)
+#if 0
+	if (idx > len)
 		return (0);
+#endif
 
 	return (insert_dnodeint_at_index(&(*h)->next, idx - 1, n));
 }
