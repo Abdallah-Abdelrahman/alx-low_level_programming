@@ -30,3 +30,31 @@ typedef struct dlistint_s
 <summary><b>1-dlistint_t_len</b></summary>
 `c` function that returns the number of elements in a linked `dlistint_t` list.
 </details>
+
+---
+
+<details>
+<summary><b>2-add_dnoedint</b></summary>
+`c` function that adds node at the beginning and return the new node.
+</details>
+
+---
+
+<details>
+<summary><b>3-add_dnoedint_end</b></summary>
+`c` function that adds node at the end and return the new node.
+</details>
+
+---
+
+<details>
+<summary><b>4-free_dlistint</b></summary>
+`c` function that frees a doubly linked list
+</details>
+
+---
+
+<details>
+<summary><b>5-get_dnodeint</b></summary>
+`c` function that retrieves nodt at certain `index`.
+</details>
