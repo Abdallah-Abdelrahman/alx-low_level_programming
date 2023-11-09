@@ -65,3 +65,10 @@ typedef struct dlistint_s
 <summary><b>6-sum_dlistint</b></summary>
 `c` function that returns sum of all nodes in the list.
 </details>
+
+---
+
+<details>
+<summary><b>7-insert_dnodeint_at_index</b></summary>
+`c` function that inserts a new node at a given position.
+</details>
