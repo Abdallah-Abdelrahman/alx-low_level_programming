@@ -44,13 +44,14 @@ size_t dlistint_len(const dlistint_t *h)
  */
 dlistint_t *insert(dlistint_t **head, unsigned int idx, int n)
 {
-	dlistint_t *node = malloc(sizeof(dlistint_t));
+	dlistint_t *node;
 
-	if (!node)
-		return (0);
 
 	if (idx == 0)
 	{
+		node = malloc(sizeof(dlistint_t));
+		if (!node)
+			return (0);
 		node->n = n;
 		node->next = *head;
 		node->prev = (*head)->prev;
