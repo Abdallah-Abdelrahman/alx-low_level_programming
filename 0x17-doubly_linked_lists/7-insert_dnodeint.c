@@ -27,10 +27,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		*h = node;
 		return (node);
 	}
-#if 0
 	if (idx > len)
 		return (0);
-#endif
 
 	return (insert_dnodeint_at_index(&(*h)->next, idx - 1, n));
 }
