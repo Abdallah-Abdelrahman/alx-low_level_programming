@@ -40,7 +40,10 @@ dlistint_t *insert(dlistint_t **head, unsigned int idx, int n)
 		node->n = n;
 		node->next = *head;
 		if (*head)
+		{
 			node->prev = (*head)->prev;
+			(*head)->prev = node;
+		}
 		else
 			node->prev = 0;
 		*head = node;
