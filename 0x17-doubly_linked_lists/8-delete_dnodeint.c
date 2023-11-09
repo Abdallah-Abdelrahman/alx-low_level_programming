@@ -9,7 +9,7 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	int len = dlistint_len(*head);
+	unsigned int len = dlistint_len(*head);
 	dlistint_t *node_at_idx = 0;
 
 	if (len > index)
