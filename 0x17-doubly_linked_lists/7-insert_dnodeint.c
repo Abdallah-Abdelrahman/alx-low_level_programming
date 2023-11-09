@@ -22,9 +22,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	new_node = malloc(sizeof(dlistint_t));
 
-	if (!new_node)
-		return (0);
-
 	new_node->n = n;
 	new_node->next = node_at_idx;
 	new_node->prev = node_at_idx->prev;
