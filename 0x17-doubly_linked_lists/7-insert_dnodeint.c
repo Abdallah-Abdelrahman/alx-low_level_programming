@@ -46,7 +46,6 @@ dlistint_t *insert(dlistint_t **head, unsigned int idx, int n)
 {
 	dlistint_t *node;
 
-
 	if (idx == 0)
 	{
 		node = malloc(sizeof(dlistint_t));
@@ -54,7 +53,7 @@ dlistint_t *insert(dlistint_t **head, unsigned int idx, int n)
 			return (0);
 		node->n = n;
 		node->next = *head;
-		node->prev = (*head)->prev;
+/* 		node->prev = (*head)->prev; */
 		*head = node;
 		return (node);
 	}
