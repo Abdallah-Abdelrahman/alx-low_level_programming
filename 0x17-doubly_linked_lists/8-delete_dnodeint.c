@@ -10,20 +10,45 @@
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	unsigned int len = dlistint_len(*head);
-	dlistint_t *node_at_idx = 0;
+	dlistint_t *tmp;
 
-	if (len > index)
+	if (!*head || len < index)
 		return (-1);
-	node_at_idx = get_dnodeint_at_index(*head, index);
-	if (!node_at_idx)
-		return (-1);
+	if (index == 0)
+	{
+		if (len == 1)
+		{
+			/* Only one node */
+			free(*head);
+			*head = 0;
+		}
+		else if (!(*head)->prev)
+		{
+			/* head */
+			tmp = *head;
+			*head = tmp->next;
+			(*head)->prev = 0;
+			free(tmp);
+		}
+		else if (!(*head)->next)
+		{
+			/* tail */
+			tmp = *head;
+			(*head)->prev->next = 0;
+			free(tmp);
+		}
+		else
+		{
+			tmp = *head;
+			(*head)->prev->next = (*head)->next;
+			(*head)->next->prev = (*head)->prev;
+			free(tmp);
+		}
 
-	node_at_idx->prev->next = node_at_idx->next;
-	node_at_idx->next->prev = node_at_idx->prev;
-	free(node_at_idx);
-	node_at_idx = 0;
+		return (1);
+	}
 
-	return (1);
+	return (delete_dnodeint_at_index(&(*head)->next, index - 1));
 }
 
 /**
@@ -39,19 +64,4 @@ size_t dlistint_len(const dlistint_t *h)
 		;
 
 	return (len);
-}
-
-/**
- * get_dnodeint_at_index - returns the nth node of a dlistint_t linked list.
- * @head: head pointer
- * @index: index of the node, starting from 0
- * Return: node at @index, or NULL if not any
- */
-dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
-{
-	if (!head)
-		return (0);
-	if (index == 0)
-		return (head);
-	return (get_dnodeint_at_index(head->next, index - 1));
 }
