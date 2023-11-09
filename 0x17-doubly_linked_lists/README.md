@@ -56,5 +56,12 @@ typedef struct dlistint_s
 
 <details>
 <summary><b>5-get_dnodeint</b></summary>
-`c` function that retrieves nodt at certain `index`.
+`c` function that retrieves node at certain `index`.
+</details>
+
+---
+
+<details>
+<summary><b>6-sum_dlistint</b></summary>
+`c` function that returns sum of all nodes in the list.
 </details>
