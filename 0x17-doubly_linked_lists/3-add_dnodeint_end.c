@@ -13,6 +13,8 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	if (!*head || !(*head)->next)
 	{
 		tail = malloc(sizeof(dlistint_t));
+		if (!tail)
+			return (0);
 		tail->next = 0;
 		tail->n = n;
 		tail->prev = *head;
