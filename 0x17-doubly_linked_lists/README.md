@@ -72,3 +72,10 @@ typedef struct dlistint_s
 <summary><b>7-insert_dnodeint_at_index</b></summary>
 `c` function that inserts a new node at a given position.
 </details>
+
+---
+
+<details>
+<summary><b>8-delete_dnodeint</b></summary>
+`c` function that deletes the node at index index of a `dlistint_t` linked list.
+</details>
