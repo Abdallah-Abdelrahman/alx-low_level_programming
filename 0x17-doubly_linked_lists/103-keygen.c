@@ -4,15 +4,6 @@
 #include <string.h>
 #include <inttypes.h>
 
-/**
- * f1 - f1
- * @arg1: arg1
- * Return: integer
- */
-uint64_t f1(int arg1)
-{
-	return ((arg1 ^ 0x3b) & 0x3f);
-}
 
 /**
  * f2 - f2
@@ -87,23 +78,6 @@ uint64_t f5(char *arg1, int arg2)
 	return (rax_12 & 0x3f);
 }
 
-/**
- * f6 - f2
- * @arg1: arg1
- * Return: integer
- */
-uint64_t f6(char arg1)
-{
-	int var_10 = 0, i, rax_3;
-
-	for (i = 0; arg1 > i; i = (i + 1))
-	{
-		var_10 = rand();
-	}
-	rax_3 = (var_10 ^ 0xe5);
-	return (rax_3 & 0x3f);
-}
-
 
 /**
  * main - main
@@ -115,14 +89,21 @@ int main(__attribute__((unused))int argc, char **argv)
 {
 	char *var_58 =
 		"A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	int len = strlen(argv[1]),
-	    rax_10 = f1(len),
+	int len = strlen(argv[1]), var_10 = 0, i, rax_3,
+	    rax_10 = (len ^ 0x3b) & 0x3f,
 	    rax_16 = f2(argv[1], len),
 	    rax_23 = f3(argv[1], len),
 	    rax_30 = f4(argv[1], len),
 	    rax_37 = f5(argv[1], len),
-	    rax_46 = f6(*argv[1]);
+	    rax_46;
 
+
+	for (i = 0; *argv[1] > i; i = (i + 1))
+	{
+		var_10 = rand();
+	}
+	rax_3 = (var_10 ^ 0xe5);
+	rax_46 = (rax_3 & 0x3f);
 
 	printf("%c", var_58[rax_10]);
 	printf("%c", var_58[rax_16]);
