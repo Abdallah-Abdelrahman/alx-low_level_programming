@@ -6,12 +6,12 @@
 
 
 /**
- * f2 - f2
+ * encode1 - encode1
  * @arg1: arg1
  * @arg2: arg1
  * Return: integer
  */
-uint64_t f2(char *arg1, int arg2)
+uint64_t encode1(char *arg1, int arg2)
 {
 	int var_10 = 0, i;
 
@@ -23,12 +23,12 @@ uint64_t f2(char *arg1, int arg2)
 }
 
 /**
- * f3 - f2
+ * encode2 - encode2
  * @arg1: arg1
  * @arg2: arg1
  * Return: integer
  */
-uint64_t f3(char *arg1, int arg2)
+uint64_t encode2(char *arg1, int arg2)
 {
 	int var_10 = 1, i;
 
@@ -40,12 +40,12 @@ uint64_t f3(char *arg1, int arg2)
 }
 
 /**
- * f4 - f2
+ * encode3 - encode3
  * @arg1: arg1
  * @arg2: arg1
  * Return: integer
  */
-uint64_t f4(char *arg1, int arg2)
+uint64_t encode3(char *arg1, int arg2)
 {
 	int var_10 = *arg1, i;
 
@@ -61,12 +61,12 @@ uint64_t f4(char *arg1, int arg2)
 }
 
 /**
- * f5 - f2
+ * encode4 - encode4
  * @arg1: arg1
  * @arg2: arg1
  * Return: integer
  */
-uint64_t f5(char *arg1, int arg2)
+uint64_t encode4(char *arg1, int arg2)
 {
 	int var_10 = 0, i, rax_12;
 
@@ -81,8 +81,8 @@ uint64_t f5(char *arg1, int arg2)
 
 /**
  * main - main
- * @argc: arg1
- * @argv: arg1
+ * @argc: argc
+ * @argv: argv
  * Return: 0
  */
 int main(__attribute__((unused))int argc, char **argv)
@@ -91,10 +91,10 @@ int main(__attribute__((unused))int argc, char **argv)
 		"A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	int len = strlen(argv[1]), var_10 = 0, i, rax_3,
 	    rax_10 = (len ^ 0x3b) & 0x3f,
-	    rax_16 = f2(argv[1], len),
-	    rax_23 = f3(argv[1], len),
-	    rax_30 = f4(argv[1], len),
-	    rax_37 = f5(argv[1], len),
+	    rax_16 = encode1(argv[1], len),
+	    rax_23 = encode2(argv[1], len),
+	    rax_30 = encode3(argv[1], len),
+	    rax_37 = encode4(argv[1], len),
 	    rax_46;
 
 
