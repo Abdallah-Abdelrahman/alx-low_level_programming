@@ -16,6 +16,7 @@ creates a dynamic library called liball.so from all the .c files that are in the
   
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,liball.so -o liball.so -fPIC *.c
+
 -Wall
            This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even
            in conjunction with macros.  This also enables some language-specific warnings described in C++ Dialect Options and Objective-C and Objective-C++ Dialect
@@ -52,3 +53,9 @@ gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,liball.so -o li
 ```
 </details>
 
+---
+
+<details>
+<summary><b>100-operations.so</b></summary>
+dynamic library comproises a `c` file consists of funcitons that perform the following operations (+, -, %, /)
+</details>
