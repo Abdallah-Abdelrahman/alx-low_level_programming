@@ -38,3 +38,13 @@ int div(int a, int b)
 {
 	return (a / b);
 }
+/**
+ * mul - get product of 2 nums
+ * @a: 1st num
+ * @b: 2nd num
+ * Return: product
+ */
+int mul(int a, int b)
+{
+	return (a * b);
+}

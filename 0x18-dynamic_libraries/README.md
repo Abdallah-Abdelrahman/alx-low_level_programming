@@ -58,4 +58,13 @@ gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,liball.so -o li
 <details>
 <summary><b>100-operations.so</b></summary>
 dynamic library comproises a `c` file consists of funcitons that perform the following operations (+, -, %, /)
+
+command to generate the library:
+
+```
+gcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,100-operations.so  -o 100-operations.so -fPIC -I/usr/include/python3.4 100-operations.c
+
+-I to override a system header file, substituting your own version
+```
+
 </details>
