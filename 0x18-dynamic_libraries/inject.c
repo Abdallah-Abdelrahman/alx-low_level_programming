@@ -1,17 +1,20 @@
-#include "main.h"
+#include <stdio.h>
 
 /**
  * inject - write your short description
  *
  * Return: elem from array
  */
-int inject(void)
+void inject(void)
 {
-	static int i = 0;
-	int arr[] = {8, 8, 7, 9, 23, 74};
-
-	i = i < 6 ? i : 0;
-
-	return (arr[i++]);
+	printf("Congratulations, you win the Jackpot!");
+/**
+ * 	static int i = 0;
+ * 	int arr[] = {8, 8, 7, 9, 23, 74};
+ * 
+ * 	i = i < 6 ? i : 0;
+ * 
+ * 	return (arr[i++]);
+ */
 }
 
