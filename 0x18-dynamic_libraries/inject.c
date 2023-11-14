@@ -8,7 +8,7 @@
 int inject(void)
 {
 	static int i;
-	int arr[] = {8, 8, 7, 9, 23, 74};
+	static int arr[] = {8, 8, 7, 9, 23, 74};
 
 	i = i < 6 ? i : 0;
 
