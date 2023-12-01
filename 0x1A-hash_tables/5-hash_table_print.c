@@ -8,6 +8,7 @@
 void hash_table_print(const hash_table_t *ht)
 {
 	uli idx, j;
+	hash_node_t *tmp = 0;
 
 	if (!ht || !ht->array)
 		return;
@@ -19,8 +20,13 @@ void hash_table_print(const hash_table_t *ht)
 		{
 			if (j)
 				printf(", ");
-			printf("'%s': '%s'", ht->array[idx]->key, ht->array[idx]->value);
-			j++;
+			tmp = ht->array[idx];
+			while (tmp)
+			{
+				printf("'%s': '%s'", tmp->key, tmp->value);
+				tmp = tmp->next;
+				j++;
+			}
 		}
 	}
 	printf("}\n");
