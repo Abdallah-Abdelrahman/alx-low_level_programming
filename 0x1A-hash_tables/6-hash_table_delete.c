@@ -17,8 +17,6 @@ void hash_table_delete(hash_table_t *ht)
 			if (ht->array[i])
 			{
 				free_list(ht->array[i]);
-
-				free(ht->array[i]);
 				ht->array[i] = NULL;
 			}
 		}
@@ -38,5 +36,6 @@ void free_list(hash_node_t *node)
 		free_list(node->next);
 		free(node->key);
 		free(node->value);
+		free(node);
 	}
 }
