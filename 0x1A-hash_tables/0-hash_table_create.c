@@ -16,14 +16,12 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	h_table->size = size;
 
-#if 0
-		h_table->array = (hash_node_t **)malloc(sizeof(hash_node_t) * size);
+		h_table->array = (hash_node_t **)malloc(sizeof(hash_node_t *) * size);
 		if (!h_table->array)
 		{
 			free(h_table);
 			return (NULL);
 		}
-#endif
 
 	return (h_table);
 }
