@@ -1,6 +1,5 @@
 #include "hash_tables.h"
 
-int initialize_node(hash_table_t *ht, char *key, char *value, uli idx);
 
 /**
  * hash_table_set - adds an element to the hash table.
@@ -34,7 +33,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 
 	/* collision */
-	node = malloc(sizeof(hash_node_t *));
+	node = malloc(sizeof(hash_node_t));
 	if (!node)
 		return (0);
 	node->key = strdup(key);
@@ -58,8 +57,7 @@ int initialize_node(hash_table_t *ht, char *key, char *value, uli idx)
 {
 	hash_node_t *node;
 
-	/* set element */
-	node = malloc(sizeof(hash_node_t *));
+	node = malloc(sizeof(hash_node_t));
 	if (!node)
 		return (0);
 	node->key = strdup(key);
