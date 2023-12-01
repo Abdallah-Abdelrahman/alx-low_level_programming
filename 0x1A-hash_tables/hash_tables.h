@@ -3,6 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+/*----------- ALIASES ---------------*/
+typedef unsigned long int uli;
+
 /*----------- STRUCTS ---------------*/
 /**
  * struct hash_node_s - Node of a hash table
