@@ -13,7 +13,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	uli idx;
 	hash_node_t *node = 0;
 
-	if (!key)
+	if (!key || !ht || !ht->array)
 		return (0);
 	idx = key_index((unsigned char *)key, ht->size);
 
