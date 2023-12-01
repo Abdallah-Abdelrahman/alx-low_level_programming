@@ -36,5 +36,5 @@ typedef struct hash_table_s
 
 <details>
 <summary><b>0-hash_tables</b></summary>
-create hash table that has a <code>size</code> and <code>size</code> of <code>hash_node_t struct</code>.
+create hash table that has a <code>size</code> and <code>array</code> of <code>hash_node_t struct</code>.
 </details>
