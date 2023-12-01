@@ -2,6 +2,7 @@
 #define HEADER
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 
 /*----------- ALIASES ---------------*/
