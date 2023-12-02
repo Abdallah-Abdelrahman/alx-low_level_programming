@@ -46,14 +46,12 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	uli idx;
-	int is_head = 0;
+	uli idx, is_head = 0;
 	shash_node_t *node = 0, *tmp;
 
 	if (!key || !key[0] || !ht || !ht->array)
 		return (0);
 	idx = key_index((unsigned char *)key, ht->size);
-
 
 	if (!ht->array[idx])
 	{
@@ -62,13 +60,10 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	if (!strcmp(key, ht->array[idx]->key))
 	{
-		/* update */
 		free(ht->array[idx]->value);
 		ht->array[idx]->value = strdup(value);
 		return (1);
 	}
-
-	/* collision */
 	tmp = ht->array[idx];
 	node = malloc(sizeof(shash_node_t));
 	if (!node)
@@ -87,9 +82,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	}
 	if (is_head)
 		while (strcmp(node->key, tmp->key) > 0)
-		{
 			tmp = tmp->next;
-		}
 	node->next = ht->array[idx];
 	ht->array[idx] = node;
 	return (1);
