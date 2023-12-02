@@ -11,7 +11,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	uli idx;
+	ul idx;
 	hash_node_t *node = 0;
 
 	if (!key || !key[0] || !ht || !ht->array)
@@ -53,7 +53,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  *
  * Return: 1 if it succeeded, 0 otherwise
  */
-int initialize_node(hash_table_t *ht, char *key, char *value, uli idx)
+int initialize_node(hash_table_t *ht, char *key, char *value, ul idx)
 {
 	hash_node_t *node;
 

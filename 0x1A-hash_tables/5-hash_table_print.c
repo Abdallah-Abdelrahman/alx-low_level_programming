@@ -7,7 +7,7 @@
  */
 void hash_table_print(const hash_table_t *ht)
 {
-	uli idx, j;
+	ul idx, j;
 	hash_node_t *tmp = 0;
 
 	if (!ht || !ht->array)

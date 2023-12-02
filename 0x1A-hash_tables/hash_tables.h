@@ -6,7 +6,7 @@
 
 
 /*----------- ALIASES ---------------*/
-typedef unsigned long int uli;
+typedef unsigned long int ul;
 
 /*----------- STRUCTS ---------------*/
 /**
@@ -76,7 +76,6 @@ typedef struct shash_table_s
 } shash_table_t;
 
 /*----------- FUNCTIONS ---------------*/
-
 hash_table_t *hash_table_create(unsigned long int size);
 unsigned long int hash_djb2(const unsigned char *str);
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
@@ -85,13 +84,15 @@ char *hash_table_get(const hash_table_t *ht, const char *key);
 void hash_table_print(const hash_table_t *ht);
 void hash_table_delete(hash_table_t *ht);
 void free_list(hash_node_t *node);
-int initialize_node(hash_table_t *ht, char *key, char *value, uli idx);
+int initialize_node(hash_table_t *ht, char *key, char *value, ul idx);
 shash_table_t *shash_table_create(unsigned long int size);
 int shash_table_set(shash_table_t *ht, const char *key, const char *value);
 char *shash_table_get(const shash_table_t *ht, const char *key);
 void shash_table_print(const shash_table_t *ht);
 void shash_table_print_rev(const shash_table_t *ht);
 void shash_table_delete(shash_table_t *ht);
-int initialize_nodes(shash_table_t *ht, char *key, char *value, uli idx);
+int initialize_node_s(shash_table_t *ht, char *key, char *value, ul idx);
+void free_shash_table(shash_node_t *shead);
+void insertion_sort(shash_table_t *ht, shash_node_t *node);
 
 #endif /* HEADER */
