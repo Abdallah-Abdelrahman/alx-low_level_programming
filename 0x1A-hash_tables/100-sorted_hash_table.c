@@ -122,7 +122,6 @@ void insertion_sort(shash_table_t *ht, shash_node_t *node)
 {
 	shash_node_t *tmp = ht->shead;
 
-	
 	for (; tmp->snext && strcmp(node->key, tmp->key) > 0; tmp = tmp->snext)
 		/* loop until node < tmp, or there's only one node, or we reach the tail */
 		;
@@ -241,7 +240,8 @@ void shash_table_delete(shash_table_t *ht)
 	if (ht)
 	{
 		free_shash_table(ht->shead);
-		free(ht->array);
+		if (ht->array)
+			free(ht->array);
 		free(ht);
 	}
 }
