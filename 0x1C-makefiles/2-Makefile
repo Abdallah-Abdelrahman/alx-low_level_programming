@@ -1,0 +1,11 @@
+# Usage:
+# make	# compile all binary
+
+CC := gcc
+SRC := $(wildcard *.c)
+OBJ := $(SRC:.c=.o) # using command substitution
+NAME := school
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+$(OBJ): m.h # implict rule for compiling .c files that depends on m.h header
