@@ -15,7 +15,7 @@ all: ${OBJ}
 
 # '$@' file name of the target of the rule
 # '$<' the name of the first prerequisite
-.c.o: m.h
+.c.o:
 	${CC} ${CFLAGS} -c -o $@ $<
 
 clean:
