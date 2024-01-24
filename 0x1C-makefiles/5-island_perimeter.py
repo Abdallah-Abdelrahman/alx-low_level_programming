@@ -30,5 +30,5 @@ def island_perimeter(grid):
                     for r in range(row, _len):
                         if grid[r][col] == 1:
                             h += 1
-    print('w = {}, h = {}'.format(w, h))
+#    print('w = {}, h = {}'.format(w, h))
     return 2 * (w + h)
