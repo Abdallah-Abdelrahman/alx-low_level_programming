@@ -29,12 +29,12 @@ def island_perimeter(grid):
                     if cell[0] == 0 and cell[1] == 0:
                         # print('zero')
                         w += 1
-                        h = 0
                         cell[0], cell[1] = row, col
                     elif abs(cell[0] - row) == abs(cell[1] - col):
                         # print('diagonally')
                         continue
                     else:
+                        cell[0], cell[1] = row, col
                         w += 1
                 if h == 0 and grid[row + 1][col] == 1:
                     for r in range(row, _len):
