@@ -2,8 +2,8 @@
 # make -f 100-Makefile	# recompile only the updated source files
 
 .PHONY: all clean oclean fclean re
-.SUFFIXES:            # Delete the default suffixes
-.SUFFIXES: .c .o .h   # Define our suffix list
+#.SUFFIXES:            # Delete the default suffixes
+#.SUFFIXES: .c .o .h   # Define our suffix list
 
 CC = gcc
 SRC = main.c school.c
