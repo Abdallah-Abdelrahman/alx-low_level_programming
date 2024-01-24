@@ -14,15 +14,14 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all: $(OBJ)
 	${CC} ${OBJ} -o ${NAME}
 
-${OBJ}: m.h
-	${CC} ${CFLAGS} -c -o main.o main.c
-	${CC} ${CFLAGS} -c -o school.o school.c
+# '$@' file name of teh target of the rule
+# '$<' the name of the first prerequisite
+%.o: %.c m.h
+	${CC} ${CFLAGS} -c -o $@ $<
 
 clean:
 	${RM} *~ ${NAME}
 oclean:
 	${RM} ${OBJ}
-fclean:
-	${RM} *~ ${NAME}
-	${RM} ${OBJ}
+fclean: clean oclean
 re: oclean all
