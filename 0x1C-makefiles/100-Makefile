@@ -2,7 +2,6 @@
 # make -f 100-Makefile	# recompile only the updated source files
 
 .PHONY: all clean oclean fclean re
-.SUFFIXES: m.h   # Define our suffix list
 
 CC = gcc
 SRC = main.c school.c
@@ -16,8 +15,8 @@ all: ${OBJ}
 
 # '$@' file name of the target of the rule
 # '$<' the name of the first prerequisite
+# Using old-fashioned suffix rules
 .c.o.h: m.h
-	${CC} ${CFLAGS} -c -o $@ $<
 
 clean:
 	$(RM) *~ ${NAME}
