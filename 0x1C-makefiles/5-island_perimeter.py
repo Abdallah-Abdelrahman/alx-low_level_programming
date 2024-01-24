@@ -36,7 +36,7 @@ def island_perimeter(grid):
                     else:
                         cell[0], cell[1] = row, col
                         w += 1
-                if h == 0 and grid[row + 1][col] == 1:
+                if h == 0:
                     for r in range(row, _len):
                         if grid[r][col] == 1:
                             h += 1
