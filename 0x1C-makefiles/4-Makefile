@@ -14,7 +14,6 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all: $(OBJ)
 	${CC} ${OBJ} -o ${NAME}
 
-# No need to provide the recipe here, since it's implict
 ${OBJ}: m.h
 	${CC} ${CFLAGS} -c -o main.o main.c
 	${CC} ${CFLAGS} -c -o school.o school.c
