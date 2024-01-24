@@ -11,7 +11,7 @@ NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 # Goal target
-all: ${OBJ} m.h
+all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
 # '$@' file name of the target of the rule
@@ -20,8 +20,8 @@ all: ${OBJ} m.h
 	${CC} ${CFLAGS} -c -o $@ $<
 
 clean:
-	${RM} *~ ${NAME}
+	$(RM) *~ ${NAME}
 oclean:
-	${RM} ${OBJ}
+	$(RM) ${OBJ}
 fclean: clean oclean
 re: oclean all
