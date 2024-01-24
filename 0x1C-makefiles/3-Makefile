@@ -1,0 +1,25 @@
+# Usage:
+# make -f 3-Makefile	# recompile only the updated source files
+
+.PHONY: all clean oclean fclean re
+
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+RM = rm
+
+all: $(OBJ)
+	${CC} ${OBJ} -o ${NAME}
+
+# No need to provide the recipe here, since it's implict
+${OBJ}: m.h
+
+clean:
+	${RM} '*~' '*.swp' ${NAME}
+oclean:
+	${RM} ${OBJ}
+fclean:
+	${RM} '*~' '*.swp' ${NAME} ${OBJ}
+re:
+	${CC} ${SRC}
