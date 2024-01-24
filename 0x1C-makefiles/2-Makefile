@@ -2,7 +2,7 @@
 # make	# compile all binary
 
 CC := gcc
-SRC := $(wildcard *.c)
+SRC := main.c school.c
 OBJ := $(SRC:%.c=%.o) # using substitution reference
 NAME := school
 
