@@ -3,4 +3,4 @@ m.h
 main.c
 *.o
 school*
-.txt
+*.txt

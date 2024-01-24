@@ -1,5 +1,0 @@
-CURDIR := /home/fola/Desktop/ALX-SE/alx-low_level_programming/0x1C-makefiles
-.DEFAULT_GOAL := 
-MAKEFILE_LIST := 
-MAKEFLAGS = np
-SHELL = /bin/sh

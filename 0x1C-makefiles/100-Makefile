@@ -1,7 +1,7 @@
 # Usage:
 # make -f 100-Makefile	# recompile only the updated source files
 
-#.PHONY: all clean oclean fclean re
+.PHONY: all clean oclean fclean re
 
 CC = gcc
 SRC = main.c school.c
@@ -10,21 +10,17 @@ NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 # Goal target
-.PHONY: all
-all: $(OBJ)
+all: ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
 # '$@' file name of the target of the rule
 # '$<' the name of the first prerequisite
 # Using old-fashioned suffix rules
 .c.o.h: m.h
-.PHONY: clean
+
 clean:
 	$(RM) *~ ${NAME}
-.PHONY: oclean
 oclean:
 	$(RM) ${OBJ}
-.PHONY: fclean
 fclean: clean oclean
-.PHONY: re
 re: oclean all
