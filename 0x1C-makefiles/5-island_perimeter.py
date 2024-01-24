@@ -16,27 +16,27 @@ def island_perimeter(grid):
     Returns:
         perimeter
     '''
-#    if not isinstance(grid, list):
-#        return 0
 
     _len = len(grid)
+    cell = [0, 0]
     w = 0
     h = 0
-
-#    if _len == 0 or len(grid[0]):
-#        return 0
 
     for row in range(_len):
         for col in range(len(grid[row])):
             if grid[row][col] == 1:
-                cell = []
                 if w == 0 or grid[row][col] != grid[row - 1][col]:
-                    if len(cell) == 0:
+                    if cell[0] == 0 and cell[1] == 0:
+                        # print('zero')
                         w += 1
-                        cell += [row, col]
+                        h = 0
+                        cell[0], cell[1] = row, col
                     elif abs(cell[0] - row) == abs(cell[1] - col):
+                        # print('diagonally')
                         continue
-                if h == 0 and len(grid[row]) - 1 > col > 0:
+                    else:
+                        w += 1
+                if h == 0 and grid[row + 1][col] == 1:
                     for r in range(row, _len):
                         if grid[r][col] == 1:
                             h += 1
