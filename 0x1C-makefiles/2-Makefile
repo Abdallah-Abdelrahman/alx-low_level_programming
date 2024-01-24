@@ -3,7 +3,7 @@
 
 CC := gcc
 SRC := $(wildcard *.c)
-OBJ := $(SRC:.c=.o) # using substitution reference
+OBJ := $(SRC:%.c=%.o) # using substitution reference
 NAME := school
 
 all: ${OBJ}
