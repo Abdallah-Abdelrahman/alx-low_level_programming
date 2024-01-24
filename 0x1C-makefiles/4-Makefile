@@ -14,7 +14,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all: $(OBJ)
 	${CC} ${OBJ} -o ${NAME}
 
-# '$@' file name of teh target of the rule
+# '$@' file name of the target of the rule
 # '$<' the name of the first prerequisite
 %.o: %.c m.h
 	${CC} ${CFLAGS} -c -o $@ $<
