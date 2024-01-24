@@ -3,7 +3,7 @@
 
 CC := gcc
 SRC := main.c school.c
-OBJ := $(SRC:%.c=%.o) # using substitution reference
+OBJ := main.o school.o
 NAME := school
 
 all: ${OBJ}
