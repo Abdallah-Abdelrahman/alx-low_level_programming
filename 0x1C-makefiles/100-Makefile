@@ -10,8 +10,8 @@ NAME = school
 CFLAGS = -Wall -Werror -Wextra -pedantic
 
 # Goal target
-all: ${OBJ} m.h
-	$(CC) ${OBJ} -o ${NAME}
+all: $(OBJ)
+	${CC} ${OBJ} -o ${NAME}
 
 # '$@' file name of the target of the rule
 # '$<' the name of the first prerequisite
