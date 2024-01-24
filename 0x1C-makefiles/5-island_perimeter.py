@@ -16,8 +16,8 @@ def island_perimeter(grid):
     Returns:
         perimeter
     '''
-    if not isinstance(grid, list):
-        return 0
+#    if not isinstance(grid, list):
+#        return 0
 
     _len = len(grid)
     w = 0
