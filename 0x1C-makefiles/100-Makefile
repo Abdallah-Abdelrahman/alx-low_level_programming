@@ -4,11 +4,11 @@
 .PHONY: all clean oclean fclean re
 .SUFFIXES: m.h   # Define our suffix list
 
-CC := gcc
-SRC := main.c school.c
-OBJ := $(SRC:%.c=%.o)
-NAME := school
-CFLAGS := -Wall -Werror -Wextra -pedantic
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+CFLAGS = -Wall -Werror -Wextra -pedantic
 
 # Goal target
 all: ${OBJ}
