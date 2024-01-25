@@ -23,53 +23,26 @@ def island_perimeter(grid):
     for row in range(_len):
         for col in range(len(grid[row])):
             if grid[row][col] == 1:
+                if col == 0 or col == len(grid[row]) - 1:
+                    # corners
+                    count += 1
+                if col != len(grid[row]) - 1 and grid[row][col + 1] == 0:
+                    # right
+                    count += 1
+                if col != 0 and grid[row][col - 1] == 0:
+                    # left
+                    count += 1
+                if row != _len - 1 and grid[row + 1][col] == 0:
+                    # down
+                    count += 1
+                if row != 0 and grid[row - 1][col] == 0:
+                    # top
+                    count += 1
                 if row == 0:  # 1st row
                     # top
                     count += 1
-                    if col == 0 or col == len(grid[row]) - 1:
-                        # corners
-                        count += 1
-                    if col != len(grid[row]) - 1 and grid[row][col + 1] == 0:
-                        # right
-                        count += 1
-                    if col != 0 and grid[row][col - 1] == 0:
-                        # left
-                        count += 1
-                    if grid[row + 1][col] == 0:
-                        # down
-                        count += 1
                 elif row == _len - 1:  # last row
                     # down
                     count += 1
-                    if col == 0 or col == len(grid[row]) - 1:
-                        # corners
-                        count += 1
-                    if col != len(grid[row]) - 1 and grid[row][col + 1] == 0:
-                        # right
-                        count += 1
-                    if col != 0 and grid[row][col - 1] == 0:
-                        # left
-                        count += 1
-                    if grid[row - 1][col] == 0:
-                        # top
-                        count += 1
-                else:  # in between
-                    if col == 0 or col == len(grid[row]) - 1:
-                        # corners
-                        count += 1
-                    if col != len(grid[row]) - 1 and grid[row][col + 1] == 0:
-                        # right
-                        count += 1
-                    if col != 0 and grid[row][col - 1] == 0:
-                        # left
-                        count += 1
-                    if grid[row + 1][col] == 0:
-                        # top
-                        count += 1
-                    if grid[row - 1][col] == 0:
-                        # down
-                        count += 1
 
-
-#    print('w = {}, h = {}'.format(w, h))
     return count
