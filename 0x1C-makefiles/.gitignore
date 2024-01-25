@@ -5,3 +5,4 @@ main.c
 *.o
 school*
 *.txt
+*.r

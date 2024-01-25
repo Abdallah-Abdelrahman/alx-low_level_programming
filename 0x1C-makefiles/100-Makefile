@@ -13,9 +13,6 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 all: m.h ${OBJ}
 	${CC} ${OBJ} -o ${NAME}
 
-# '$@' file name of the target of the rule
-# '$<' the name of the first prerequisite
-# Using old-fashioned suffix rules
 # This rule implicitly applied, we don't even need,
 # to execute it explicitly
 .c.o:
