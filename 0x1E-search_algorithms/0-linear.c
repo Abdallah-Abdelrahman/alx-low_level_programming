@@ -27,6 +27,7 @@ int linear_search(int *array, size_t size, int value)
 			return (i);
 		}
 	}
+	printf("Found %d at index: -1", value);
 
 	return (-1);
 }
