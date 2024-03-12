@@ -3,6 +3,7 @@
 
 /*-----------HEADERS-------------*/
 #include <stdio.h>
+#include <math.h>
 
 /*-----------MACROS-------------*/
 #define PRINT(a, L, R) {\
@@ -14,6 +15,7 @@
 			printf("%d%s", a[l], l < R ? ", " : "\n");\
 	} \
 }
+#define MIN(x, y) (x < y ? x : y)
 
 /*-----------PROTOS-------------*/
 int linear_search(int *array, size_t size, int value);
