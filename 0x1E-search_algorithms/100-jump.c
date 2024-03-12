@@ -22,13 +22,14 @@ int jump_search(int *array, size_t size, int value)
 	m = sqrt(size);
 
 	/* find block where value is present */
-	for (L = 0, R = m; size > R && array[R] < value; L = R, R += m)
+	for (L = 0, R = m; size > L && array[L] < value; L = R, R += m)
 		printf("Value checked array[%ld] = [%d]\n", L, array[L]);
 
-	printf("Value found between indexes [%ld] and [%ld]\n", L, R);
+	printf("Value found between indexes [%ld] and [%ld]\n",
+			L ? L - m : L, L ? R - m : R);
 
 	/* linear search */
-	for (; array[L] <= value && L < MIN(size, R + 1); L++)
+	for (L = L ? L - m : L; array[L] <= value && L < MIN(size, R + 1); L++)
 	{
 		printf("Value checked array[%ld] = [%d]\n", L, array[L]);
 		if (array[L] == value)
