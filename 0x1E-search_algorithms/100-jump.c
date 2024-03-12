@@ -13,27 +13,32 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	size_t m, R, L;
+	size_t jump;
+	size_t i, j;
 
-	if (!array || size == 0)
+	if (!array)
 		return (-1);
 
-	/* `m` represents the block to jump */
-	m = sqrt(size);
+	/* Calculate the jump interval */
+	jump = sqrt(size);
 
-	/* find block where value is present */
-	for (L = 0, R = m; size > L && array[L] < value; L = R, R += m)
-		printf("Value checked array[%ld] = [%d]\n", L, array[L]);
-
-	printf("Value found between indexes [%ld] and [%ld]\n",
-			L ? L - m : L, L ? R - m : R - m);
-
-	/* linear search */
-	for (L = L ? L - m : L; array[L] <= value && L < MIN(size, R + 1); L++)
+	/* Find the block where the element may be present */
+	for (i = 0; i < size; i += jump)
 	{
-		printf("Value checked array[%ld] = [%d]\n", L, array[L]);
-		if (array[L] == value)
-			return (L);
+		if (array[i] >= value)
+			break;
+		printf("Value checked array[%lu] = [%d]\n", i, array[i]);
 	}
+
+	/* Perform a linear search within the identified block */
+	j = i < jump ? 0 : i - jump;
+	printf("Value found between indexes [%lu] and [%lu]\n", j, i);
+	for (; j <= i && j < size; j++)
+	{
+		printf("Value checked array[%lu] = [%d]\n", j, array[j]);
+		if (array[j] == value)
+			return (j);
+	}
+
 	return (-1);
 }
