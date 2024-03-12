@@ -22,7 +22,7 @@ int jump_search(int *array, size_t size, int value)
 	m = sqrt(size);
 
 	/* find block where value is present */
-	for (L = 0, R = m; array[R] < value && R < size; L = R, R += m)
+	for (L = 0, R = m; size > R && array[R] < value; L = R, R += m)
 	{
 		printf("Value checked array[%d] = [%d]\n", L, array[L]);
 		if (array[L] == value)
