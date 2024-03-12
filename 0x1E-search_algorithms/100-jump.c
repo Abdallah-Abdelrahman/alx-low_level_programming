@@ -29,7 +29,7 @@ int jump_search(int *array, size_t size, int value)
 			L ? L - m : L, L ? R - m : R);
 
 	/* linear search */
-	for (L = L ? L - m : L; L < MIN(size, R + 1); L++)
+	for (L = L ? L - m : L; array[L] <= value && L < MIN(size, R + 1); L++)
 	{
 		printf("Value checked array[%ld] = [%d]\n", L, array[L]);
 		if (array[L] == value)
