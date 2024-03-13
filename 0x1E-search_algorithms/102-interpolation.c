@@ -1,7 +1,4 @@
 #include "search_algos.h"
-#define PROBE(low, high, a)\
-	(low + (((double)(high - low) / (a[high] - a[low])) * (value - a[low])))
-
 
 /**
  * interpolation_search - searches for a value in a sorted array of integers.
@@ -47,6 +44,7 @@ int interpolation_search(int *array, size_t size, int value)
 			lo = pos + 1;
 	}
 
-	printf("Value checked array[%d] is out of range\n", (int)POS(lo, hi, array));
+	printf("Value checked array[%d] is out of range\n",
+			(int)PROBE(lo, hi, array));
 	return (-1);
 }
