@@ -1,6 +1,8 @@
 #include "search_algos.h"
 #define JUMP(list, block) \
 	for (; list->index < (block); list = list->next)
+#define RANGE(list, jumped, block, size)\
+	(size >= jumped ? (list->index ? list->index - m : 0) : list->index - m + 1)
 
 /**
  * jump_list - pointer to the head of the list to search in
@@ -30,10 +32,10 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
-			size >= R ? tmp->index - m : tmp->index - m + 1,
+			RANGE(tmp, R, m, size),
 			MIN(tmp->index, size - 1));
 
-	JUMP(list, size >= R ? tmp->index - m : tmp->index - m + 1);
+	JUMP(list, RANGE(tmp, R, m, size));
 
 	for (; list; list = list->next)
 	{
