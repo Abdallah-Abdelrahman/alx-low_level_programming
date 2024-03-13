@@ -31,21 +31,13 @@ int interpolation_search(int *array, size_t size, int value)
 		/* determine the probe position */
 		pos = PROBE(lo, hi, array);
 
+		printf("Value checked array[%d] = [%d]\n", pos, array[pos]);
 		if (array[pos] == value)
-		{
-			printf("Value checked array[%d] = [%d]\n", pos, array[pos]);
 			return (pos);
-		}
 		if (array[pos] > value)
-		{
-			printf("Value checked array[%d] = [%d]\n", pos, array[pos]);
 			hi = pos - 1;
-		}
 		else
-		{
-			printf("Value checked array[%d] = [%d]\n", pos, array[pos]);
 			lo = pos + 1;
-		}
 	}
 
 	printf("Value checked array[%d] is out of range\n",
