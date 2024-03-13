@@ -1,6 +1,6 @@
 #include "search_algos.h"
 #define JUMP(list, block) \
-	for (; list->index < (block); list = list->next)
+	for (; list->next && list->index < (block); list = list->next)
 #define RANGE(list, jumped, block, size)\
 	(size >= jumped ? (list->index ? list->index - m : 0) : list->index - m + 1)
 
@@ -25,9 +25,9 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	m = sqrt(size);
 	tmp = list;
 
-	for (R = m; size - 1 > tmp->index && tmp->n < value; R += m)
+	for (R = m; size >= R && tmp->n < value; R += m)
 	{
-		JUMP(tmp, R >= size ? size - 1 : R);
+		JUMP(tmp, MIN(R, size - 1));
 		printf("Value checked at index [%ld] = [%d]\n", tmp->index, tmp->n);
 	}
 
@@ -37,7 +37,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 
 	JUMP(list, RANGE(tmp, R, m, size));
 
-	for (; list; list = list->next)
+	for (; list->index <= tmp->index && list; list = list->next)
 	{
 		printf("Value checked at index [%ld] = [%d]\n", list->index, list->n);
 		if (list->n == value)
