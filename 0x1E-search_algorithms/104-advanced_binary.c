@@ -21,7 +21,7 @@ int advanced_binary(int *array, size_t size, int value)
 	start = 0;
 	end = size - 1;
 
-	return (leftmost_binary(array, start, end, value, size));
+	return (leftmost_binary(array, start, end, value));
 }
 
 /**
@@ -30,14 +30,13 @@ int advanced_binary(int *array, size_t size, int value)
  * @a: pointer to the first element in the array
  * @lo: index of smallest element in sub-array
  * @hi: index of biggest element in sub-array
- * @size: number of elements in the array
  * @value: value to search for
  *
  * Return: index where value is located.
  * If value is not present in array or if array is NULL,
  * your function must return -1
  */
-int leftmost_binary(int *a, size_t lo, size_t hi, int value, size_t size)
+int leftmost_binary(int *a, size_t lo, size_t hi, int value)
 {
 	size_t mid;
 
@@ -50,9 +49,9 @@ int leftmost_binary(int *a, size_t lo, size_t hi, int value, size_t size)
 
 	if (a[mid] == value)
 		return (mid && a[mid - 1] == value
-				? leftmost_binary(a, lo, mid, value, size)
+				? leftmost_binary(a, lo, mid, value)
 				: (int)mid);
 	if (a[mid] > value)
-		return (leftmost_binary(a, lo, mid, value, size));
-	return (leftmost_binary(a, mid + 1, hi, value, size));
+		return (leftmost_binary(a, lo, mid, value));
+	return (leftmost_binary(a, mid + 1, hi, value));
 }
