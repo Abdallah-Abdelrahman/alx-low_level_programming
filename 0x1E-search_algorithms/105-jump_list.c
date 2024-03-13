@@ -1,10 +1,10 @@
 #include "search_algos.h"
-#define JUMP(list, block) \
-	for (; list->next && list->index < (block); list = list->next)
 
-
-#define RANGE(list, jumped, block, size)\
-	(size >= jumped ? (list->index ? list->index - m : 0) : list->index - m + 1)
+#define JUMP(list, block) {\
+	size_t i = block;\
+	for (; list->next && i-- > 0; list = list->next)\
+	;\
+}
 
 /**
  * jump_list - pointer to the head of the list to search in
@@ -29,15 +29,14 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 
 	for (R = m; size >= R && tmp->n < value; R += m)
 	{
-		JUMP(tmp, MIN(R, size - 1));
+		list = tmp;
+		JUMP(tmp, m);
 		printf("Value checked at index [%ld] = [%d]\n", tmp->index, tmp->n);
 	}
 
 	printf("Value found between indexes [%ld] and [%ld]\n",
-			RANGE(tmp, R, m, size),
-			MIN(tmp->index, size - 1));
+			list->index, tmp->index);
 
-	JUMP(list, RANGE(tmp, R, m, size));
 
 	for (; list && list->index <= tmp->index; list = list->next)
 	{
