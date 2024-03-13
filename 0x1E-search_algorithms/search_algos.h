@@ -16,6 +16,8 @@
 	} \
 }
 #define MIN(x, y) (x < y ? x : y)
+#define PROBE(low, high, a)\
+	(low + (((double)(high - low) / (a[high] - a[low])) * (value - a[low])))
 
 /*-----------PROTOS-------------*/
 int linear_search(int *array, size_t size, int value);
