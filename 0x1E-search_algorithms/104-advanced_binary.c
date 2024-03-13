@@ -19,9 +19,8 @@ int advanced_binary(int *array, size_t size, int value)
 		return (-1);
 
 	start = 0;
-	end = size;
+	end = size - 1;
 
-	PRINT(array, start, end - 1);
 	return (leftmost_binary(array, start, end, value, size));
 }
 
@@ -40,24 +39,20 @@ int advanced_binary(int *array, size_t size, int value)
  */
 int leftmost_binary(int *a, size_t lo, size_t hi, int value, size_t size)
 {
-	size_t mid, lmost;
+	size_t mid;
 
 	if (lo > hi)
 		return (-1);
 
+	PRINT(a, lo, hi);
+
 	mid = lo + (hi - lo) / 2;
 
 	if (a[mid] == value)
-	{
-		PRINT(a, lo, (mid - 1));
-		lmost = leftmost_binary(a, lo, mid - 1, value, size);
-		return ((int)lmost > -1 ? lmost : mid);
-	}
+		return (mid && a[mid - 1] == value
+				? leftmost_binary(a, lo, mid, value, size)
+				: (int)mid);
 	if (a[mid] > value)
-	{
-		PRINT(a, lo, (mid - 1));
-		return (leftmost_binary(a, lo, mid - 1, value, size));
-	}
-	PRINT(a, (mid + 1), (hi >= size ? hi - 1 : hi));
+		return (leftmost_binary(a, lo, mid, value, size));
 	return (leftmost_binary(a, mid + 1, hi, value, size));
 }
