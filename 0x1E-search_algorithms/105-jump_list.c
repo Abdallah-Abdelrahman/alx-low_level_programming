@@ -25,7 +25,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	m = sqrt(size);
 	tmp = list;
 
-	for (R = m; size >= R && tmp->n < value; R += m)
+	for (R = m; size - 1 > tmp->index && tmp->n < value; R += m)
 	{
 		JUMP(tmp, R >= size ? size - 1 : R);
 		printf("Value checked at index [%ld] = [%d]\n", tmp->index, tmp->n);
