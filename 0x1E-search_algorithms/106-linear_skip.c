@@ -1,4 +1,12 @@
 #include "search_algos.h"
+#define ADVANCE(tmp, list) {\
+	if (tmp->n < value)\
+	{\
+		list = tmp;\
+		while (tmp->next)\
+			tmp = tmp->next;\
+	} \
+}
 
 /**
  * linear_skip - performs search in a linked list with an express lane
@@ -16,8 +24,33 @@
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-	(void)value;
+	skiplist_t *tmp;
+
 	if (!list)
 		return (NULL);
-	return (list);
+
+	tmp = list;
+
+	/* determine block where value is present */
+	while (tmp->express && tmp->n < value)
+	{
+		list = tmp;
+		tmp = tmp->express;
+		printf("Value checked at index [%lu] = [%d]\n", tmp->index, tmp->n);
+	}
+	/* advance tmp if it's beyond express lane */
+	ADVANCE(tmp, list);
+
+	printf("Value found between indexes [%lu] and [%lu]\n",
+			list->index, tmp->index);
+
+	/* linear search */
+	for (; list && list->index <= tmp->index; list = list->next)
+	{
+		printf("Value checked at index [%lu] = [%d]\n", list->index, list->n);
+		if (list->n == value)
+			return (list);
+	}
+
+	return (NULL);
 }
